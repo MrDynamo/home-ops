@@ -3,6 +3,7 @@ _.python.venv = { path = "{{config_root}}/.venv", create = true }
 KUBECONFIG = "{{config_root}}/kubeconfig"
 SOPS_AGE_KEY_FILE = "{{config_root}}/age.key"
 TALOSCONFIG = "{{config_root}}/talos/clusterconfig/talosconfig"
+MINIJINJA_CONFIG_FILE = "{{config_root}}/.minijinja.toml"
 
 [tools]
 "python" = "3.13"
@@ -25,3 +26,6 @@ TALOSCONFIG = "{{config_root}}/talos/clusterconfig/talosconfig"
 "aqua:siderolabs/talos" = "1.11.1"
 "aqua:yannh/kubeconform" = "0.7.0"
 "just" = "latest"
+"gum" = "latest"
+"rust" = "latest"
+"cargo:minijinja-cli" = "latest"
