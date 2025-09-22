@@ -30,7 +30,7 @@ tasks:
 
   generate-age-key:
     internal: true
-    cmd: age-keygen --output {{.SOPS_AGE_KEY_FILE}}
+    cmd: /mnt/c/Users/Walker/AppData/Local/Microsoft/WinGet/Packages/AgileBits.1Password.CLI_Microsoft.Winget.Source_8wekyb3d8bbwe/op.exe inject -i {{.SOPS_AGE_KEY_FILE | replace ".key" ".key.tpl"}} -o {{.SOPS_AGE_KEY_FILE}}
     status:
       - test -f {{.SOPS_AGE_KEY_FILE}}
     preconditions:
@@ -38,7 +38,9 @@ tasks:
 
   generate-deploy-key:
     internal: true
-    cmd: ssh-keygen -t ecdsa -b 521 -C "deploy-key" -f {{.ROOT_DIR}}/github-deploy.key -q -P ""
+    cmds:
+      - /mnt/c/Users/Walker/AppData/Local/Microsoft/WinGet/Packages/AgileBits.1Password.CLI_Microsoft.Winget.Source_8wekyb3d8bbwe/op.exe inject -i {{.ROOT_DIR}}/github-deploy.key.tpl -o {{.ROOT_DIR}}/github-deploy.key
+      - /mnt/c/Users/Walker/AppData/Local/Microsoft/WinGet/Packages/AgileBits.1Password.CLI_Microsoft.Winget.Source_8wekyb3d8bbwe/op.exe inject -i {{.ROOT_DIR}}/github-deploy.key.pub.tpl -o {{.ROOT_DIR}}/github-deploy.key.pub
     status:
       - test -f {{.ROOT_DIR}}/github-deploy.key
     preconditions:
