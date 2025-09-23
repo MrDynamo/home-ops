@@ -2,16 +2,16 @@ nodes:
   - name: k8s-1
     address: 192.168.20.231
     controller: true
-    disk: /dev/sd1
+    disk: /dev/sda
     mac_addr: 00:50:56:9e:c7:a2
     schematic_id: "8ff84fdb4000dd60253e5ec4421688adf7c5b75b77097121b131062c36c29e13"
     mtu: 1500
     secureboot: false
     encrypt_disk: false
   - name: k8s-1
-    address: 10.10.10.101
+    address: 192.168.20.232
     controller: true
-    disk: /dev/sdfake
+    disk: /dev/sda
     mac_addr: 00:50:56:9e:b5:c8
     schematic_id: "8ff84fdb4000dd60253e5ec4421688adf7c5b75b77097121b131062c36c29e13"
     mtu: 1500
