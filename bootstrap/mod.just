@@ -59,7 +59,7 @@ namespaces:
     find "{{ kubernetes_dir }}/apps" -mindepth 1 -maxdepth 1 -type d -printf "%f\n" | while IFS= read -r ns; do \
         if ! kubectl create namespace "$ns" --dry-run=client -o yaml | kubectl apply --server-side --field-manager flux-client-side-apply -f -; then \
             just log fatal "Failed to apply namespace" "stage" "$0" "namespace" "$ns"; \
-        fi;
+        fi; \
     done
 
 [doc('Apply Kubernetes resources')]
