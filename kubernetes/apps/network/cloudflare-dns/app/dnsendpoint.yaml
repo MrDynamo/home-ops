@@ -8,4 +8,4 @@ spec:
   endpoints:
     - dnsName: "external.${SECRET_DOMAIN}"
       recordType: CNAME
-      targets: ["$(DYNAMIC_DNS)"]
+      targets: ["${DYNAMIC_DNS}"]
