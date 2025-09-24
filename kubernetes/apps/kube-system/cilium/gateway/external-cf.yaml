@@ -3,9 +3,9 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
-  name: external
+  name: external-cf
   annotations:
-    external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+    external-dns.alpha.kubernetes.io/target: "external-cf.${SECRET_DOMAIN}"
 spec:
   gatewayClassName: cilium
   addresses:
@@ -13,7 +13,7 @@ spec:
       value: "192.168.20.212"
   infrastructure:
     annotations:
-      external-dns.alpha.kubernetes.io/hostname: "external.${SECRET_DOMAIN}"
+      external-dns.alpha.kubernetes.io/hostname: "external-cf.${SECRET_DOMAIN}"
   listeners:
     - name: http
       protocol: HTTP
