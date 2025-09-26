@@ -24,7 +24,7 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    talosImageURL: factory.talos.dev/installer/8ff84fdb4000dd60253e5ec4421688adf7c5b75b77097121b131062c36c29e13
+    talosImageURL: factory.talos.dev/installer/ab92a5b1bc3b46d39a03e3d2d2086740b75963cf2b32049a940f404c02b36398
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -43,7 +43,7 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    talosImageURL: factory.talos.dev/installer/8ff84fdb4000dd60253e5ec4421688adf7c5b75b77097121b131062c36c29e13
+    talosImageURL: factory.talos.dev/installer/ab92a5b1bc3b46d39a03e3d2d2086740b75963cf2b32049a940f404c02b36398
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -62,7 +62,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    talosImageURL: factory.talos.dev/installer/8ff84fdb4000dd60253e5ec4421688adf7c5b75b77097121b131062c36c29e13
+    # Nvidia Drivers: 8ff84fdb4000dd60253e5ec4421688adf7c5b75b77097121b131062c36c29e13
+    talosImageURL: factory.talos.dev/installer/ab92a5b1bc3b46d39a03e3d2d2086740b75963cf2b32049a940f404c02b36398
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
