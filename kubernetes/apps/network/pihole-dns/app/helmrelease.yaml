@@ -40,7 +40,7 @@ spec:
     policy: upsert-only
     sources: ["crd", "gateway-httproute"]
     registry: noop
-    domainFilters: ["internal.${SECRET_DOMAIN}"]
+    domainFilters: ["${INTERNAL_SECRET_DOMAIN}"]
     serviceMonitor:
       enabled: true
     podAnnotations:
