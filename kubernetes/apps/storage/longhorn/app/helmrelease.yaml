@@ -18,7 +18,7 @@ spec:
       retries: 3
   valuesFrom:
     - kind: Secret
-      name: longhorn-secret
+      name: &secret longhorn-secret
       valuesKey: LONGHORN_BACKUP_TARGET
       targetPath: defaultBackupStore.backupTarget
   values:
@@ -48,3 +48,5 @@ spec:
     metrics:
       serviceMonitor:
         enabled: true
+    podAnnotations:
+      secret.reloader.stakater.com/reload: *secret
