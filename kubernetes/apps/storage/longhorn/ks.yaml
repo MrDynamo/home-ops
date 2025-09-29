@@ -17,7 +17,7 @@ spec:
     secretRef:
       name: sops-age
   interval: 1h
-  path: ./kubernetes/apps/storage/longhorn
+  path: ./kubernetes/apps/storage/longhorn/app
   postBuild:
     substituteFrom:
       - name: cluster-secrets
