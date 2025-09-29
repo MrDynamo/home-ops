@@ -1,0 +1,50 @@
+---
+# yaml-language-server: $schema=https://lds-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: &app longhorn
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: longhorn
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  valuesFrom:
+    - kind: Secret
+      name: longhorn-secret
+      valuesKey: LONGHORN_BACKUP_TARGET
+      targetPath: defaultBackupStore.backupTarget
+  values:
+    # https://github.com/longhorn/longhorn/blob/v1.9.1/chart/values.yaml
+    monitoring:
+      enabled: true
+      createPrometheusRules: true
+    persistence:
+      defaultDataLocality: best-effort
+    # defaultBackupStore:
+    #   backupTarget: ''
+    defaultSettings:
+      allowRecurringJobsWhileVolumeDetached: true
+      createDefaultDiskLabeledNodes: true
+      defaultDataLocality: best-effort
+      defaultLonghornStaticStorageClass: longhorn
+      defaultReplicaCount: 3
+      # guaranteedEngineManagerCPU: 20
+      # guaranteedReplicaManagerCPU: 20
+      nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
+      orphanAutoDeletion: true
+      replicaAutoBalance: true
+      storageMinimalAvailablePercentage: 1
+      storageReservedPercentageForDefaultDisk: 10
+    ingress:
+      enabled: false
+    metrics:
+      serviceMonitor:
+        enabled: true
