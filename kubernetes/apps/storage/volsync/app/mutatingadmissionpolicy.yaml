@@ -121,7 +121,7 @@ spec:
               value: Object.spec.template.spec.volumes{
                 name: "repository",
                 nfs: Object.spec.template.spec.volumes.nfs{
-                  server: "192.168.20.11",
+                  server: "192.168.20.21",
                   path: "/mnt/tank/backups/kopia"
                 }
               }
