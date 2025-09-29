@@ -10,9 +10,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    - name: longhorn
-      namespace: storage
-    - name: snapshot-controller
+    - name: longhorn # Already depends on snapshot-controller
       namespace: storage
   interval: 1h
   path: ./kubernetes/apps/storage/volsync/app
