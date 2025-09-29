@@ -7,4 +7,4 @@ components:
   - ../../components/common
 resources:
   - ./snapshot-controller/ks.yaml
-  #- ./longhorn/ks.yaml
+  - ./longhorn/ks.yaml
