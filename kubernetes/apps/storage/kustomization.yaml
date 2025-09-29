@@ -6,5 +6,5 @@ namespace: storage
 components:
   - ../../components/common
 resources:
-  - ./longhorn/ks.yaml
+  #- ./longhorn/ks.yaml
   - ./snapshot-controller/ks.yaml
