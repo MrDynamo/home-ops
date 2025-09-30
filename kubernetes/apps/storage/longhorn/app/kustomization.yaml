@@ -8,4 +8,4 @@ resources:
 - ./externalsecret.yaml
 - ./httproute.yaml
 - ./storageclass-single.yaml
-- ./storageclass-fast.yaml
+#- ./storageclass-fast.yaml
