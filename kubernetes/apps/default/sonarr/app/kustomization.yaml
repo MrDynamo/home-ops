@@ -6,7 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./ocirepository.yaml
-  - ./pvc-tmp.yaml
+  #- ./pvc-tmp.yaml
 # configMapGenerator:
 #   - name: sonarr-loki-rules
 #     files:
