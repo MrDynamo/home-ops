@@ -15,7 +15,7 @@ spec:
     cacheAccessModes:
       - ${VOLSYNC_CACHE_ACCESSMODES:=ReadWriteOnce}
     cacheCapacity: ${VOLSYNC_CAPACITY:=2Gi}
-    cacheStorageClassName: ${VOLSYNC_CACHE_SNAPSHOTCLASS:=longhorn-single}
+    cacheStorageClassName: ${VOLSYNC_CACHE_SNAPSHOTCLASS:=longhorn-fast}
     capacity: ${VOLSYNC_CAPACITY:=2Gi}
     cleanupCachePVC: true
     cleanupTempPVC: true
@@ -28,5 +28,5 @@ spec:
     repository: ${APP}-volsync-secret
     sourceIdentity:
       sourceName: ${APP}
-    storageClassName: ${VOLSYNC_STORAGECLASS:=longhorn-single}
+    storageClassName: ${VOLSYNC_STORAGECLASS:=longhorn-fast}
     volumeSnapshotClassName: ${VOLSYNC_SNAPSHOTCLASS:=longhorn}
