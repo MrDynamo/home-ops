@@ -7,7 +7,7 @@ metadata:
 spec:
   sourcePVC: ${APP}-tmp
   trigger:
-    schedule: 0 * * * *
+    #schedule: 0 * * * *
     manual: "force-sync2"
   kopia:
     accessModes:
