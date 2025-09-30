@@ -7,8 +7,8 @@ metadata:
 spec:
   sourcePVC: ${APP}-tmp
   trigger:
-    #schedule: 0 * * * *
-    manual: "force-sync2"
+    schedule: 0 * * * *
+    manual: "force-sync3"
   kopia:
     accessModes:
       - ${VOLSYNC_SNAP_ACCESSMODES:=ReadWriteOnce}
