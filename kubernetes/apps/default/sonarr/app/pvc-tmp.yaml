@@ -12,4 +12,4 @@ spec:
   resources:
     requests:
       storage: 8Gi
-  storageClassName: ${VOLSYNC_STORAGECLASS:=longhorn} # Update to longhorn-single
+  storageClassName: ${VOLSYNC_STORAGECLASS:=longhorn-single} # Update to longhorn-single
