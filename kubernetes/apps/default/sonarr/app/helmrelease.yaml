@@ -20,6 +20,7 @@ spec:
               repository: ghcr.io/home-operations/sonarr
               tag: 4.0.15.2940@sha256:ca6c735014bdfb04ce043bf1323a068ab1d1228eea5bab8305ca0722df7baf78
             env:
+              TZ: America/Chicago
               SONARR__APP__INSTANCENAME: Sonarr
               SONARR__APP__THEME: dark
               SONARR__AUTH__METHOD: External
@@ -28,7 +29,6 @@ spec:
               SONARR__LOG__LEVEL: info
               SONARR__SERVER__PORT: &port 80
               SONARR__UPDATE__BRANCH: develop
-              TZ: America/Chicago
             envFrom:
               - secretRef:
                   name: "{{ .Release.Name }}-secret"
