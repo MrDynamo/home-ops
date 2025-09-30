@@ -8,5 +8,4 @@ retentionPolicy: Retain
 parameters:
   numberOfReplicas: "2"
   staleReplicaTimeout: "480" # 8 hours in minutes
-  diskSelector: "fast"
   dataLocality: "best-effort"
