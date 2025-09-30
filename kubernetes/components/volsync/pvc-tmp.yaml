@@ -11,5 +11,5 @@ spec:
     name: ${APP}-pvc
   resources:
     requests:
-      storage: ${VOLSYNC_CAPACITY:=2Gi}
+      storage: ${VOLSYNC_CAPACITY:=8Gi}
   storageClassName: ${VOLSYNC_STORAGECLASS:=longhorn}
