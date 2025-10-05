@@ -3,7 +3,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationSource
 metadata:
-  name: ${APP}-tmp
+  name: ${APP}
 spec:
   sourcePVC: ${APP}-tmp
   trigger:
