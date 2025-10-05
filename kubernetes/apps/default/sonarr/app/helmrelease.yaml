@@ -29,6 +29,7 @@ spec:
               SONARR__LOG__LEVEL: info
               SONARR__SERVER__PORT: &port 80
               SONARR__UPDATE__BRANCH: develop
+              S6_READ_ONLY_ROOT: 1
             envFrom:
               - secretRef:
                   name: "{{ .Release.Name }}-secret"
