@@ -13,7 +13,7 @@ spec:
     #- ../../../../components/defaults
     #- ../../../../components/gatus/guarded
     #- ../../../../components/nfs-scaler
-    #- ../../../../components/volsync
+    - ../../../../components/volsync
   dependsOn:
     - name: longhorn
       namespace: storage
