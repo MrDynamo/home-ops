@@ -87,6 +87,6 @@ spec:
         server: 192.168.20.21
         path: /mnt/tank/media/plex/tv
         globalMounts:
-          - path: /media
+          - path: /tv
       tmp:
         type: emptyDir
