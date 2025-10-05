@@ -88,5 +88,10 @@ spec:
         path: /mnt/tank/media/plex/tv
         globalMounts:
           - path: /media
+      run:
+        type: emptyDir
+        globalMounts:
+          - path: /run
+            readOnly: false
       tmp:
         type: emptyDir
