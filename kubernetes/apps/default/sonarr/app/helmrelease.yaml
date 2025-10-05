@@ -17,8 +17,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/linuxserver/sonarr
-              tag: 4.0.15@sha256:328d322af2bb8d7211a9c43a26ff5e658ba3e6f47a695e8fb9ff806bfeab0f04
+              repository: ghcr.io/home-operations/sonarr
+              tag: 4.0.15.2940@sha256:ca6c735014bdfb04ce043bf1323a068ab1d1228eea5bab8305ca0722df7baf78
             env:
               TZ: America/Chicago
               SONARR__APP__INSTANCENAME: Sonarr
@@ -29,7 +29,6 @@ spec:
               SONARR__LOG__LEVEL: info
               SONARR__SERVER__PORT: &port 80
               SONARR__UPDATE__BRANCH: develop
-              S6_READ_ONLY_ROOT: 1
             envFrom:
               - secretRef:
                   name: "{{ .Release.Name }}-secret"
@@ -89,10 +88,5 @@ spec:
         path: /mnt/tank/media/plex/tv
         globalMounts:
           - path: /media
-      run:
-        type: emptyDir
-        globalMounts:
-          - path: /run
-            readOnly: false
       tmp:
         type: emptyDir
