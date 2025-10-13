@@ -29,7 +29,7 @@ spec:
               SABNZBD__LOG__LEVEL: info
               SABNZBD__PORT: &port 80
               SABNZBD__UPDATE__BRANCH: develop
-              SABNZBD__HOST__WHITELIST__ENTRIES: "{{ .Release.Name }}.${INTERNAL_SECRET_DOMAIN}"
+              SABNZBD__HOST_WHITELIST_ENTRIES: "{{ .Release.Name }}.${INTERNAL_SECRET_DOMAIN}"
             envFrom:
               - secretRef:
                   name: "{{ .Release.Name }}-secret"
