@@ -27,7 +27,7 @@ spec:
               SABNZBD__AUTH__REQUIRED: DisabledForLocalAddresses
               SABNZBD__LOG__DBENABLED: "False"
               SABNZBD__LOG__LEVEL: info
-              SABNZBD__SERVER__PORT: &port 80
+              SABNZBD__PORT: &port 80
               SABNZBD__UPDATE__BRANCH: develop
             envFrom:
               - secretRef:
