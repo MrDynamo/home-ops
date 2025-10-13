@@ -21,7 +21,7 @@ spec:
               tag: 2.1.3.5208@sha256:236a73dad45baeedd1eba40a457de63a644695728a2ce28f0d254b1fe9a05822
             env:
               TZ: America/Chicago
-              PROWLARR__APP__INSTANCENAME: prowlarr
+              PROWLARR__APP__INSTANCENAME: Prowlarr
               PROWLARR__APP__THEME: dark
               PROWLARR__AUTH__METHOD: External
               PROWLARR__AUTH__REQUIRED: DisabledForLocalAddresses
