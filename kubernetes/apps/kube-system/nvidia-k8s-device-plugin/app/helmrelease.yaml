@@ -8,7 +8,7 @@ spec:
   interval: 1h
   chart:
     spec:
-      chart: nvdp/nvidia-device-plugin
+      chart: nvidia-device-plugin
       sourceRef:
         kind: HelmRepository
         name: nvidia-k8s-device-plugin
