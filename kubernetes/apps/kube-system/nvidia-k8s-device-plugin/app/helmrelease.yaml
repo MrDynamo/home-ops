@@ -6,9 +6,6 @@ metadata:
   name: nvidia-k8s-device-plugin
 spec:
   interval: 1h
-  chartRef:
-    kind: HelmChart
-    name: nvidia-k8s-device-plugin
   chart:
     spec:
       chart: nvdp/nvidia-device-plugin
