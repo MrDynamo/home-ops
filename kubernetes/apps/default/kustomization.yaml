@@ -10,6 +10,7 @@ resources:
   - ./dispatcharr/ks.yaml
   - ./echo/ks.yaml
   - ./echo-internal/ks.yaml
+  - ./maintainerr/ks.yaml
   - ./prowlarr/ks.yaml
   - ./radarr/ks.yaml
   - ./sabnzbd/ks.yaml
