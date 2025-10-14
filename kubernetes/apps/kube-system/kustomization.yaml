@@ -8,5 +8,6 @@ components:
 resources:
   - ./cilium/ks.yaml
   - ./coredns/ks.yaml
+  - ./nvidia-k8s-device-plugin/ks.yaml
   - ./metrics-server/ks.yaml
   - ./reloader/ks.yaml
