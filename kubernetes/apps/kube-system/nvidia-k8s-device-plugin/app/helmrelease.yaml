@@ -1,0 +1,29 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nvidia-k8s-device-plugin
+spec:
+  interval: 1h
+  chartRef:
+    kind: HelmChart
+    name: nvidia-k8s-device-plugin
+  chart:
+    spec:
+      chart: nvdp/nvidia-device-plugin
+      sourceRef:
+        kind: HelmRepository
+        name: nvidia-k8s-device-plugin
+      version: 0.17.4
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      strategy: rollback
+      retries: 3
+  values:
+    gfd:
+      enabled: true

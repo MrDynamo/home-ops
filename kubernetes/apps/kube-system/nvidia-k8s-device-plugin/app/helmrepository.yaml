@@ -1,0 +1,10 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/source.toolkit.fluxcd.io/helmrepository_v1.json
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: nvidia-k8s-device-plugin
+  namespace: kube-system
+spec:
+  interval: 15m
+  url: https://nvidia.github.io/k8s-device-plugin
