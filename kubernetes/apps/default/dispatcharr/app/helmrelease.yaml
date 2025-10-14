@@ -21,6 +21,7 @@ spec:
               tag: 0.10.4@sha256:31242b53f369e82e92d8f5ef53f93d5686c2a8c7fbb486a1fc57d006def13401
             env:
               TZ: America/Chicago
+              DISPATCHARR_LOG_LEVEL: DEBUG
               REDIS_HOST: localhost
               CELERY_BROKER_URL: redis://localhost:6379/0
             probes:
