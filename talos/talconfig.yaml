@@ -64,8 +64,13 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Base + Nvidia: ad157bcd303ad4d21fcd6797c101f94b17d3904d012d844e534fb92d2b55d424
-    talosImageURL: factory.talos.dev/installer/142d2d49aadb988cf7de88ca13f04c4769ceba67af848a8e1257328c6cdac8b3
+    # Nvidia LTS Proprietary: 33ed8d9cbf88bf4644714b37d5f74775b5091f40b032e5ad6494f901baa1aae1
+    talosImageURL: factory.talos.dev/installer/9de950172f93e1d3041c5143df18e892059677399c69f94d771cbb7f7e9b3d55
+    kernelModules:
+      - name: nvidia
+      - name: nvidia_uvm
+      - name: nvidia_drm
+      - name: nvidia_modeset
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
