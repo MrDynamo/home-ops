@@ -90,7 +90,5 @@ spec:
         type: nfs
         server: 192.168.20.21
         path: /mnt/tank/media/plex/downloads
-        globalMounts:
-          - path: /downloads
       tmp:
         type: emptyDir
