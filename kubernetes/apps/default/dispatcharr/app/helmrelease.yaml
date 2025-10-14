@@ -24,9 +24,6 @@ spec:
               DISPATCHARR_ENV: aio
               REDIS_HOST: localhost
               CELERY_BROKER_URL: redis://localhost:6379/0
-            envFrom:
-              - secretRef:
-                  name: "{{ .Release.Name }}-secret"
             probes:
               liveness: &probes
                 enabled: false
