@@ -7,6 +7,7 @@ components:
   - ../../components/common
 resources:
   - ./bazarr/ks.yaml
+  - ./dispatcharr/ks.yaml
   - ./echo/ks.yaml
   - ./echo-internal/ks.yaml
   - ./prowlarr/ks.yaml
