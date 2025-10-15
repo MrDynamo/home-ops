@@ -23,9 +23,6 @@ spec:
               TZ: America/Chicago
               PLEX_ADVERTISE_URL: "http://plex.default.svc.cluster.local:32400,http://192.168.20.221:32400,https://{{ .Release.Name }}.${SECRET_DOMAIN}:443"
               PLEX_NO_AUTH_NETWORKS: 192.168.10.0/24
-            envFrom:
-              - secretRef:
-                  name: "{{ .Release.Name }}-secret"
             probes:
               liveness: &probes
                 enabled: true
