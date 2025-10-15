@@ -14,15 +14,6 @@ spec:
       plex:
         annotations:
           reloader.stakater.com/auto: "true"
-        # initContainers:
-        #   fix-permissions:
-        #     image:
-        #       repository: busybox
-        #       tag: 1.35.0
-        #     command: ["sh", "-c", "chown -R 1000:1000 /config"]
-        #     securityContext:
-        #       runAsUser: 0
-        #       allowPrivilegeEscalation: true # Required to run as root
         containers:
           app:
             image:
@@ -51,7 +42,6 @@ spec:
                   failureThreshold: 30
                   periodSeconds: 10
             securityContext:
-              # capabilities: {add: ["CHOWN","FOWNER","DAC_OVERRIDE"]}
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
               capabilities: {drop: ["ALL"]}
@@ -82,7 +72,7 @@ spec:
         type: LoadBalancer
         annotations:
           lbipam.cilium.io/ips: 192.168.20.221
-        externalTrafficPolicy: Local
+        externalTrafficPolicy: Cluster
         ports:
           http:
             port: *port
