@@ -18,7 +18,7 @@ spec:
     - name: longhorn
       namespace: storage
   interval: 1h
-  path: ./kubernetes/apps/default/seer/app
+  path: ./kubernetes/apps/default/seerr/app
   postBuild:
     substitute:
       APP: *app
