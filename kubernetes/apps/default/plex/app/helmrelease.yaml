@@ -122,7 +122,7 @@ spec:
       pmm-movies:
         type: nfs
         server: 192.168.20.21
-        path: /mnt/tank/media/plex/pmm_movies
+        path: /mnt/tank/media/plex/pmm_mov
       tmp:
         type: emptyDir
       transcode:
