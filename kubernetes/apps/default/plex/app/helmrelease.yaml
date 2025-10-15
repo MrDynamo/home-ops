@@ -19,7 +19,10 @@ spec:
             image:
               repository: busybox
               tag: 1.35.0
-            command: ["sh", "-c", "sudo chown -R 1000:1000 /config"]
+            command: ["sh", "-c", "chown -R 1000:1000 /config"]
+            securityContext:
+              runAsUser: 0
+              allowPrivilegeEscalation: true
         containers:
           app:
             image:
