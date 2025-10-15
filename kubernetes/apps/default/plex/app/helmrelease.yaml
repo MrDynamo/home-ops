@@ -21,7 +21,7 @@ spec:
               tag: 1.42.2.10156@sha256:9ad8a3506e1d8ebda873a668603c1a2c10e6887969564561be669efd65ae8871
             env:
               TZ: America/Chicago
-              PLEX_ADVERTISE_URL: "http://plex.default.svc.cluster.local:32400,http://192.168.20.221:32400,https://{{ .Release.Name }}.${INTERNAL_SECRET_DOMAIN}:443"
+              PLEX_ADVERTISE_URL: "http://plex.default.svc.cluster.local:32400,http://192.168.20.221:32400,https://{{ .Release.Name }}.${SECRET_DOMAIN}:443"
               PLEX_NO_AUTH_NETWORKS: 192.168.10.0/24
             envFrom:
               - secretRef:
@@ -53,7 +53,17 @@ spec:
                 cpu: 100m
               limits:
                 memory: 8Gi
+                nvidia.com/gpu: 1 # requesting 1 GPU
     defaultPodOptions:
+      runtimeClassName: nvidia
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: nvidia.com/gpu.count
+                    operator: Gt
+                    values: ["0"]
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
@@ -72,9 +82,9 @@ spec:
     route:
       app:
         hostnames:
-          - "{{ .Release.Name }}.${INTERNAL_SECRET_DOMAIN}"
+          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
         parentRefs:
-          - name: internal
+          - name: external
             namespace: kube-system
             sectionName: https
         rules:
