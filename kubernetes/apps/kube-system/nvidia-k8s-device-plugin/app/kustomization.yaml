@@ -6,3 +6,11 @@ resources:
   - ./helmrelease.yaml
   - ./helmrepository.yaml
   - ./runtimeclass.yaml
+configMapGenerator:
+  - name: nvdp-configmap
+    files:
+      - shared-p400.yaml=./resources/shared-p400.yaml
+generatorOptions:
+  disableNameSuffixHash: true
+  annotations:
+    kustomize.toolkit.fluxcd.io/substitute: disabled
