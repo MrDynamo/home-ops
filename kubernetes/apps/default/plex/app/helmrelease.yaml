@@ -53,7 +53,7 @@ spec:
                 cpu: 100m
               limits:
                 memory: 8Gi
-                nvidia.com/gpu: 1 # requesting 1 GPU
+                #nvidia.com/gpu: 1 # requesting 1 GPU
     defaultPodOptions:
       runtimeClassName: nvidia
       affinity:
