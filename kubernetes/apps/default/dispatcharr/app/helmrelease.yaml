@@ -25,8 +25,6 @@ spec:
               DISPATCHARR_LOG_LEVEL: DEBUG
               REDIS_HOST: localhost
               CELERY_BROKER_URL: redis://localhost:6379/0
-              #PUID: 1000
-              #PGID: 1000
             probes:
               liveness: &probes
                 enabled: false
@@ -49,7 +47,7 @@ spec:
                 cpu: 100m
               limits:
                 memory: 4Gi
-                # nvidia.com/gpu: 1 # requesting 1 GPU
+                nvidia.com/gpu: 1 # requesting 1 GPU
     defaultPodOptions:
       runtimeClassName: nvidia
     #   securityContext:
