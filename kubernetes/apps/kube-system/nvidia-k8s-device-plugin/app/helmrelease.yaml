@@ -22,6 +22,8 @@ spec:
       strategy: rollback
       retries: 3
   values:
-    runtimeClassName: nvidia
+    config:
+      name: nvdp-configmap
     gfd:
       enabled: true
+    runtimeClassName: nvidia
