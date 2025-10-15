@@ -66,11 +66,9 @@ nodes:
       secureboot: false
     # Nvidia LTS Proprietary: 33ed8d9cbf88bf4644714b37d5f74775b5091f40b032e5ad6494f901baa1aae1
     talosImageURL: factory.talos.dev/installer/9de950172f93e1d3041c5143df18e892059677399c69f94d771cbb7f7e9b3d55
-    kernelModules:
-      - name: nvidia
-      - name: nvidia_uvm
-      - name: nvidia_drm
-      - name: nvidia_modeset
+    patches:
+      - "@./patches/gpu/machine-kernel.yaml"
+      - "@./patches/gpu/machine-sysctls.yaml"
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
