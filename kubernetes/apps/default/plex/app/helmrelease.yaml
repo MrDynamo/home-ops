@@ -14,15 +14,15 @@ spec:
       plex:
         annotations:
           reloader.stakater.com/auto: "true"
-        initContainers:
-          fix-permissions:
-            image:
-              repository: busybox
-              tag: 1.35.0
-            command: ["sh", "-c", "chown -R 1000:1000 /config"]
-            securityContext:
-              runAsUser: 0
-              allowPrivilegeEscalation: true
+        # initContainers:
+        #   fix-permissions:
+        #     image:
+        #       repository: busybox
+        #       tag: 1.35.0
+        #     command: ["sh", "-c", "chown -R 1000:1000 /config"]
+        #     securityContext:
+        #       runAsUser: 0
+        #       allowPrivilegeEscalation: true
         containers:
           app:
             image:
@@ -50,10 +50,11 @@ spec:
                 spec:
                   failureThreshold: 30
                   periodSeconds: 10
-            # securityContext:
-            #   allowPrivilegeEscalation: false
-            #   readOnlyRootFilesystem: true
-            #   capabilities: {drop: ["ALL"]}
+            securityContext:
+              # capabilities: {add: ["CHOWN","FOWNER","DAC_OVERRIDE"]}
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: {drop: ["ALL"]}
             resources:
               requests:
                 cpu: 100m
@@ -70,12 +71,12 @@ spec:
                   - key: nvidia.com/gpu.count
                     operator: Gt
                     values: ["0"]
-      # securityContext:
-      #   runAsNonRoot: true
-      #   runAsUser: 1000
-      #   runAsGroup: 1000
-      #   fsGroup: 1000
-      #   fsGroupChangePolicy: OnRootMismatch
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
     service:
       app:
         type: LoadBalancer
