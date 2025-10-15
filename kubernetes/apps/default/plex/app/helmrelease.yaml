@@ -22,7 +22,7 @@ spec:
         #     command: ["sh", "-c", "chown -R 1000:1000 /config"]
         #     securityContext:
         #       runAsUser: 0
-        #       allowPrivilegeEscalation: true
+        #       allowPrivilegeEscalation: true # Required to run as root
         containers:
           app:
             image:
