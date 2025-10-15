@@ -15,11 +15,11 @@ spec:
         annotations:
           reloader.stakater.com/auto: "true"
         initContainers:
-            fix-permissions:
-              image:
-                repository: busybox
-                tag: 1.35.0
-              command: ["sh", "-c", "chown -R 1000:1000 /config"]
+          fix-permissions:
+            image:
+              repository: busybox
+              tag: 1.35.0
+            command: ["sh", "-c", "chown -R 1000:1000 /config"]
         containers:
           app:
             image:
@@ -48,8 +48,8 @@ spec:
                   failureThreshold: 30
                   periodSeconds: 10
             securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
+              allowPrivilegeEscalation: true
+              readOnlyRootFilesystem: false
               capabilities: {drop: ["ALL"]}
             resources:
               requests:
@@ -68,7 +68,7 @@ spec:
                     operator: Gt
                     values: ["0"]
       securityContext:
-        runAsNonRoot: true
+        runAsNonRoot: false
         runAsUser: 1000
         runAsGroup: 1000
         fsGroup: 1000
