@@ -23,7 +23,7 @@ spec:
       retries: 3
   values:
     config:
-      name: nvdp-configmap
+      name: nvidia-k8s-device-plugin-configmap
     gfd:
       enabled: true
     runtimeClassName: nvidia

@@ -7,7 +7,7 @@ resources:
   - ./helmrepository.yaml
   - ./runtimeclass.yaml
 configMapGenerator:
-  - name: nvdp-configmap
+  - name: nvidia-k8s-device-plugin-configmap
     files:
       - shared-p400.yaml=./resources/shared-p400.yaml
 generatorOptions:
