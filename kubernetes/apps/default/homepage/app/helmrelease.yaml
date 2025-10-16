@@ -78,5 +78,5 @@ spec:
         type: configMap
         name:  homepage-configmap
         globalMounts:
-          - readOnly: true
-            path: /app/config/
+          - path: /app/config/
+            readOnly: true
