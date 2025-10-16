@@ -76,7 +76,7 @@ spec:
         type: emptyDir
       configmap:
         type: configMap
-        name:  homepage-configmap
+        name: homepage
         advancedMounts:
           homepage:
             app:

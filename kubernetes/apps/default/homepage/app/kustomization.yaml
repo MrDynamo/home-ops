@@ -7,7 +7,7 @@ resources:
   - ./helmrelease.yaml
   - ./ocirepository.yaml
 configMapGenerator:
-  - name: homepage-configmap
+  - name: homepage
     files:
       - bookmarks.yaml=./resources/bookmarks.yaml
       #- custom.css=./resources/custom.css
