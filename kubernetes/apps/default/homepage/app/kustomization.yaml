@@ -11,7 +11,7 @@ configMapGenerator:
     files:
       - bookmarks.yaml=./resources/bookmarks.yaml
       - custom.css=./resources/custom.css
-      - custom.jss=./resources/custom.jss
+      - custom.js=./resources/custom.js
       - docker.yaml=./resources/docker.yaml
       - kubernetes.yaml=./resources/kubernetes.yaml
       #- services.yaml=./resources/services.yaml
