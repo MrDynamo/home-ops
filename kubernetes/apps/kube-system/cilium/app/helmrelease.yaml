@@ -42,6 +42,7 @@ spec:
           enabled: true
     gatewayAPI:
       enabled: true
+      enableProxyProtocol: true
     hubble:
       enabled: false
     ipam:
