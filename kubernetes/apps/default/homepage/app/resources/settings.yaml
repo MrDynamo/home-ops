@@ -1,0 +1,10 @@
+title: DynamicLab Dashboard
+headerStyle: boxedWidgets
+quicklaunch:
+  searchDescriptions: true
+  hideInternetSearch: true
+  showSearchSuggestions: true
+  hideVisitURL: true
+providers:
+  longhorn:
+    url: http://longhorn-frontend.storage.svc.cluster.local:80
