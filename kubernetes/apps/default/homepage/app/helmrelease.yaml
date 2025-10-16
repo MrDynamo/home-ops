@@ -77,12 +77,14 @@ spec:
       configmap:
         type: configMap
         name: homepage
-        advancedMounts:
-          homepage:
-            app:
-              - path: /app/config/bookmarks.yaml
-                subPath: bookmarks.yaml
-              - path: /app/config/settings.yaml
-                subPath: settings.yaml
-              - path: /app/config/widgets.yaml
-                subPath: widgets.yaml
+        globalMounts:
+          - path: /app/config
+        # advancedMounts:
+        #   homepage:
+        #     app:
+        #       - path: /app/config/bookmarks.yaml
+        #         subPath: bookmarks.yaml
+        #       - path: /app/config/settings.yaml
+        #         subPath: settings.yaml
+        #       - path: /app/config/widgets.yaml
+        #         subPath: widgets.yaml
