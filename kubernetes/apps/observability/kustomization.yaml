@@ -5,7 +5,7 @@ kind: Kustomization
 namespace: observability
 components:
   - ../../components/common
-  #- ../../components/alerts
+  - ../../components/alerts
 resources:
   - ./namespace.yaml
   #- ./blackbox-exporter/ks.yaml
