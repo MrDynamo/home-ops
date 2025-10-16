@@ -77,6 +77,15 @@ spec:
       configs:
         type: configMap
         name:  homepage-configmap
-        globalMounts:
-          - path: /app/config/
-            readOnly: true
+        advancedMounts:
+          homepage:
+            app:
+              - path: /app/config/bookmarks.yaml
+                readOnly: true
+                subPath: bookmarks.yaml
+              - path: /app/config/settings.yaml
+                readOnly: true
+                subPath: settings.yaml
+              - path: /app/config/widgets.yaml
+                readOnly: true
+                subPath: widgets.yaml
