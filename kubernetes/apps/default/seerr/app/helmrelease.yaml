@@ -72,7 +72,6 @@ spec:
     route:
       app:
         hostnames:
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
           - "plexrequests.${SECRET_DOMAIN}"
         parentRefs:
           - name: external
