@@ -1,0 +1,315 @@
+- Infrastructure:
+    - vSphere:
+        href: https://vsphere.local.${SECRET_DOMAIN}/
+        description: vCenter Server
+        icon: vmware.svg
+    - ESXi-01:
+        href: https://esxi-01.local.${SECRET_DOMAIN}/
+        description: r730xd ESXi Host
+        icon: vmware-esxi.svg
+    - ESXi-02:
+        href: https://esxi-02.local.${SECRET_DOMAIN}/
+        description: r710 ESXi Host
+        icon: vmware-esxi.svg
+    - Portainer-01:
+        href: https://portainer-01.local.${SECRET_DOMAIN}/
+        description: Primary Portainer instance
+        icon: portainer.svg
+        widget:
+          type: portainer
+          url: {{HOMEPAGE_VAR_PORTAINER01_URL}}
+          env: 2
+          key: {{HOMEPAGE_VAR_PORTAINER01_API_KEY}}
+    - iDRAC-01:
+        href: {{HOMEPAGE_VAR_IDRAC01_URL}}
+        description: r730xd iDRAC
+        icon: idrac.svg
+    - iDRAC-02:
+        href: {{HOMEPAGE_VAR_IDRAC02_URL}}
+        description: r710 iDRAC
+        icon: idrac.svg
+    - TrueNAS:
+        href: https://nas-01.ad.${SECRET_DOMAIN}/
+        description: TrueNAS instance
+        icon: truenas.svg
+        widget:
+          type: truenas
+          url: {{HOMEPAGE_VAR_TRUENAS_URL}}
+          key: {{HOMEPAGE_VAR_TRUENAS_API_KEY}}
+          enablePools: true # optional, defaults to false
+          nasType: core # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
+    - Rancher:
+        href: https://rancher.local.${SECRET_DOMAIN}/
+        description: k3s web cluster management
+        icon: rancher.svg
+    - Longhorn:
+        href: https://longhorn.${INTERNAL_SECRET_DOMAIN}
+        description: Distributed k3s block storage
+        icon: longhorn.svg
+    - Home Assistant:
+        href: https://homeassistant.local.${SECRET_DOMAIN}/
+        description: Home Assistant
+        icon: home-assistant.svg
+    - PowerPanel Business:
+        href: https://ppb-01.local.${SECRET_DOMAIN}/
+        description: UPS management
+        icon: powerpanel.png
+    - Windows KMS Server:
+        href: https://win-kms.local.${SECRET_DOMAIN}/
+        description: Internal Windows KMS Server
+        icon: microsoft-windows.svg
+    - Syncthing:
+        href: https://syncthing.local.${SECRET_DOMAIN}/
+        description: Syncthing k3s Server
+        icon: syncthing.svg
+
+- Network:
+    - Unifi Cloud Gateway:
+        href: https://unifi.local.${SECRET_DOMAIN}/
+        description: Unifi Controller instance
+        icon: unifi.svg
+        widget:
+          type: unifi
+          url: {{HOMEPAGE_VAR_UNIFI_CONSOLE_URL}}
+          username: {{HOMEPAGE_VAR_UNIFI_CONSOLE_USERNAME}}
+          password: {{HOMEPAGE_VAR_UNIFI_CONSOLE_PASSWORD}}
+    - Router (Remote-01):
+        href: https://router.remote-01.${SECRET_DOMAIN}/
+        description: EdgeRouter X (Remote)
+        icon: edgeos-light.png
+    - PiHole-01:
+        href: https://pi-01.local.${SECRET_DOMAIN}/admin
+        description: Primary PiHole (VM)
+        icon: pi-hole.svg
+        widget:
+          type: pihole
+          url: {{HOMEPAGE_VAR_PIHOLE01_URL}}
+          # version: 6 # required if running v6 or higher, defaults to 5
+          key: {{HOMEPAGE_VAR_PIHOLE01_API_KEY}}
+    - PiHole-02:
+        href: https://pi-02.local.${SECRET_DOMAIN}/admin
+        description: Secondary PiHole (PI)
+        icon: pi-hole.svg
+        widget:
+          type: pihole
+          url: {{HOMEPAGE_VAR_PIHOLE02_URL}}
+          # version: 6 # required if running v6 or higher, defaults to 5
+          key: {{HOMEPAGE_VAR_PIHOLE02_API_KEY}}
+    - Traefik:
+        href: https://traefik.local.${SECRET_DOMAIN}/
+        description: Treafik k3s instance
+        icon: traefik-proxy.svg
+    - Nginx Proxy Manager:
+        href: https://proxy.local.${SECRET_DOMAIN}/
+        description: Reverse proxy instance
+        icon: nginx-proxy-manager.svg
+    - Wireguard:
+        href: https://wireguard.local.${SECRET_DOMAIN}/
+        description: Wireguard interface
+        icon: wireguard.svg
+    - Cloudflare:
+        href: {{HOMEPAGE_VAR_CLOUDFLARE_URL}}
+        description: Cloudflare Console
+        icon: cloudflare.svg
+    - GCloud DNS:
+        href: {{HOMEPAGE_VAR_GCLOUD_URL}}
+        description: Google Cloud DNS Console
+        icon: google-cloud-platform.svg
+    - Backblaze B2:
+        href: https://secure.backblaze.com/b2_buckets.htm
+        description: Backblaze B2 cloud storage
+        icon: backblaze.svg
+
+- Media-Management:
+    - Plex:
+        href: https://plex.${SECRET_DOMAIN}/
+        description: Primary Plex server
+        icon: plex.svg
+    - Tautulli:
+        href: https://tautulli.${INTERNAL_SECRET_DOMAIN}/
+        description: Plex server streaming statistics
+        icon: tautulli.svg
+        namespace: default
+        app: tautulli
+        widget:
+          type: tautulli
+          url: hhttp://tautulli.default.svc.cluster.local:80
+          key: {{HOMEPAGE_VAR_TAUTULLI_API_KEY}}
+    - Seerr:
+        href: https://plexrequests.${SECRET_DOMAIN}
+        description: Media request management
+        icon: jellyseerr.svg
+        namespace: default
+        app: seerr
+        widget:
+          type: jellyseerr
+          url: http://seerr.default.svc.cluster.local:80
+          key: {{HOMEPAGE_VAR_SEER_API_KEY}}
+    - Dispatcharr:
+        href: https://dispatcharr.${INTERNAL_SECRET_DOMAIN}/
+        description: Live TV management
+        icon: dispatcharr.svg
+        namespace: default
+        app: dispatcharr
+    - Maintainerr:
+        href: https://maintainerr.${INTERNAL_SECRET_DOMAIN}/
+        description: Media deletion management
+        icon: maintainerr.svg
+        namespace: default
+        app: maintainerr
+    - Wizarr:
+        href: https://joinplex.${SECRET_DOMAIN}/
+        description: Plex user management
+        icon: https://joinplex.${SECRET_DOMAIN}/ # TODO: Submit for Wizaar icon on walkxcode/dashboard-icons
+        namespace: default
+        app: wizarr
+    - SABnzbd:
+        href: https://sabnzbd.${INTERNAL_SECRET_DOMAIN}/
+        description: NZB download client
+        icon: sabnzbd.svg
+        namespace: default
+        app: sabnzbd
+        widget:
+          type: sabnzbd
+          url: http://sabnzbd.default.svc.cluster.local:80
+          key: {{HOMEPAGE_VAR_SABNZBD_API_KEY}}
+    - Prowlarr:
+        href: https://prowlarr.${INTERNAL_SECRET_DOMAIN}/
+        description: Indexer management
+        icon: prowlarr.svg
+        namespace: default
+        app: prowlarr
+        widget:
+          type: prowlarr
+          url: http://prowlarr.default.svc.cluster.local:80
+          key: {{HOMEPAGE_VAR_PROWLARR_API_KEY}}
+    - Sonarr:
+        href: https://sonarr.${INTERNAL_SECRET_DOMAIN}/
+        description: TV Show management
+        icon: sonarr.svg
+        namespace: default
+        app: sonarr
+        widget:
+          type: sonarr
+          url: http://sonarr.default.svc.cluster.local:80
+          key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
+          enableQueue: true
+    - Radarr:
+        href: https://radarr.${INTERNAL_SECRET_DOMAIN}/
+        description: Movie management
+        icon: radarr.svg
+        namespace: default
+        app: radarr
+        widget:
+          type: radarr
+          url: http://radarr.default.svc.cluster.local:80
+          key: {{HHOMEPAGE_VAR_RADARR_API_KEY}}
+          enableQueue: true
+    - Bazarr:
+        href: https://bazarr.${INTERNAL_SECRET_DOMAIN}/
+        description: Subtitle management
+        icon: bazarr.svg
+        namespace: default
+        app: bazarr
+        widget:
+          type: bazarr
+          url: http://bazarr.default.svc.cluster.local:80
+          key: {{HOMEPAGE_VAR_BAZARR_API_KEY}}
+    - Readarr:
+        href: https://readarr.local.${SECRET_DOMAIN}/
+        description: E-Book management
+        icon: readarr.svg
+        namespace: default
+        app: readarr
+        widget:
+          type: readarr
+          url: http://readarr.default.svc.cluster.local:80
+          key: {{HOMEPAGE_VAR_READARR_API_KEY}}
+    - Calibre Web:
+        href: https://calibre-web.${SECRET_DOMAIN}/
+        description: E-Book library web interface
+        icon: calibre-web.svg
+        namespace: default
+        app: calibre-web
+        widget:
+          type: calibreweb
+          url: https://calibre-web.${SECRET_DOMAIN}/
+          username: MrDynamo
+          password: {{HOMEPAGE_VAR_CALIBREWEB_PASSWORD}}
+    - Calibre GUI:
+        href: https://calibre.local.${SECRET_DOMAIN}/
+        description: Calibre server VNC interface
+        icon: calibre.svg
+        namespace: default
+        app: calibre
+
+- Monitoring:
+    - InfluxDB:
+        href: https://influxdb.local.${SECRET_DOMAIN}/
+        description: InfluxDB time based metrics
+        icon: influxdb.svg
+        namespace: monitoring # The kubernetes namespace the app resides in
+        app: influxdb # The name of the deployed app
+    - Grafana:
+        href: https://grafana.local.${SECRET_DOMAIN}/
+        description: Grafana metrics dashboard
+        icon: grafana.svg
+        namespace: monitoring # The kubernetes namespace the app resides in
+        app: grafana # The name of the deployed app
+        # widget:
+        #   type: grafana
+        #   url: http://grafana.host.or.ip:port
+        #   username: username
+        #   password: password
+    - Prometheus:
+        href: https://prometheus.local.${SECRET_DOMAIN}/
+        description: Metrics aggregator
+        icon: prometheus.svg
+        namespace: monitoring # The kubernetes namespace the app resides in
+        app: prometheus # The name of the deployed app
+        # widget:
+        #   type: prometheus
+        #   url: http://prometheushost:port
+    - Alert Manager:
+        href: https://alerts.local.${SECRET_DOMAIN}/
+        description: Alert Manager interface
+        icon: alertmanager.svg
+        namespace: monitoring # The kubernetes namespace the app resides in
+        app: prometheus # The name of the deployed app
+        # widget:
+        #   type: prometheus
+        #   url: http://prometheushost:port
+
+- Database:
+    - PGAdmin:
+        href: https://pgadmin.local.${SECRET_DOMAIN}/
+        description: PostgreSQL management
+        icon: pgadmin4.svg
+        namespace: database # The kubernetes namespace the app resides in
+        app: pgadmin # The name of the deployed app
+
+- Documents:
+    - Paperless:
+        href: https://paperless.local.${SECRET_DOMAIN}/
+        description: Document management system
+        icon: paperless-ngx.svg
+        namespace: documents # The kubernetes namespace the app resides in
+        app: paperless # The name of the deployed app
+
+- Gaming:
+    - Sunshine:
+        href: https://sunshine.local.${SECRET_DOMAIN}/
+        description: Sunshine game streaming
+        icon: sunshine.svg
+
+- Minecraft:
+    - Secret Alliance:
+        icon: minecraft.svg
+        widget:
+          type: minecraft
+          url: {{HOMEPAGE_VAR_MINECRAFT_SA_URL}}
+    - GT New Horizons:
+        icon: minecraft.svg
+        widget:
+          type: minecraft
+          url: {{HOMEPAGE_VAR_UNIFI_CONSOLE_URL}}
