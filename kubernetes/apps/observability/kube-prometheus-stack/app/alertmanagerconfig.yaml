@@ -19,6 +19,11 @@ spec:
           - name: alertname
             value: InfoInhibitor
             matchType: =
+      - receiver: discord
+        matchers:
+          - name: severity
+            value: critical
+            matchType: =
       # - receiver: heartbeat
       #   groupWait: 0s
       #   repeatInterval: 2m30s
@@ -44,7 +49,12 @@ spec:
           value: warning
           matchType: =
   receivers:
-    - name: "null"
+  - name: "null"
+  - name: discord
+    discordConfigs:
+      - apiURL:
+          name: &secret alertmanager-secret
+          key: ALERTMANAGER_DISCORD_WEBHOOK
     # - name: heartbeat
     #   webhookConfigs:
     #     - httpConfig:
