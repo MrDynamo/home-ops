@@ -8,6 +8,10 @@ spec:
   dependsOn:
     - name: longhorn
       namespace: storage
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
   interval: 1h
   path: ./kubernetes/apps/observability/kube-prometheus-stack/app
   postBuild:
