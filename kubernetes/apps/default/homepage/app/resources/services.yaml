@@ -144,7 +144,7 @@
         widget:
           type: jellyseerr
           url: http://seerr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_SEER_API_KEY}}
+          key: {{HOMEPAGE_VAR_SEERR_API_KEY}}
     - Dispatcharr:
         href: https://dispatcharr.${INTERNAL_SECRET_DOMAIN}/
         description: Live TV management
