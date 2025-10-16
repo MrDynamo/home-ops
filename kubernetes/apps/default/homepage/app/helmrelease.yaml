@@ -98,3 +98,59 @@ spec:
                 subPath: settings.yaml
               - path: /app/config/widgets.yaml
                 subPath: widgets.yaml
+    rbac:
+      roles:
+        homepage:
+          type: Role
+          rules:
+            - apiGroups:
+                - ""
+              resources:
+                - namespaces
+                - pods
+                - nodes
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - extensions
+                - networking.k8s.io
+              resources:
+                - ingresses
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - traefik.io
+              resources:
+                - ingressroutes
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - gateway.networking.k8s.io
+              resources:
+                - httproutes
+                - gateways
+              verbs:
+                - get
+                - list
+            - apiGroups:
+                - metrics.k8s.io
+              resources:
+                - nodes
+                - pods
+              verbs:
+                - get
+                - list
+      bindings:
+        homepage:
+          type: RoleBinding
+          roleRef:
+            apiGroup: rbac.authorization.k8s.io
+            kind: ClusterRole
+            name: homepage
+          subjects:
+            - kind: ServiceAccount
+              name: homepage
+              namespace: default
