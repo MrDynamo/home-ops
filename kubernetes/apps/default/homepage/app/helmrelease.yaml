@@ -79,4 +79,4 @@ spec:
         name:  homepage-configmap
         globalMounts:
           - readOnly: true
-            path: /app/config
+            path: /app/config/
