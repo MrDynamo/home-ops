@@ -17,16 +17,13 @@
     nodes: true
     provider: longhorn
     include:
-      - k3s-04
-      - k3s-05
-      - k3s-06
-      - k3s-07
-      - k3s-08
-      - k3s-09
+      - k8s-01
+      - k8s-02
+      - k8s-03
 - unifi_console:
-    url: '{{HOMEPAGE_VAR_UNIFI_CONSOLE_URL}}'
-    username: admin
-    password: '{{HOMEPAGE_VAR_UNIFI_CONSOLE_PASSWORD}}'
+    url: {{HOMEPAGE_VAR_UNIFI_CONSOLE_URL}}
+    username: {{HOMEPAGE_VAR_UNIFI_CONSOLE_USERNAME}}
+    password: {{HOMEPAGE_VAR_UNIFI_CONSOLE_PASSWORD}}
 - search:
     provider: google
     target: _blank
