@@ -7,7 +7,7 @@ metadata:
 spec:
   dependsOn:
     - name: longhorn
-      namespace: storagee
+      namespace: storage
   interval: 1h
   path: ./kubernetes/apps/observability/kube-prometheus-stack/app
   prune: true
