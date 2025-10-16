@@ -29,6 +29,11 @@ releases:
     chart: oci://ghcr.io/wiremind/wiremind-helm-charts/gateway-api-crds
     version: 1.4.0
 
+  - name: grafana-operator
+    namespace: observability
+    chart: oci://ghcr.io/grafana/helm-charts/grafana-operator
+    version: v5.19.4
+
   - name: kube-prometheus-stack
     namespace: observability
     chart: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
