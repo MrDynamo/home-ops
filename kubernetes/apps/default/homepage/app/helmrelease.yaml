@@ -74,7 +74,7 @@ spec:
           - path: /app/config
       tmp:
         type: emptyDir
-      configs:
+      configmap:
         type: configMap
         name:  homepage-configmap
         advancedMounts:
