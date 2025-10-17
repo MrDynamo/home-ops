@@ -24,8 +24,8 @@ spec:
           schedule: 0 11 * * *
           backoffLimit: 0
           concurrencyPolicy: Forbid
-          successfulJobsHistory: 1
-          failedJobsHistory: 1
+          successfulJobsHistory: 3
+          failedJobsHistory: 3
           ttlSecondsAfterFinished: 86400
         containers:
           app:
@@ -56,7 +56,7 @@ spec:
               requests:
                 cpu: 10m
               limits:
-                memory: 512Mi
+                memory: 1Gi
         pod:
           restartPolicy: Never
     defaultPodOptions:
