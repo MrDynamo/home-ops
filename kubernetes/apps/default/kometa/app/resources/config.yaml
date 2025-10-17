@@ -1,0 +1,333 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Kometa-Team/Kometa/master/json-schema/config-schema.json
+### Highly recommend using Visual Studio Code with indent-rainbow plugin. VSC will also leverage the above link to enhance pmm yml edits.
+
+libraries:
+  #####################################
+  ##  PRODUCTION LIBRARIES - BEWARE  ##
+  #####################################
+
+  Movies:
+    template_variables:
+      use_separator: true
+      sep_style: orig
+      #visible_library: true                               # Visibility of collections in library 'Recommended' tab for everyone
+      #visible_home: true                                  # Visibility of collections on MY 'Home' tab
+      #visible_shared: true                                # Visibility of collections on shared user's 'Home' tab
+
+    report_path: /config/reports/movie_report.yaml
+
+    collection_files:
+      #- file: config/movies.yaml
+      - default: seasonal
+        template_variables:
+          sep_style: stb
+          use_independence: true
+          sort_by: random
+          append_data: ## Add a custom holiday
+            veteran: Veteran's Day
+          schedule_veteran: range(11/01-11/30)
+          imdb_list_veteran: https://www.imdb.com/list/ls565595526/
+          emoji_veteran: "🪖 "
+          exclude: aapi,disabilities,black_history,lgbtq,latinx,women
+          item_radarr_tag: pmm_seasonal,pmm_seasonal_<<key>>
+          radarr_tag: pmm_seasonal_missing,pmm_seasonal_<<key>>_missing
+          radarr_add_missing: false # Search for items missing from seasonal collection
+          radarr_quality: HD Blueray + WEB # Override default quality profile for adding missing seasonal movies
+          visible_library: true
+      - default: separator_chart
+        template_variables:
+          collection_section: "010"
+      - default: basic
+      - default: tautulli
+        template_variables:
+          collection_section: "010"
+      - default: imdb
+      - default: tmdb
+        #template_variables:
+        #visible_shared_top: true                        # Visbility of 'TMDb Top Rated (top)' on shared user's home tab
+      - default: universe
+        template_variables:
+          #append_data:
+          #  monster: MonsterVerse
+          #trakt_list_monster: https://trakt.tv/users/rzepkowski/lists/monsterverse-movies
+          #exclude: dca
+          #radarr_add_missing_XXX: true                      # Add missing to complete the XXXX universe
+          item_radarr_tag: pmm_universe,pmm_universe_<<key>>
+          radarr_tag: pmm_universe_missing,pmm_universe_<<key>>_missing
+          radarr_add_missing_dcu: true # Add missing to complete the DC Extended universe
+          radarr_add_missing_mcu: true # Add missing to complete the Marvel Cinematic universe
+          radarr_add_missing_marvel: true # Add missing to complete the In Assoc. w Marvel universe
+          radarr_add_missing_fast: true # Add missing to complete the Fast and Furious universe
+          radarr_add_missing_avp: true # Add missing to complete the Alien vs Predator universe
+          radarr_add_missing_askew: true # Add missing to complete the View Askew universe
+          radarr_add_missing_middle: true # Add missing to complete the Middle Eath universe
+          radarr_add_missing_mummy: true # Add missing to complete the Mummy universe
+          radarr_add_missing_rocky: true # Add missing to complete the Rocky / Creed universe
+          radarr_add_missing_trek: true # Add missing to complete the Star Trek universe
+          radarr_add_missing_star: true # Add missing to complete the Star Wars universe
+          radarr_add_missing_wizard: true # Add missing to complete the Wizarding World (HP) universe
+          radarr_add_missing_xmen: true # Add missing to complete the X-Men universe
+          #radarr_add_missing_monster: true                  # Add missing to complete the Monster (Godzilla/Kong) universe
+      - default: franchise
+        template_variables:
+          item_radarr_tag: pmm_franchise,pmm_franchise_<<key>>
+          radarr_tag: pmm_franchise_missing,pmm_franchise_<<key>>_missing
+          radarr_add_missing: true # Add missing movies from a franchise if at least one exists in library already
+      - default: genre
+        template_variables:
+          collection_mode: hide
+      - default: decade
+        template_variables:
+          collection_mode: hide
+
+    #remove_overlays: true                                 # Uncomment to remove overlays from library
+    #reapply_overlays: true                                # Uncomment to reapply all overlays
+
+    overlay_files:
+      - default: resolution
+        #template_variables:
+        #use_1080: false
+      - default: audio_codec
+        template_variables:
+          horizontal_align: right
+
+  TV Shows:
+    template_variables:
+      use_separator: true
+      #sep_style: orig
+      #visible_library: true                               # Visibility of collections in library
+      #visible_home: true                                  # Visibility of collections on MY home tab
+      #visible_shared: true                                # Visibility of collections on shared user's home tab
+
+    report_path: /config/reports/tv_report.yaml
+
+    collection_files:
+      #- file: config/tv.yaml
+      - default: separator_chart
+        template_variables:
+          collection_section: "010"
+      - default: basic
+      - default: tautulli
+        template_variables:
+          collection_section: "010"
+      - default: imdb
+      - default: tmdb
+      - default: genre
+        template_variables:
+          collection_mode: hide
+
+    #remove_overlays: true                                 # Uncomment to remove overlays from library
+    #reapply_overlays: true                                # Uncomment to reapply all overlays
+
+    overlay_files:
+      - default: resolution
+        template_variables:
+          vertical_offset: 100
+          #use_1080: false
+      #- default: resolution
+      #  template_variables:
+      #    builder_level: season
+      - default: resolution
+        template_variables:
+          builder_level: episode
+      - default: audio_codec
+        template_variables:
+          horizontal_align: right
+          vertical_offset: 100
+      #- default: audio_codec
+      #  template_variables:
+      #    horizontal_align: right
+      #    builder_level: season
+      - default: audio_codec
+        template_variables:
+          horizontal_align: right
+          builder_level: episode
+      - default: status
+        template_variables:
+          horizontal_align: center
+          vertical_align: top
+          vertical_offset: 0
+          horizontal_offset: 0
+          back_height: 85
+          back_width: 1100
+          #font: config/fonts/Roboto-Thin.ttf
+          font: config/fonts/Juventus-Fans-Bold.ttf
+          font_size: 70
+          back_color_airing: "#016920"
+          back_color_returning: "#81007F"
+          back_color_canceled: "#ed1f1f"
+          back_color_ended: "#000847"
+          text_airing: "A I R I N G"
+          text_returning: "R E T U R N I N G"
+          text_canceled: "C A N C E L L E D"
+          text_ended: "E N D E D"
+
+  #####################################
+  ##        TESTING LIBRARIES        ##
+  #####################################
+
+  pmm_mov:
+    report_path: /config/reports/pmm_mov.yaml
+
+    collection_files:
+      #- git: meisnate12/People
+      #- file: config/movies.yaml
+      - default: basic
+      - default: imdb
+
+    remove_overlays: false
+    reapply_overlays: true
+
+    overlay_files:
+      - default: resolution
+      - default: audio_codec
+
+  pmm_tv:
+    report_path: /config/reports/pmm_tv.yaml
+
+    collection_files:
+      #- file: config/tv.yaml
+      - default: basic
+      - default: imdb
+
+    remove_overlays: false
+    reapply_overlays: true
+
+    overlay_files:
+      - default: streaming
+        template_variables:
+          horizontal_align: left
+          vertical_align: bottom
+      - default: resolution
+        template_variables:
+          vertical_offset: 100
+      - default: status
+        template_variables:
+          horizontal_align: center
+          vertical_align: top
+          vertical_offset: 0
+          horizontal_offset: 0
+          back_height: 85
+          back_width: 1100
+          #font: config/fonts/Roboto-Thin.ttf
+          font_size: 60
+          back_color_airing: "#016920"
+          back_color_returning: "#81007F"
+          back_color_canceled: "#ed1f1f"
+          back_color_ended: "#000847"
+      - default: audio_codec
+        template_variables:
+          horizontal_align: right
+          vertical_offset: 100
+          style: standard
+
+#playlist_files:
+#  - file: config/playlists/playlist.yaml
+
+#####################################
+##      GENERAL APP CONFIG         ##
+#####################################
+
+settings:
+  cache: true
+  cache_expiration: 60
+  asset_directory: config/assets
+  asset_folders: true
+  asset_depth: 0
+  create_asset_folders: false
+  dimensional_asset_rename: false
+  download_url_assets: false
+  show_missing_season_assets: false
+  sync_mode: append
+  minimum_items: 1
+  default_collection_order:
+  delete_below_minimum: true
+  delete_not_scheduled: false
+  run_again_delay: 2
+  missing_only_released: false
+  only_filter_missing: false
+  show_unmanaged: true
+  show_filtered: false
+  show_options: false
+  show_missing: true
+  show_missing_assets: true
+  save_report: true
+  tvdb_language: eng
+  ignore_ids:
+  ignore_imdb_ids:
+  playlist_sync_to_users: all
+  verify_ssl: true
+
+webhooks:
+  error: <<DISCORD_WEBHOOK>>
+  version: <<DISCORD_WEBHOOK>>
+  run_start: <<DISCORD_WEBHOOK>>
+  run_end: <<DISCORD_WEBHOOK>>
+  delete: <<DISCORD_WEBHOOK>>
+  changes: <<DISCORD_WEBHOOK>>
+
+plex:
+  url: http://plex.default.svc.cluster.local:32400
+  token: <<PLEX_API_KEY>>
+  timeout: 60
+  db_cache: 1024
+  clean_bundles: true # SET TO TRUE EVENTUALLY
+  empty_trash: true # SET TO TRUE EVENTUALLY
+  optimize: true # SET TO TRUE EVENTUALLY
+
+radarr:
+  url: http://radarr.default.svc.cluster.local:80
+  token: <<RADARR_API_KEY>>
+  add_missing: false
+  add_existing: false
+  upgrade_existing: false
+  root_folder_path: /movies
+  monitor: true
+  availability: released
+  quality_profile: HD Bluray + WEB
+  tag: pmm
+  search: true
+  radarr_path:
+  plex_path:
+
+sonarr:
+  url: http://sonarr.default.svc.cluster.local:80
+  token: <<SONARR_API_KEY>>
+  add_missing: false
+  add_existing: false
+  upgrade_existing: false
+  root_folder_path: /tv
+  monitor: pilot # none, latest, first, pilot, existing, missing, future, all
+  quality_profile: WEB-1080p
+  language_profile: English
+  series_type: standard
+  season_folder: true
+  tag: pmm
+  search: true
+  cutoff_search: false
+  sonarr_path:
+  plex_path:
+
+tautulli:
+  url: http://tautulli.default.svc.cluster.local:80
+  apikey: <<TAUTULLI_API_KEY>>
+
+tmdb:
+  apikey: <<TMDB_API_KEY>>
+  language: en
+
+########## GENERATED BY TRAKTAUTH ##########
+trakt:
+  client_id: <<TRAKT_CLIENT_ID>>
+  client_secret: <<TRAKT_CLIENT_SECRET>>
+  authorization:
+    access_token: <<TRAKT_AUTH_ACCESS_TOKEN>>
+    token_type: Bearer
+    expires_in: 86399
+    refresh_token: <<TRAKT_AUTH_REFRESH_TOKEN>>
+    scope: public
+    created_at: 1750688906
+  pin:
+############################################
+## https://kometa.wiki/en/latest/config/trakt/?h=trakt#online-authorization
+## https://kometa-auth-2cb6c5672416.herokuapp.com/

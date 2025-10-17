@@ -1,0 +1,14 @@
+collections:
+  Maintainerr_Leaving_Soon:
+    name: "Movies Leaving Soon"
+    summary: "These movies are leaving the plex server soon. Watch now to prevent them from being deleted."
+    file_poster: /config/assets/poster_leaving-soon.jpeg
+    sort_title: "!000"
+    blank_collection: true
+    sync_mode: sync
+    #item_label: maintainerr_movies_leaving_soon
+    #item_radarr_tag: maintainerr_movies_leaving_soon
+    #collection_order: custom
+    visible_library: true # Visibility of collections in library 'Recommended' tab for everyone
+    visible_home: true # Visibility of collections on MY 'Home' tab
+    visible_shared: true # Visibility of collections on shared user's 'Home' tab

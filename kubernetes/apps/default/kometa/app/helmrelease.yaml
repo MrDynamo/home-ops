@@ -1,0 +1,78 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kometa
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: kometa
+  interval: 1h
+  values:
+    controllers:
+      recyclarr:
+        type: cronjob
+        cronjob:
+          schedule: 0 0 * * *
+          backoffLimit: 0
+          concurrencyPolicy: Forbid
+          successfulJobsHistory: 1
+          failedJobsHistory: 1
+          ttlSecondsAfterFinished: 86400
+        containers:
+          app:
+            image:
+              repository: ghcr.io/kometateam/kometa
+              tag: v2.2.1@sha256:83b071e96526fc8d29a4101304a1bc0e5363cedbeec8d6b79293c9316f967d4d
+            env: []
+              ##### Targeted runs - Uncomment to activate
+              ## Run only testing libraries
+              # - name: KOMETA_RUN_LIBRARIES
+              #   value: "pmm_mov|pmm_tv"
+              ## Run only collections on all libraries
+              # - name: KOMETA_COLLECTIONS_ONLY
+              #   value: "true"
+              ## Run only overlays on all libraries
+              # - name: KOMETA_OVERLAYS_ONLY
+              #   value: "true"
+              ## Config secrets
+            envFrom:
+              - secretRef:
+                  name: "{{ .Release.Name }}-secret"
+            args: [ "--read-only-config", "--width 200", "--run" ]
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: {drop: ["ALL"]}
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 512Mi
+        pod:
+          restartPolicy: Never
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    persistence:
+      config:
+        existingClaim: "{{ .Release.Name }}"
+      configmap:
+        type: configMap
+        name: kometa
+        advancedMounts:
+          homepage:
+            app:
+              - path: /config/config.yaml
+                subPath: config.yaml
+              - path: /config/movies.yaml
+                subPath: movies.yaml
+              - path: /config/tv.yaml
+                subPath: tv.yaml
+      tmp:
+        type: emptyDir
