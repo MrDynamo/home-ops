@@ -11,7 +11,7 @@ spec:
   interval: 1h
   values:
     controllers:
-      recyclarr:
+      kometa:
         type: cronjob
         cronjob:
           schedule: 0 0 * * *
