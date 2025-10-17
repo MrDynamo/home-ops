@@ -33,3 +33,8 @@ spec:
             # needed for successful VolumeSnapshots
             # see: https://github.com/longhorn/longhorn/issues/2534#issuecomment-1010508714
             type: snap
+        - name: openebs
+          driver: openebs.io/local
+          deletionPolicy: Delete
+          parameters:
+            #csi.storage.k8s.io/fstype: ext4
