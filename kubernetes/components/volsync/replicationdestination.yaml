@@ -29,4 +29,4 @@ spec:
     sourceIdentity:
       sourceName: ${APP}
     storageClassName: ${VOLSYNC_STORAGECLASS:=longhorn-fast}
-    volumeSnapshotClassName: ${VOLSYNC_SNAPSHOTCLASS:=longhorn}
+    volumeSnapshotClassName: ${VOLSYNC_SNAPSHOTCLASS:=openebs}
