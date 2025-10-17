@@ -9,7 +9,7 @@ resources:
 configMapGenerator:
   - name: kometa
     files:
-      - config.yaml=./resources/config.yaml
+      - config.yml=./resources/config.yml
       - movies.yaml=./resources/movies.yaml
       - tv.yaml=./resources/tv.yaml
 generatorOptions:
