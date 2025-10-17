@@ -30,7 +30,7 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/kometateam/kometa
+              repository: kometateam/kometa
               tag: v2.2.1@sha256:83b071e96526fc8d29a4101304a1bc0e5363cedbeec8d6b79293c9316f967d4d
             env: []
               ##### Targeted runs - Uncomment to activate
