@@ -1,0 +1,73 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: wizarr
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: wizarr
+  values:
+    controllers:
+      wizarr:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/wizarrrr/wizarr
+              tag: v2025.10.3@sha256:ea47cfbee25eecc3439ef58b8907c3aa5790b102eeb057cb17c4041e2c1d1dfb
+            env:
+              TZ: America/Chicago
+              PUID: &id 1000
+              PGID: *id
+            probes:
+              liveness: &probes
+                enabled: false
+                custom: true
+                spec:
+                  httpGet:
+                    path: /status
+                    port: &port 80
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    service:
+      app:
+        ports:
+          http:
+            port: *port
+    route:
+      app:
+        hostnames:
+          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
+        parentRefs:
+          - name: external
+            namespace: kube-system
+            sectionName: https
+    persistence:
+      config:
+        existingClaim: "{{ .Release.Name }}"
+      tmp:
+        type: emptyDir
