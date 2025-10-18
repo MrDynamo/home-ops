@@ -33,6 +33,7 @@ spec:
               repository: kometateam/kometa
               tag: v2.2.2@sha256:32992226d1a505da3ed5d4e9c97bed8a6deb7aef36cd5ef8b1f519762607df45
             env:
+              [
               ##### Targeted runs - Uncomment to activate
               ## Run only testing libraries
               # - name: KOMETA_RUN_LIBRARIES
@@ -41,9 +42,10 @@ spec:
               # - name: KOMETA_COLLECTIONS_ONLY
               #   value: "true"
               ## Run only overlays on all libraries
-              - name: KOMETA_OVERLAYS_ONLY
-                value: "true"
-              ## Config secrets
+              # - name: KOMETA_OVERLAYS_ONLY
+              #   value: "true"
+              #####
+              ]
             envFrom:
               - secretRef:
                   name: "{{ .Release.Name }}-secret"

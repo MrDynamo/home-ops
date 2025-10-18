@@ -271,9 +271,9 @@ plex:
   token: <<PLEX_API_KEY>>
   timeout: 60
   db_cache: 1024
-  clean_bundles: true # SET TO TRUE EVENTUALLY
-  empty_trash: true # SET TO TRUE EVENTUALLY
-  optimize: true # SET TO TRUE EVENTUALLY
+  clean_bundles: true
+  empty_trash: true
+  optimize: true
 
 radarr:
   url: http://radarr.default.svc.cluster.local:80
