@@ -243,39 +243,33 @@
         namespace: default
         app: calibre
 
-- Monitoring:
-    - InfluxDB:
-        href: https://influxdb.local.${SECRET_DOMAIN}/
-        description: InfluxDB time based metrics
-        icon: influxdb.svg
-        namespace: monitoring # The kubernetes namespace the app resides in
-        app: influxdb # The name of the deployed app
+- Observability:
     - Grafana:
-        href: https://grafana.local.${SECRET_DOMAIN}/
+        href: https://grafana.${INTERNAL_SECRET_DOMAIN}/
         description: Grafana metrics dashboard
         icon: grafana.svg
-        namespace: monitoring # The kubernetes namespace the app resides in
-        app: grafana # The name of the deployed app
+        namespace: observability
+        app: grafana
         # widget:
         #   type: grafana
         #   url: http://grafana.host.or.ip:port
         #   username: username
         #   password: password
     - Prometheus:
-        href: https://prometheus.local.${SECRET_DOMAIN}/
+        href: https://prometheus.${INTERNAL_SECRET_DOMAIN}/
         description: Metrics aggregator
         icon: prometheus.svg
-        namespace: monitoring # The kubernetes namespace the app resides in
-        app: prometheus # The name of the deployed app
+        namespace: observability
+        app: prometheus
         # widget:
         #   type: prometheus
         #   url: http://prometheushost:port
     - Alert Manager:
-        href: https://alerts.local.${SECRET_DOMAIN}/
+        href: https://alertmanager.${INTERNAL_SECRET_DOMAIN}/
         description: Alert Manager interface
         icon: alertmanager.svg
-        namespace: monitoring # The kubernetes namespace the app resides in
-        app: prometheus # The name of the deployed app
+        namespace: observability
+        app: prometheus
         # widget:
         #   type: prometheus
         #   url: http://prometheushost:port
@@ -287,6 +281,12 @@
         icon: pgadmin4.svg
         namespace: database # The kubernetes namespace the app resides in
         app: pgadmin # The name of the deployed app
+    - InfluxDB:
+        href: https://influxdb.local.${SECRET_DOMAIN}/
+        description: InfluxDB time based metrics
+        icon: influxdb.svg
+        namespace: monitoring
+        app: influxdb
 
 - Documents:
     - Paperless:
