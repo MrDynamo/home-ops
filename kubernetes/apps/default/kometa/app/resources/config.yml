@@ -175,8 +175,8 @@ libraries:
       - default: basic
       - default: imdb
 
-    remove_overlays: false
-    reapply_overlays: true
+    #remove_overlays: false
+    #reapply_overlays: true
 
     overlay_files:
       - default: resolution
@@ -190,8 +190,8 @@ libraries:
       - default: basic
       - default: imdb
 
-    remove_overlays: false
-    reapply_overlays: true
+    #remove_overlays: false
+    #reapply_overlays: true
 
     overlay_files:
       - default: streaming
