@@ -23,6 +23,7 @@ spec:
     substitute:
       APP: *app
       VOLSYNC_CAPACITY: 1Gi
+      VOLSYNC_STORAGECLASS: longhorn-single-local
     substituteFrom:
       - name: cluster-secrets
         kind: Secret
