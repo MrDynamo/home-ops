@@ -32,7 +32,7 @@ spec:
                     port: *port
                   initialDelaySeconds: 15
                   periodSeconds: 10
-                  timeoutSeconds: 1
+                  timeoutSeconds: 5
                   failureThreshold: 3
               readiness: *probes
             securityContext:
