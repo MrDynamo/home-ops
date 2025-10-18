@@ -14,6 +14,8 @@ spec:
       homepage:
         annotations:
           reloader.stakater.com/auto: "true"
+        serviceAccount:
+          name: homepage
         containers:
           app:
             image:
@@ -99,6 +101,9 @@ spec:
                 subPath: settings.yaml
               - path: /app/config/widgets.yaml
                 subPath: widgets.yaml
+    serviceAccount:
+      homepage:
+        enabled: true
     rbac:
       roles:
         homepage:
