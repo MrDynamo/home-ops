@@ -67,7 +67,7 @@ spec:
             namespace: kube-system
             sectionName: https
     persistence:
-      config:
+      data:
         existingClaim: "{{ .Release.Name }}"
       tmp:
         type: emptyDir
