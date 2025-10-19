@@ -25,6 +25,7 @@ spec:
       VOLSYNC_CAPACITY: 1Gi
       VOLSYNC_SCHEDULE: 15 * * * *  # Cron in UTC (CST: -6, CST: -5)
       VOLSYNC_TMP_STORAGECLASS: openebs-hostpath
+      VOLSYNC_TEST_COPY_METHOD: Direct
     substituteFrom:
       - name: cluster-secrets
         kind: Secret
