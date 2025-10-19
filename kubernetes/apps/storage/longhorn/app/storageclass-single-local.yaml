@@ -6,5 +6,6 @@ provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 retentionPolicy: Retain
 parameters:
-  numberOfReplicas: "1"
   dataLocality: "strict-local"
+  numberOfReplicas: "1"
+  volumeBindingMode: "WaitForFirstConsumer"
