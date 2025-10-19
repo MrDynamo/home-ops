@@ -25,6 +25,7 @@ spec:
       VOLSYNC_CAPACITY: 2Gi
       VOLSYNC_SCHEDULE: 30 * * * *  # Cron in UTC (CST: -6, CST: -5)
       VOLSYNC_TMP_STORAGECLASS: longhorn-single-local
+      VOLSYNC_CACHE_SRC_STORAGECLASS: longhorn-single-local
     substituteFrom:
       - name: cluster-secrets
         kind: Secret
