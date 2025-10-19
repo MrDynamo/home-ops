@@ -22,7 +22,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      VOLSYNC_CAPACITY: 4Gi
+      VOLSYNC_CAPACITY: 6Gi
       VOLSYNC_SCHEDULE: 0 19 * * *  # Cron in UTC (CST: -6, CST: -5) OVERRIDE: Daily at 01:00 pm or 02:00 pm
     substituteFrom:
       - name: cluster-secrets
