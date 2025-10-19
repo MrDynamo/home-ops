@@ -19,7 +19,7 @@ spec:
     capacity: ${VOLSYNC_CAPACITY:=2Gi}
     cleanupCachePVC: false    ## Both need to be false for:
     cleanupTempPVC: false     ## https://github.com/backube/volsync/issues/1504
-    copyMethod: ${VOLSYNC_TEST_COPY_METHOD:=Snapshot}
+    copyMethod: Snapshot
     enableFileDeletion: false ## Also false for above
     moverSecurityContext:
       runAsUser: ${VOLSYNC_PUID:=1000}
