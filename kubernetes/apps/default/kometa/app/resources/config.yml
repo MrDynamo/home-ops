@@ -166,60 +166,60 @@ libraries:
   ##        TESTING LIBRARIES        ##
   #####################################
 
-  pmm_mov:
-    report_path: /config/reports/pmm_mov.yaml
+  # pmm_mov:
+  #   report_path: /config/reports/pmm_mov.yaml
 
-    collection_files:
-      #- git: meisnate12/People
-      #- file: config/movies.yaml
-      - default: basic
-      - default: imdb
+  #   collection_files:
+  #     #- git: meisnate12/People
+  #     #- file: config/movies.yaml
+  #     - default: basic
+  #     - default: imdb
 
-    #remove_overlays: false
-    #reapply_overlays: true
+  #   # remove_overlays: true                                 # Uncomment to remove overlays from library
+  #   # reapply_overlays: true                                # Uncomment to reapply all overlays
 
-    overlay_files:
-      - default: resolution
-      - default: audio_codec
+  #   overlay_files:
+  #     - default: resolution
+  #     - default: audio_codec
 
-  pmm_tv:
-    report_path: /config/reports/pmm_tv.yaml
+  # pmm_tv:
+  #   report_path: /config/reports/pmm_tv.yaml
 
-    collection_files:
-      #- file: config/tv.yaml
-      - default: basic
-      - default: imdb
+  #   collection_files:
+  #     #- file: config/tv.yaml
+  #     - default: basic
+  #     - default: imdb
 
-    #remove_overlays: false
-    #reapply_overlays: true
+  #   # remove_overlays: true                                 # Uncomment to remove overlays from library
+  #   # reapply_overlays: true                                # Uncomment to reapply all overlays
 
-    overlay_files:
-      - default: streaming
-        template_variables:
-          horizontal_align: left
-          vertical_align: bottom
-      - default: resolution
-        template_variables:
-          vertical_offset: 100
-      - default: status
-        template_variables:
-          horizontal_align: center
-          vertical_align: top
-          vertical_offset: 0
-          horizontal_offset: 0
-          back_height: 85
-          back_width: 1100
-          #font: config/fonts/Roboto-Thin.ttf
-          font_size: 60
-          back_color_airing: "#016920"
-          back_color_returning: "#81007F"
-          back_color_canceled: "#ed1f1f"
-          back_color_ended: "#000847"
-      - default: audio_codec
-        template_variables:
-          horizontal_align: right
-          vertical_offset: 100
-          style: standard
+  #   overlay_files:
+  #     - default: streaming
+  #       template_variables:
+  #         horizontal_align: left
+  #         vertical_align: bottom
+  #     - default: resolution
+  #       template_variables:
+  #         vertical_offset: 100
+  #     - default: status
+  #       template_variables:
+  #         horizontal_align: center
+  #         vertical_align: top
+  #         vertical_offset: 0
+  #         horizontal_offset: 0
+  #         back_height: 85
+  #         back_width: 1100
+  #         #font: config/fonts/Roboto-Thin.ttf
+  #         font_size: 60
+  #         back_color_airing: "#016920"
+  #         back_color_returning: "#81007F"
+  #         back_color_canceled: "#ed1f1f"
+  #         back_color_ended: "#000847"
+  #     - default: audio_codec
+  #       template_variables:
+  #         horizontal_align: right
+  #         vertical_offset: 100
+  #         style: standard
 
 #playlist_files:
 #  - file: config/playlists/playlist.yaml
