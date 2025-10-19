@@ -61,7 +61,7 @@ spec:
     route:
       app:
         hostnames:
-          - "{{ .Release.Name }}.${SECRET_DOMAIN}"
+          - "joinplex.${SECRET_DOMAIN}"
         parentRefs:
           - name: external
             namespace: kube-system
