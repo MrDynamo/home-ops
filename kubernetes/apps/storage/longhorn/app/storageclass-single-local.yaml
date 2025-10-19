@@ -5,7 +5,7 @@ metadata:
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 retentionPolicy: Retain
+volumeBindingMode: "WaitForFirstConsumer"
 parameters:
   dataLocality: "strict-local"
   numberOfReplicas: "1"
-  volumeBindingMode: "WaitForFirstConsumer"
