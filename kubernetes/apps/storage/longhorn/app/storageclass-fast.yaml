@@ -6,6 +6,6 @@ provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 retentionPolicy: Retain
 parameters:
+  dataLocality: "best-effort"
   numberOfReplicas: "2"
   staleReplicaTimeout: "480" # 8 hours in minutes
-  dataLocality: "best-effort"
