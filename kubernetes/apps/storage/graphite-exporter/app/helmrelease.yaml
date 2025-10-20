@@ -34,7 +34,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /
+                    path: /metrics
                     port: &port 9108
                   initialDelaySeconds: 15
                   periodSeconds: 10
@@ -68,7 +68,8 @@ spec:
           http:
             port: *port
           metrics:
-            port: 9109
+            port: 3002
+            targetPort: 9109
     route:
       app:
         hostnames:
