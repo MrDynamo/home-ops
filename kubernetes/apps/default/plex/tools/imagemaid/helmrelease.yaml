@@ -76,7 +76,3 @@ spec:
         type: emptyDir
       plex-config:
         existingClaim: plex
-      plex-cache:
-        existingClaim: plex-cache
-        globalMounts:
-        - path: /plex-config/Cache
