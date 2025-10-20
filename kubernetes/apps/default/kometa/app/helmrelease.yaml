@@ -15,13 +15,14 @@ spec:
         type: cronjob
         cronjob:
           ##
-          ##     In UTC Time - https://crontab.guru/
+          ##     For UTC Time - https://crontab.guru/
           ##     CST: -6
           ##     CDT: -5
           ##
-          ##     0 11 * * *      Daily at 5am or 6am
+          ##     0 11 * * * (UTC)     Daily at 5am or 6am
           ##
-          schedule: 0 11 * * *
+          schedule: 0 6 * * *
+          timeZone: &TZ America/Chicago
           backoffLimit: 0
           concurrencyPolicy: Forbid
           successfulJobsHistory: 1
@@ -30,10 +31,10 @@ spec:
         containers:
           app:
             image:
-              repository: kometateam/kometa
+              repository: docker.io/kometateam/kometa
               tag: v2.2.2@sha256:32992226d1a505da3ed5d4e9c97bed8a6deb7aef36cd5ef8b1f519762607df45
             env:
-              [
+              TZ: *TZ
               ##### Targeted runs - Uncomment to activate
               ## Run only testing libraries
               # - name: KOMETA_RUN_LIBRARIES
@@ -45,7 +46,6 @@ spec:
               # - name: KOMETA_OVERLAYS_ONLY
               #   value: "true"
               #####
-              ]
             envFrom:
               - secretRef:
                   name: "{{ .Release.Name }}-secret"

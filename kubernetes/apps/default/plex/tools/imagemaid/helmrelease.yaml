@@ -15,13 +15,13 @@ spec:
         type: cronjob
         cronjob:
           ##
-          ##     In UTC Time - https://crontab.guru/
+          ##     For UTC Time - https://crontab.guru/
           ##     CST: -6
           ##     CDT: -5
           ##
-          ##     0 11 * * *      Daily at 5am or 6am
+          ##     0 11 * * * (UTC)     Daily at 5am or 6am
           ##
-          schedule: 0 12 * * *  # Test TZ - Noon run??
+          schedule: 30 10 * * *
           timeZone: &TZ America/Chicago
           backoffLimit: 0
           concurrencyPolicy: Forbid
