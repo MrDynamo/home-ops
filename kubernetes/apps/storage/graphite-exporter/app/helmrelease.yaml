@@ -68,7 +68,7 @@ spec:
     persistence:
       config-file:
         type: configMap
-        identifier: graphite-exporter
+        name: graphite-exporter
         globalMounts:
           - path: /tmp/graphite-mapping.conf
             subPath: graphite-mapping.conf
