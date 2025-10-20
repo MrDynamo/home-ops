@@ -9,7 +9,7 @@ spec:
     - targets:
         - graphite-exporter.${INTERNAL_SECRET_DOMAIN}:9108
   metricsPath: /metrics
-  # relabelings:
-  #   - action: replace
-  #     targetLabel: job
-  #     replacement: pikvm
+  relabelings:
+    - action: replace
+      targetLabel: job
+      replacement: truenas
