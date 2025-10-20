@@ -18,7 +18,7 @@ spec:
       retries: 3
   values:
     controllers:
-      kopia:
+      graphite-exporter:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
