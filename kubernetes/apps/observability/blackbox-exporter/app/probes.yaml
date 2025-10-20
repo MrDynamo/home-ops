@@ -58,7 +58,7 @@ spec:
   targets:
     staticConfig:
       static:
-        - nas-01.ad.${SECRET_DOMAIN}:2048
+        - nas-01.ad.${SECRET_DOMAIN}:2045
   metricRelabelings:
     - targetLabel: service
       replacement: blackbox-exporter
