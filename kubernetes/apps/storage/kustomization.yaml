@@ -7,6 +7,7 @@ components:
   - ../../components/alerts
   - ../../components/common
 resources:
+  - ./graphite-exporter/ks.yaml
   - ./kopia/ks.yaml
   - ./longhorn/ks.yaml
   - ./openebs/ks.yaml
