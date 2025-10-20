@@ -24,7 +24,7 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/prometheeus/graphite-exporter
+              repository: ghcr.io/prometheus/graphite-exporter
               tag: v0.16.0@sha256:5728ca2557de1ae2723ff5cd2b9747ff505e0f8a762140b3b7828cb9949aeb25
             env:
               TZ: America/Chicago
