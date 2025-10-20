@@ -9,7 +9,7 @@ resources:
 configMapGenerator:
   - name: graphite-exporter
     files:
-      - graphite-mapping.conf=./resources/graphite-mapping.yaml
+      - graphite-mapping.conf=./resources/truenas-mapping.yaml
 generatorOptions:
   disableNameSuffixHash: true
   annotations:

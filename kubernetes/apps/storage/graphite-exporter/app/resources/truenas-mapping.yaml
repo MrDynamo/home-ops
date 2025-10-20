@@ -1,0 +1,168 @@
+# Mapping file for TrueNAS metrics read by Prometheus' graphite_exporter
+mappings:
+  - match: "servers.*.aggregation.*.*.*"
+    help: "Aggregated CPU usage metrics (sum and avg) for TrueNAS"
+    name: truenas_aggregation_${3}
+    labels:
+      host: ${1}
+      cpu: ${2}
+      cputime: ${4}
+
+  - match: "servers.*.cpu.*.*.*"
+    help: "CPU usage metrics (user, system, idle, ...) for TrueNAS"
+    name: truenas_cpu_${3}
+    labels:
+      host: ${1}
+      cpu: ${2}
+      cputime: ${4}
+
+  - match: "servers.*.cputemp.*.*"
+    help: "CPU temperature for TrueNAS"
+    name: truenas_cputemp_${3}
+    labels:
+      host: ${1}
+      cpu: ${2}
+
+  - match: "servers.*.ctl.*.*.*"
+    name: truenas_ctl_${3}
+    labels:
+      host: ${1}
+      type: ${2}
+      id: "n/a"
+      action: ${4}
+
+  - match: "servers.*.ctl.*.*.*.*"
+    name: truenas_ctl_${3}
+    labels:
+      host: ${1}
+      type: ${2}
+      id: ${4}
+      action: ${5}
+
+  - match: "servers.*.df.*.*.*"
+    help: "Disk / dataset usage for TrueNAS. How much storage is used / free"
+    name: truenas_df_${3}
+    labels:
+      host: ${1}
+      dataset: ${2}
+      state: ${4}
+
+  - match: "servers.*.disk.*.*"
+    help: "Disk I/O metrics for TrueNAS"
+    name: truenas_disk_${3}
+    labels:
+      host: ${1}
+      disk: ${2}
+
+  - match: "servers.*.disk.*.*.*"
+    help: "Disk I/O metrics for TrueNAS"
+    name: truenas_disk_${3}
+    labels:
+      host: ${1}
+      disk: ${2}
+      action: ${4}
+
+  - match: "servers.*.geom_stat.*.*"
+    help: "GEOM performacne metrics"
+    name: truenas_geom_stat_${2}
+    labels:
+      host: ${1}
+      disk: ${3}
+
+  - match: "servers.*.geom_stat.*.*.*"
+    help: "GEOM performacne metrics"
+    name: truenas_geom_stat_${2}
+    labels:
+      host: ${1}
+      disk: ${3}
+      action: ${4}
+
+  - match: "servers.*.interface.*.*.*"
+    help: "Network interface metrics for TrueNAS"
+    name: truenas_interface_${3}
+    labels:
+      host: ${1}
+      interface: ${2}
+      action: ${4}
+
+  - match: "servers.*.load.*.*"
+    help: "System load for TrueNAS"
+    name: truenas_load_${2}
+    labels:
+      host: ${1}
+      range: ${3}
+
+  - match: "servers.*.memory.*.*"
+    help: "Memory usage metrics for TrueNAS"
+    name: truenas_memory_${2}
+    labels:
+      host: ${1}
+      state: ${3}
+
+  - match: "servers.*.nfsstat.*.*.*"
+    help: "NFS statistics for TrueNAS"
+    name: truenas_nfsstat_${3}
+    labels:
+      host: ${1}
+      role: ${2}
+      action: ${4}
+
+  - match: "servers.*.processes.*.*"
+    help: "Number of procceses (incl. their states) in TrueNAS"
+    name: truenas_processes_${2}
+    labels:
+      host: ${1}
+      state: ${3}
+
+  - match: "servers.*.rrdcached.*"
+    name: truenas_rrdcached_${2}
+    labels:
+      host: ${1}
+
+  - match: "servers.*.rrdcached.*.*"
+    name: truenas_rrdcached_${2}
+    labels:
+      host: ${1}
+      type: ${3}
+
+  - match: "servers.*.swap.*.*"
+    name: truenas_swap_${2}
+    help: "Swap space metrics for TrueNAS"
+    labels:
+      host: ${1}
+      state: ${3}
+
+  - match: "servers.*.uptime.*"
+    name: truenas_uptime_${2}
+    help: "Uptime metrics for TrueNAS"
+    labels:
+      host: ${1}
+      plugin: uptime
+
+  - match: "servers.*.zfs_arc.*"
+    name: truenas_zfs_arc_${2}
+    help: "ZFS metrics (mainly cache) for TrueNAS"
+    labels:
+      host: ${1}
+
+  - match: "servers.*.zfs_arc.*.*"
+    name: truenas_zfs_arc_${2}
+    help: "ZFS metrics (mainly cache) for TrueNAS"
+    labels:
+      host: ${1}
+      type: ${3}
+
+  - match: "servers.*.zfs_arc.*.*.*"
+    help: "ZFS metrics (mainly cache) for TrueNAS"
+    name: truenas_zfs_arc_${2}
+    labels:
+      host: ${1}
+      type: ${3}
+      action: ${4}
+
+  - match: "servers.*.zfs_arc_v2.*.*"
+    name: truenas_zfs_arc_v2_${2}
+    labels:
+      host: ${1}
+      plugin: zfs_arc_v2
+      type: ${3}
