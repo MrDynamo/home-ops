@@ -81,8 +81,7 @@ spec:
       app:
         enabled: true
         endpoints:
-          - port: *port
-          - port: 9109
+          - port: http
     persistence:
       config-file:
         type: configMap
