@@ -59,7 +59,6 @@ spec:
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
     service:
-
       app:
         type: LoadBalancer
         annotations:
@@ -78,6 +77,12 @@ spec:
           - name: internal
             namespace: kube-system
             sectionName: https
+    serviceMonitor:
+      app:
+        enabled: true
+        endpoints:
+          - port: *port
+          - port: 9109
     persistence:
       config-file:
         type: configMap
