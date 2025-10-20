@@ -1,0 +1,82 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: imagemaid
+spec:
+  chartRef:
+    kind: OCIRepository
+    name: imagemaid
+  interval: 1h
+  values:
+    controllers:
+      imagemaid:
+        type: cronjob
+        cronjob:
+          ##
+          ##     In UTC Time - https://crontab.guru/
+          ##     CST: -6
+          ##     CDT: -5
+          ##
+          ##     0 11 * * *      Daily at 5am or 6am
+          ##
+          schedule: 0 12 * * *  # Test TZ - Noon run??
+          timeZone: &TZ America/Chicago
+          backoffLimit: 0
+          concurrencyPolicy: Forbid
+          successfulJobsHistory: 1
+          failedJobsHistory: 1
+          ttlSecondsAfterFinished: 86400
+        containers:
+          app:
+            image:
+              repository: docker.io/kometateam/imagemaid
+              tag: v1.1.1@sha256:fbec331b36c1473f8a9c4214f55e5b097860476c8a5274eb61a2b85df89e56cc
+            env:
+              TZ: *TZ
+              PLEX_URL: http://plex.default.svc.cluster.local:32400
+              PLEX_PATH: /plex-config
+              MODE: remove
+              PHOTO_TRANSCODER: true
+            envFrom:
+              - secretRef:
+                  name: "{{ .Release.Name }}-secret"
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: {drop: ["ALL"]}
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 1Gi
+        pod:
+          restartPolicy: Never
+          affinity:
+            podAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                - labelSelector:
+                    matchExpressions:
+                      - key: app.kubernetes.io/name
+                        operator: In
+                        values: ["plex"]
+                  topologyKey: kubernetes.io/hostname
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    persistence:
+      config:
+        enabled: true
+        type: emptyDir
+      plex-config:
+        existingClaim: plex
+      plex-cache:
+        existingClaim: plex-cache
+        globalMounts:
+        - path: /plex-config/Cache
