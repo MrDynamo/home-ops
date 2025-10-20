@@ -37,7 +37,7 @@ spec:
               TZ: *TZ
               PLEX_URL: http://plex.default.svc.cluster.local:32400
               PLEX_PATH: "/plex-config/Library/Application Support/Plex Media Server"
-              MODE: report
+              MODE: remove
               PHOTO_TRANSCODER: true
             envFrom:
               - secretRef:
