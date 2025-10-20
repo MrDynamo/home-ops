@@ -39,6 +39,9 @@ spec:
               PLEX_PATH: "/plex-config/Library/Application Support/Plex Media Server"
               MODE: remove
               PHOTO_TRANSCODER: true
+              EMPTY_TRASH: true
+              CLEAN_BUNDLES: true
+              OPTIMIZE_DB: true
             envFrom:
               - secretRef:
                   name: "{{ .Release.Name }}-secret"
