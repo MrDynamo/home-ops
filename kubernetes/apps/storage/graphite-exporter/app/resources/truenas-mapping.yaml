@@ -1,7 +1,7 @@
 mappings:
 
     # ifstats mapping
-  - match: 'servers\.(.*)\.interface-(.*)\.if_(.*)'
+  - match: 'servers_([a-zA-Z0-9_]+(?:_[a-zA-Z0-9_]+)*)_interface-(.*)\.if_(.*)'
     match_type: regex
     name: 'truenas_interface_${3}'
     labels:
