@@ -1,7 +1,7 @@
 mappings:
 
     # ifstats mapping
-  - match: 'servers_([a-zA-Z0-9_]+(?:_[a-zA-Z0-9_]+)*)_interface-(.*)\.if_(.*)'
+  - match: 'servers_(.*)_interface_(.*)_if_(.*)\s(.*)'
     match_type: regex
     name: 'truenas_interface_${3}'
     labels:
@@ -9,7 +9,7 @@ mappings:
         device: ${2}
 
     # dataset metrics mapping
-  - match: 'servers_(.*?)\.df-(.*)_(.*?)'
+  - match: 'servers_(.*)_df_(.*)\s(.*)'
     match_type: regex
     name: 'truenas_dataset_${3}'
     labels:
@@ -17,14 +17,14 @@ mappings:
         device: ${2}
 
     # memory metrics mapping
-  - match: 'servers_(.*?)\.memory_(.*?)'
+  - match: 'servers_(.*?)_memory_(.*?)\s(.*)'
     match_type: regex
     name: 'truenas_${2}'
     labels:
         hostname: ${1}
 
     # zfs arc metrics mapping
-  - match: 'servers_(.*?)\.zfs_arc_(.*?)'
+  - match: 'servers_(.*?)_zfs_arc_(.*)'
     match_type: regex
     name: 'truenas_zfs_arc_${2}'
     labels:
