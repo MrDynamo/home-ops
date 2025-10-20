@@ -68,7 +68,7 @@ spec:
           http:
             port: *port
           metrics:
-            port: 3002
+            port: 2003
             targetPort: 9109
     route:
       app:
