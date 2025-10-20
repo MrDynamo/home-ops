@@ -28,7 +28,7 @@ spec:
               tag: v0.16.0@sha256:5728ca2557de1ae2723ff5cd2b9747ff505e0f8a762140b3b7828cb9949aeb25
             env:
               TZ: America/Chicago
-            args: [ "--graphite.mapping-config=/tmp/graphite-mapping.conf" ]
+            args: [ "--graphite.mapping-config=/tmp/graphite-mapping.conf", "--graphite.mapping-strict-match" ]
             probes:
               liveness: &probes
                 enabled: true
