@@ -125,3 +125,4 @@ spec:
         type: emptyDir
       transcode:
         type: emptyDir
+        medium: Memory
