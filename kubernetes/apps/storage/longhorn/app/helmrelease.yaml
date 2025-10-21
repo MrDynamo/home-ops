@@ -34,14 +34,15 @@ spec:
       allowRecurringJobsWhileVolumeDetached: true
       createDefaultDiskLabeledNodes: true
       defaultDataLocality: best-effort
-      defaultLonghornStaticStorageClass: longhorn
+      defaultLonghornStaticStorageClass: longhorn-static
       defaultReplicaCount: 3
       # guaranteedInstanceManagerCPU: 20
       nodeDownPodDeletionPolicy: delete-both-statefulset-and-deployment-pod
+      offlineReplicaRebuilding: true
       orphanAutoDeletion: true
       replicaAutoBalance: true
-      storageMinimalAvailablePercentage: 1
-      storageReservedPercentageForDefaultDisk: 10
+      storageMinimalAvailablePercentage: 5
+      storageReservedPercentageForDefaultDisk: 15
     ingress:
       enabled: false
     metrics:
