@@ -116,6 +116,6 @@ spec:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 8Gi
+          storage: 2Gi
       storageClassName: longhorn-fast
   disableDefaultSecurityContext: All
