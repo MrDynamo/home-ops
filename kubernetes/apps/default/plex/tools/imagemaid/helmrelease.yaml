@@ -21,7 +21,7 @@ spec:
           ##
           ##     0 11 * * * (UTC)     Daily at 5am or 6am
           ##
-          schedule: 30 10 * * *
+          schedule: 30 15 * * *
           timeZone: &TZ America/Chicago
           backoffLimit: 0
           concurrencyPolicy: Forbid
