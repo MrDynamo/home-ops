@@ -120,26 +120,26 @@ nodes:
           - network: "0.0.0.0/0"
             gateway: "192.168.20.1"
         mtu: 1500
-  # - hostname: "k8s-06"
-  #   ipAddress: "192.168.20.236"
-  #   installDisk: "/dev/sda"
-  #   machineSpec:
-  #     secureboot: false
-  #   # (NEW NVIDIA NODE)
-  #   # Nvidia LTS Proprietary (535.247.01): 33ed8d9cbf88bf4644714b37d5f74775b5091f40b032e5ad6494f901baa1aae1
-  #   # Nvidia Production Proprietary (570.172.08): ca7c13e98ff8d299e8bcaaff3328701c0aa24cfff880132c1b5dd7e9dea21232
-  #   talosImageURL: factory.talos.dev/installer/142d2d49aadb988cf7de88ca13f04c4769ceba67af848a8e1257328c6cdac8b3
-  #   controlPlane: true
-  #   networkInterfaces:
-  #     - deviceSelector:
-  #         hardwareAddr: "" ## TODO: Update
-  #       dhcp: false
-  #       addresses:
-  #         - "192.168.20.236/24"
-  #       routes:
-  #         - network: "0.0.0.0/0"
-  #           gateway: "192.168.20.1"
-  #       mtu: 1500
+  - hostname: "k8s-06"
+    ipAddress: "192.168.20.236"
+    installDisk: "/dev/sda"
+    machineSpec:
+      secureboot: false
+    # (NEW NVIDIA NODE)
+    # Nvidia LTS Proprietary (535.247.01): 33ed8d9cbf88bf4644714b37d5f74775b5091f40b032e5ad6494f901baa1aae1
+    # Nvidia Production Proprietary (570.172.08): ca7c13e98ff8d299e8bcaaff3328701c0aa24cfff880132c1b5dd7e9dea21232
+    talosImageURL: factory.talos.dev/installer/142d2d49aadb988cf7de88ca13f04c4769ceba67af848a8e1257328c6cdac8b3
+    controlPlane: true
+    networkInterfaces:
+      - deviceSelector:
+          hardwareAddr: "00:50:56:9e:e9:f1" ## TODO: Update
+        dhcp: false
+        addresses:
+          - "192.168.20.236/24"
+        routes:
+          - network: "0.0.0.0/0"
+            gateway: "192.168.20.1"
+        mtu: 1500
 
 # Global patches
 patches:
