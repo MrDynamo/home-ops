@@ -244,6 +244,15 @@
         app: calibre
 
 - Observability:
+    - Gatus:
+        href: https://status.${SECRET_DOMAIN}/
+        description: Uptime monitoring dashboard
+        icon: gatus.svg
+        namespace: observability
+        app: gatus
+        widget:
+          type: gatus
+          url: http://gatus.observability.svc.cluster.local:80
     - Grafana:
         href: https://grafana.${INTERNAL_SECRET_DOMAIN}/
         description: Grafana metrics dashboard
