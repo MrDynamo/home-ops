@@ -31,15 +31,15 @@ spec:
     # defaultBackupStore:
     #   backupTarget: ''
     defaultSettings:
-      allowRecurringJobsWhileVolumeDetached: true
-      createDefaultDiskLabeledNodes: true
+      allowRecurringJobsWhileVolumeDetached: "true"
+      createDefaultDiskLabeledNodes: "true"
       defaultDataLocality: "best-effort"
       defaultLonghornStaticStorageClass: "longhorn-static"
       defaultReplicaCount: "3"
       # guaranteedInstanceManagerCPU: 20
       nodeDownPodDeletionPolicy: "delete-both-statefulset-and-deployment-pod"
-      offlineReplicaRebuilding: true
-      orphanAutoDeletion: true
+      offlineReplicaRebuilding: "true"
+      orphanAutoDeletion: "true"
       replicaAutoBalance: "least-effort"
       storageMinimalAvailablePercentage: "5"
       storageReservedPercentageForDefaultDisk: "15"
