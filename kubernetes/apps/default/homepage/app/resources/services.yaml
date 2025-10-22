@@ -263,7 +263,7 @@
           type: grafana
           version: 2
           alerts: alertmanager
-          url: http://grafana-service.observability.svc.cluster.local:3000
+          url: http://grafana-alerting.observability.svc.cluster.local:9094
     - Prometheus:
         href: https://prometheus.${INTERNAL_SECRET_DOMAIN}/
         description: Metrics aggregator
