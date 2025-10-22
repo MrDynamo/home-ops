@@ -15,3 +15,7 @@ spec:
       registry: quay.io
     networkPolicy:
       enabled: false
+    livenessProbe:
+      enabled: false
+    readinessProbe:
+      enabled: false
