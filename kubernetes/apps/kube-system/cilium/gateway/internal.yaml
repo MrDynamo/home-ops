@@ -6,6 +6,12 @@ metadata:
   name: internal
   annotations:
     external-dns.alpha.kubernetes.io/target: "internal.${SECRET_DOMAIN}"
+    gatus.home-operations.com/endpoint: |-
+      group: internal
+      guarded: true
+      ui:
+        hide-hostname: true
+        hide-url: true
 spec:
   gatewayClassName: cilium
   addresses:
