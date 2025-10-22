@@ -261,6 +261,8 @@
         app: grafana
         widget:
           type: grafana
+          version: 2
+          alerts: alertmanager
           url: http://grafana-service.observability.svc.cluster.local:3000
     - Prometheus:
         href: https://prometheus.${INTERNAL_SECRET_DOMAIN}/
