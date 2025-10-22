@@ -23,6 +23,8 @@ spec:
       targetPath: defaultBackupStore.backupTarget
   values:
     # https://github.com/longhorn/longhorn/issues/11939
+    preUpgradeChecker:
+      upgradeVersionCheck: false
     image:
       longhorn:
         manager:
