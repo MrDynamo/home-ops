@@ -31,7 +31,8 @@ spec:
           - name: severity
             value: warning
             matchType: =
-            continue: true
+      - receiver: all-receivers
+        matchers:
           - name: severity
             value: critical
             matchType: =
