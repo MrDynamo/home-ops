@@ -24,8 +24,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Base: 142d2d49aadb988cf7de88ca13f04c4769ceba67af848a8e1257328c6cdac8b3
-    talosImageURL: factory.talos.dev/installer/142d2d49aadb988cf7de88ca13f04c4769ceba67af848a8e1257328c6cdac8b3
+    # Base - VMTools: 903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
+    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -89,7 +89,7 @@ nodes:
     controlPlane: false
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "00:50:56:9e:46:17" ## TODO: Update
+          hardwareAddr: "00:50:56:9e:46:17"
         dhcp: false
         addresses:
           - "192.168.20.234/24"
@@ -107,7 +107,7 @@ nodes:
     controlPlane: false
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "00:50:56:9e:7e:65" ## TODO: Update
+          hardwareAddr: "00:50:56:9e:7e:65"
         dhcp: false
         addresses:
           - "192.168.20.235/24"
@@ -129,7 +129,7 @@ nodes:
     controlPlane: false
     networkInterfaces:
       - deviceSelector:
-          hardwareAddr: "00:50:56:9e:e9:f1" ## TODO: Update
+          hardwareAddr: "00:50:56:9e:e9:f1"
         dhcp: false
         addresses:
           - "192.168.20.236/24"
