@@ -259,20 +259,18 @@
         icon: grafana.svg
         namespace: observability
         app: grafana
-        # widget:
-        #   type: grafana
-        #   url: http://grafana.host.or.ip:port
-        #   username: username
-        #   password: password
+        widget:
+          type: grafana
+          url: http://grafana-service.observability.svc.cluster.local:3000
     - Prometheus:
         href: https://prometheus.${INTERNAL_SECRET_DOMAIN}/
         description: Metrics aggregator
         icon: prometheus.svg
         namespace: observability
         app: prometheus
-        # widget:
-        #   type: prometheus
-        #   url: http://prometheushost:port
+        widget:
+          type: prometheus
+          url: http://prometheus-operated.observability.svc.cluster.local:9090
     - Alert Manager:
         href: https://alertmanager.${INTERNAL_SECRET_DOMAIN}/
         description: Alert Manager interface
