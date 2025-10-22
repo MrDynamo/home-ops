@@ -22,7 +22,12 @@ spec:
       valuesKey: LONGHORN_BACKUP_TARGET
       targetPath: defaultBackupStore.backupTarget
   values:
-    # https://github.com/longhorn/longhorn/blob/v1.9.1/chart/values.yaml
+    # https://github.com/longhorn/longhorn/issues/11939
+    image:
+      longhorn:
+        manager:
+          tag: v1.10.0-hotfix-1
+    # https://github.com/longhorn/longhorn/blob/v1.10.0/chart/values.yaml
     monitoring:
       enabled: true
       createPrometheusRules: true
