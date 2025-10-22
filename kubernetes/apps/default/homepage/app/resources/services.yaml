@@ -259,11 +259,11 @@
         icon: grafana.svg
         namespace: observability
         app: grafana
-        widget:
-          type: grafana
-          version: 2
-          alerts: alertmanager
-          url: http://grafana-alerting.observability.svc.cluster.local:9094
+        # widget:
+        #   type: grafana
+        #   version: 2
+        #   alerts: alertmanager
+        #   url: http://grafana-alerting.observability.svc.cluster.local:9094
     - Prometheus:
         href: https://prometheus.${INTERNAL_SECRET_DOMAIN}/
         description: Metrics aggregator
