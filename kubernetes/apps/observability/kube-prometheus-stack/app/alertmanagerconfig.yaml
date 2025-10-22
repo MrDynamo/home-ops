@@ -31,11 +31,11 @@ spec:
       #     - name: alertname
       #       value: Watchdog
       #       matchType: =
-      # - receiver: pushover
-      #   matchers:
-      #     - name: severity
-      #       value: critical
-      #       matchType: =
+      - receiver: pushover
+        matchers:
+          - name: severity
+            value: warning
+            matchType: =
       - receiver: all
         matchers:
           - name: severity
