@@ -19,11 +19,11 @@ spec:
           - name: alertname
             value: InfoInhibitor
             matchType: =
-      - receiver: discord
-        matchers:
-          - name: severity
-            value: warning
-            matchType: =
+      # - receiver: discord
+      #   matchers:
+      #     - name: severity
+      #       value: warning
+      #       matchType: =
       # - receiver: heartbeat
       #   groupWait: 0s
       #   repeatInterval: 2m30s
@@ -36,11 +36,11 @@ spec:
           - name: severity
             value: warning
             matchType: =
-      - receiver: all
-        matchers:
-          - name: severity
-            value: critical
-            matchType: =
+      # - receiver: all
+      #   matchers:
+      #     - name: severity
+      #       value: critical
+      #       matchType: =
   inhibitRules:
     - equal:
         - alertname
