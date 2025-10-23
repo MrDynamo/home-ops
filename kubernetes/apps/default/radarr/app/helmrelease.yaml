@@ -87,13 +87,5 @@ spec:
         type: nfs
         server: 192.168.20.21
         path: /mnt/tank/media/plex
-      movies:
-        type: nfs
-        server: 192.168.20.21
-        path: /mnt/tank/media/plex/movies
-      downloads:
-        type: nfs
-        server: 192.168.20.21
-        path: /mnt/tank/media/plex/downloads
       tmp:
         type: emptyDir
