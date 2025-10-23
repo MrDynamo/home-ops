@@ -112,22 +112,6 @@ spec:
         type: nfs
         server: 192.168.20.21
         path: /mnt/tank/media/plex
-      tv:
-        type: nfs
-        server: 192.168.20.21
-        path: /mnt/tank/media/plex/tv
-      movies:
-        type: nfs
-        server: 192.168.20.21
-        path: /mnt/tank/media/plex/movies
-      pmm-tv:
-        type: nfs
-        server: 192.168.20.21
-        path: /mnt/tank/media/plex/pmm_tv
-      pmm-movies:
-        type: nfs
-        server: 192.168.20.21
-        path: /mnt/tank/media/plex/pmm_mov
       tmp:
         type: emptyDir
       transcode:
