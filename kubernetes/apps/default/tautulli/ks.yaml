@@ -23,6 +23,7 @@ spec:
     substitute:
       APP: *app
       VOLSYNC_CAPACITY: 4Gi
+      VOLSYNC_SCHEDULE: 0 9 * * 5  # Cron in UTC (CST: -6, CST: -5)
     substituteFrom:
       - name: cluster-secrets
         kind: Secret

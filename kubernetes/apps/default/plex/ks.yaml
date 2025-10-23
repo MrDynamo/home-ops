@@ -23,7 +23,7 @@ spec:
     substitute:
       APP: *app
       VOLSYNC_CAPACITY: 18Gi
-      VOLSYNC_SCHEDULE: 15 13 * * *  # Cron in UTC (CST: -6, CST: -5) OVERRIDE: Daily at 07:15 am or 08:15 am
+      VOLSYNC_SCHEDULE: 0 12 * * 1  # Cron in UTC (CST: -6, CST: -5)
     substituteFrom:
       - name: cluster-secrets
         kind: Secret
