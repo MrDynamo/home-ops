@@ -25,7 +25,7 @@ spec:
               PLEX_NO_AUTH_NETWORKS: 192.168.10.0/24
             probes:
               liveness: &probes
-                enabled: true
+                enabled: false
                 custom: true
                 spec:
                   httpGet:
