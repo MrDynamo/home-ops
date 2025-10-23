@@ -22,8 +22,8 @@ download-image version schematic:
     just log info "Downloaded Talos" version "{{ version }}" schematic "{{ schematic }}"
 
 [doc('Generate schematic ID from Talos schematic')]
-gen-schematic-id:
-    curl -sX POST --data-binary @<(just template "{{ talos_dir }}/schematic.yaml.j2") "https://factory.talos.dev/schematics" | jq -r '.id'
+gen-schematic-id name:
+    curl -sX POST --data-binary @<(just template "{{ talos_dir }}/schematics/{{ name }}.yaml.j2") "https://factory.talos.dev/schematics" | jq -r '.id'
 
 [doc('Reboot a node')]
 reboot-node node:

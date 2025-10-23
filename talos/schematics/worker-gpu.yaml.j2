@@ -1,0 +1,12 @@
+---
+customization:
+  extraKernelArgs:
+    - talos.device.settle_time=1m
+  systemExtensions:
+    officialExtensions:
+      - siderolabs/iscsi-tools # iSCSI Support (Longhorn)
+      - siderolabs/nfsrahead # NFS Performance
+      - siderolabs/nonfree-kmod-nvidia-production # NVIDIA Driver
+      - siderolabs/nvidia-container-toolkit-production # NVIDIA Container Toolkit
+      - siderolabs/util-linux-tools # Misc Utilities
+      - siderolabs/vmtoolsd-guest-agent # VMware Guest Agent

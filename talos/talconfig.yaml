@@ -84,8 +84,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Base - Longhorn: 142d2d49aadb988cf7de88ca13f04c4769ceba67af848a8e1257328c6cdac8b3
-    talosImageURL: factory.talos.dev/installer/142d2d49aadb988cf7de88ca13f04c4769ceba67af848a8e1257328c6cdac8b3
+    # Base - Longhorn: faaee25b563caa1f0ced722895615fd8317fcd782fd3259458ded2f66e27c2c0
+    talosImageURL: factory.talos.dev/installer/faaee25b563caa1f0ced722895615fd8317fcd782fd3259458ded2f66e27c2c0
     controlPlane: false
     networkInterfaces:
       - deviceSelector:
@@ -102,8 +102,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Base - Longhorn: 142d2d49aadb988cf7de88ca13f04c4769ceba67af848a8e1257328c6cdac8b3
-    talosImageURL: factory.talos.dev/installer/142d2d49aadb988cf7de88ca13f04c4769ceba67af848a8e1257328c6cdac8b3
+    # Base - Longhorn: faaee25b563caa1f0ced722895615fd8317fcd782fd3259458ded2f66e27c2c0
+    talosImageURL: factory.talos.dev/installer/faaee25b563caa1f0ced722895615fd8317fcd782fd3259458ded2f66e27c2c0
     controlPlane: false
     networkInterfaces:
       - deviceSelector:
@@ -121,8 +121,8 @@ nodes:
     machineSpec:
       secureboot: false
     # Nvidia LTS Proprietary (535.247.01): 33ed8d9cbf88bf4644714b37d5f74775b5091f40b032e5ad6494f901baa1aae1
-    # Nvidia Production Proprietary (570.172.08): ca7c13e98ff8d299e8bcaaff3328701c0aa24cfff880132c1b5dd7e9dea21232
-    talosImageURL: factory.talos.dev/installer/ca7c13e98ff8d299e8bcaaff3328701c0aa24cfff880132c1b5dd7e9dea21232
+    # Nvidia Production Proprietary (570.172.08): f02229dc4938048075a88a165c320b186a24ea17ceeb0045b58535ca4c3508c5
+    talosImageURL: factory.talos.dev/installer/f02229dc4938048075a88a165c320b186a24ea17ceeb0045b58535ca4c3508c5
     patches:
       - "@./patches/gpu/machine-kernel.yaml"
       - "@./patches/gpu/machine-sysctls.yaml"
