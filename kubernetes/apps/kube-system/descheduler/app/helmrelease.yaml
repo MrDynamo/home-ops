@@ -22,7 +22,7 @@ spec:
               args:
                 evictFailedBarePods: true
                 evictLocalStoragePods: true
-                evictSystemCriticalPods: true
+                # evictSystemCriticalPods: true
             - name: LowNodeUtilization
               args:
                 metricsUtilization:
