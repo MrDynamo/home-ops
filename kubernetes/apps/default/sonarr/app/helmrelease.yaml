@@ -78,11 +78,11 @@ spec:
     persistence:
       config:
         existingClaim: "{{ .Release.Name }}"
-      config-cache:
-        # existingClaim: "{{ .Release.Name }}-cache"
-        type: emptyDir
-        globalMounts:
-          - path: /config/MediaCover
+      # config-cache:
+      #   # existingClaim: "{{ .Release.Name }}-cache"
+      #   type: emptyDir
+      #   globalMounts:
+      #     - path: /config/MediaCover
       media:
         type: nfs
         server: 192.168.20.21
