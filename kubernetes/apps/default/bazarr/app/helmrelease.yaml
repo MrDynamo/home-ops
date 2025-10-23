@@ -71,6 +71,6 @@ spec:
       media:
         type: nfs
         server: 192.168.20.21
-        path: /mnt/tank/media/plex/
+        path: /mnt/tank/media/plex
       tmp:
         type: emptyDir

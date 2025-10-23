@@ -72,6 +72,10 @@ spec:
     persistence:
       config:
         existingClaim: "{{ .Release.Name }}"
+      media:
+        type: nfs
+        server: 192.168.20.21
+        path: /mnt/tank/media/plex
       downloads:
         type: nfs
         server: 192.168.20.21
