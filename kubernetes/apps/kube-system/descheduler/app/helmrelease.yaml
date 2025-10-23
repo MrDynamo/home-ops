@@ -15,10 +15,7 @@ spec:
     deschedulerPolicy:
       metricsProviders:
         - source: KubernetesMetrics
-      nodeSelector:
-        - kubernetes.io/hostname: k8s-04
-        - kubernetes.io/hostname: k8s-05
-        - kubernetes.io/hostname: k8s-06
+      nodeSelector: "descheduler/enabled=true"
       profiles:
         - name: Default
           pluginConfig:

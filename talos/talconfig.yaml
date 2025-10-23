@@ -153,6 +153,6 @@ controlPlane:
     - "@./patches/controller/cluster.yaml"
 
 # Worker patches
-# worker:
-#   patches:
-#     - "@./patches/worker/machine-kubelet.yaml"
+worker:
+  patches:
+    - "@./patches/worker/machine-labels.yaml"
