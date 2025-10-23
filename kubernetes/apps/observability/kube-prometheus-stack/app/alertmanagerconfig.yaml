@@ -26,11 +26,11 @@ spec:
       #     - name: alertname
       #       value: Watchdog
       #       matchType: =
-      # - receiver: all-receivers
-      #   matchers:
-      #     - name: severity
-      #       value: warning
-      #       matchType: =
+      - receiver: all-receivers
+        matchers:
+          - name: alertname
+            value: NodeSystemSaturation
+            matchType: =
       - receiver: all-receivers
         matchers:
           - name: severity
