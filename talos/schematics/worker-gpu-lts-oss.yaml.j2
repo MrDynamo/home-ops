@@ -1,7 +1,8 @@
 ---
 customization:
   extraKernelArgs:
-    - talos.device.settle_time=1m
+    - talos.platform=vmware
+    - talos.device.settle_time=3m
   systemExtensions:
     officialExtensions:
       - siderolabs/iscsi-tools # iSCSI Support (Longhorn)

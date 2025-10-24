@@ -24,8 +24,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Control Base: 903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
-    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
+    # Control Base
+    talosImageURL: factory.talos.dev/installer/2edb5b1be568125eda29991d852896b2317a1c7c4c74ee00c1e7c48c71e72221
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -44,8 +44,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Control Base: 903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
-    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
+    # Control Base
+    talosImageURL: factory.talos.dev/installer/2edb5b1be568125eda29991d852896b2317a1c7c4c74ee00c1e7c48c71e72221
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -64,8 +64,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Control Base: 903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
-    talosImageURL: factory.talos.dev/installer/903b2da78f99adef03cbbd4df6714563823f63218508800751560d3bc3557e40
+    # Control Base
+    talosImageURL: factory.talos.dev/installer/2edb5b1be568125eda29991d852896b2317a1c7c4c74ee00c1e7c48c71e72221
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -84,8 +84,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Worker Base: faaee25b563caa1f0ced722895615fd8317fcd782fd3259458ded2f66e27c2c0
-    talosImageURL: factory.talos.dev/installer/faaee25b563caa1f0ced722895615fd8317fcd782fd3259458ded2f66e27c2c0
+    # Worker Base
+    talosImageURL: factory.talos.dev/installer/613333381119aa1424919e8e0f076afdb03c19ca62bbc42ca4b3600d16cbef17
     controlPlane: false
     networkInterfaces:
       - deviceSelector:
@@ -102,8 +102,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Worker Base: faaee25b563caa1f0ced722895615fd8317fcd782fd3259458ded2f66e27c2c0
-    talosImageURL: factory.talos.dev/installer/faaee25b563caa1f0ced722895615fd8317fcd782fd3259458ded2f66e27c2c0
+    # Worker Base
+    talosImageURL: factory.talos.dev/installer/613333381119aa1424919e8e0f076afdb03c19ca62bbc42ca4b3600d16cbef17
     controlPlane: false
     networkInterfaces:
       - deviceSelector:
@@ -120,9 +120,8 @@ nodes:
     installDisk: "/dev/sda"
     machineSpec:
       secureboot: false
-    # Worker GPU - Nvidia LTS Proprietary (535.247.01): 33ed8d9cbf88bf4644714b37d5f74775b5091f40b032e5ad6494f901baa1aae1
-    # Worker GPU - Nvidia Production Proprietary (570.172.08): f02229dc4938048075a88a165c320b186a24ea17ceeb0045b58535ca4c3508c5
-    talosImageURL: factory.talos.dev/installer/f02229dc4938048075a88a165c320b186a24ea17ceeb0045b58535ca4c3508c5
+    # Worker GPU - Nvidia Production Proprietary (570.172.08)
+    talosImageURL: factory.talos.dev/installer/9bdc04a8edbe64896b70dcdcc3547d08248d849ff5b679f09dbba9d39f18b9dd
     patches:
       - "@./patches/gpu/machine-kernel.yaml"
       - "@./patches/gpu/machine-sysctls.yaml"
