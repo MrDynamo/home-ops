@@ -281,7 +281,7 @@ radarr:
   add_missing: false
   add_existing: false
   upgrade_existing: false
-  root_folder_path: /movies
+  root_folder_path: /media/movies
   monitor: true
   availability: released
   quality_profile: HD Bluray + WEB
@@ -296,7 +296,7 @@ sonarr:
   add_missing: false
   add_existing: false
   upgrade_existing: false
-  root_folder_path: /tv
+  root_folder_path: /media/tv
   monitor: pilot # none, latest, first, pilot, existing, missing, future, all
   quality_profile: WEB-1080p
   language_profile: English
