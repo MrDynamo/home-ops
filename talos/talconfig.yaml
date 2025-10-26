@@ -25,7 +25,7 @@ nodes:
     machineSpec:
       secureboot: false
     # Control Base
-    talosImageURL: factory.talos.dev/installer/9c0511ab7bc8b9dea26fd35e22fbcbdbd0066f007d0fb4056285d62ca37e3e5f
+    talosImageURL: factory.talos.dev/installer/0d16f4518a8f8f40e51d2c64c455f4afe246b6c847b35fa540f4be0793d03be1
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -45,7 +45,7 @@ nodes:
     machineSpec:
       secureboot: false
     # Control Base
-    talosImageURL: factory.talos.dev/installer/9c0511ab7bc8b9dea26fd35e22fbcbdbd0066f007d0fb4056285d62ca37e3e5f
+    talosImageURL: factory.talos.dev/installer/0d16f4518a8f8f40e51d2c64c455f4afe246b6c847b35fa540f4be0793d03be1
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -65,7 +65,7 @@ nodes:
     machineSpec:
       secureboot: false
     # Control Base
-    talosImageURL: factory.talos.dev/installer/9c0511ab7bc8b9dea26fd35e22fbcbdbd0066f007d0fb4056285d62ca37e3e5f
+    talosImageURL: factory.talos.dev/installer/0d16f4518a8f8f40e51d2c64c455f4afe246b6c847b35fa540f4be0793d03be1
     controlPlane: true
     networkInterfaces:
       - deviceSelector:
@@ -85,7 +85,7 @@ nodes:
   #   machineSpec:
   #     secureboot: false
   #   # Worker Base
-  #   talosImageURL: factory.talos.dev/installer/d69895caa2b36cf36331fa44a031999180138e9fbfc583897ecb77ba80bbf93b
+  #   talosImageURL: factory.talos.dev/installer/f9af9a87b26042e714d80c06ae619b25e81b16da5842cc64285e44e144229688
   #   controlPlane: false
   #   networkInterfaces:
   #     - deviceSelector:
@@ -103,7 +103,7 @@ nodes:
     machineSpec:
       secureboot: false
     # Worker Base
-    talosImageURL: factory.talos.dev/installer/d69895caa2b36cf36331fa44a031999180138e9fbfc583897ecb77ba80bbf93b
+    talosImageURL: factory.talos.dev/installer/f9af9a87b26042e714d80c06ae619b25e81b16da5842cc64285e44e144229688
     controlPlane: false
     networkInterfaces:
       - deviceSelector:
@@ -121,7 +121,7 @@ nodes:
     machineSpec:
       secureboot: false
     # Worker GPU - Nvidia Production Proprietary (570.172.08)
-    talosImageURL: factory.talos.dev/installer/c75975b3c4a832925bcf8ba9e86510a90228417d7683e670073ddb9c3f7ec414
+    talosImageURL: factory.talos.dev/installer/8ecd8e08742f85d1181333f71fa291714e32fe51df7c0b6348703c9b34b17a3f
     patches:
       - "@./patches/gpu/machine-kernel.yaml"
       - "@./patches/gpu/machine-sysctls.yaml"
