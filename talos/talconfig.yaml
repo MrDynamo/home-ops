@@ -79,24 +79,24 @@ nodes:
         mtu: 1500
         vip:
           ip: "192.168.20.200"
-  - hostname: "k8s-04"
-    ipAddress: "192.168.20.234"
-    installDisk: "/dev/sda"
-    machineSpec:
-      secureboot: false
-    # Worker Base
-    talosImageURL: factory.talos.dev/installer/d69895caa2b36cf36331fa44a031999180138e9fbfc583897ecb77ba80bbf93b
-    controlPlane: false
-    networkInterfaces:
-      - deviceSelector:
-          hardwareAddr: "00:50:56:9e:46:17"
-        dhcp: false
-        addresses:
-          - "192.168.20.234/24"
-        routes:
-          - network: "0.0.0.0/0"
-            gateway: "192.168.20.1"
-        mtu: 1500
+  # - hostname: "k8s-04"
+  #   ipAddress: "192.168.20.234"
+  #   installDisk: "/dev/sda"
+  #   machineSpec:
+  #     secureboot: false
+  #   # Worker Base
+  #   talosImageURL: factory.talos.dev/installer/d69895caa2b36cf36331fa44a031999180138e9fbfc583897ecb77ba80bbf93b
+  #   controlPlane: false
+  #   networkInterfaces:
+  #     - deviceSelector:
+  #         hardwareAddr: "00:50:56:9e:46:17"
+  #       dhcp: false
+  #       addresses:
+  #         - "192.168.20.234/24"
+  #       routes:
+  #         - network: "0.0.0.0/0"
+  #           gateway: "192.168.20.1"
+  #       mtu: 1500
   - hostname: "k8s-05"
     ipAddress: "192.168.20.235"
     installDisk: "/dev/sda"
