@@ -95,12 +95,12 @@ spec:
               sourceLabels:
                 - __meta_kubernetes_pod_node_name
               targetLabel: kubernetes_node
-      resources:
-        requests:
-          cpu: 100m
-        limits:
-          cpu: 500m
-          memory: 200Mi
+      # resources:
+      #   requests:
+      #     cpu: 100m
+      #   limits:
+      #     cpu: 500m
+      #     memory: 200Mi
     kube-state-metrics:
       fullnameOverride: kube-state-metrics
       metricLabelsAllowlist:
