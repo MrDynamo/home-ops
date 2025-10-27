@@ -154,4 +154,5 @@ controlPlane:
 # Worker patches
 worker:
   patches:
+    - "@./patches/worker/machine-kubelet.yaml"
     - "@./patches/worker/machine-labels.yaml"
