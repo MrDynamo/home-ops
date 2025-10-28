@@ -285,13 +285,9 @@
     - Victoria Logs:
         href: https://victoria-logs.${INTERNAL_SECRET_DOMAIN}/
         description: Log aggregation and viewing
-        icon: victoria-logs.svg
+        icon: victoriametrics.svg
         namespace: observability
         app: victoria-logs
-        widget:
-          type: victorialogs
-          url: http://victoria-logs.observability.svc.cluster.local:80
-
 - Database:
     - PGAdmin:
         href: https://pgadmin.local.${SECRET_DOMAIN}/
