@@ -282,6 +282,15 @@
         # widget:
         #   type: prometheus
         #   url: http://prometheushost:port
+    - Victoria Logs:
+        href: https://victoria-logs.${INTERNAL_SECRET_DOMAIN}/
+        description: Log aggregation and viewing
+        icon: victoria-logs.svg
+        namespace: observability
+        app: victoria-logs
+        widget:
+          type: victorialogs
+          url: http://victoria-logs.observability.svc.cluster.local:80
 
 - Database:
     - PGAdmin:
