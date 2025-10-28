@@ -10,6 +10,11 @@ spec:
     name: fluent-bit
   interval: 1h
   values:
+    extraPorts:
+      - port: 12345
+        containerPort: 12345
+        protocol: TCP
+        name: talos
     config:
       service: |-
         [SERVICE]
@@ -32,6 +37,20 @@ spec:
           tag kubernetes.*
           skip_empty_lines on
           skip_long_lines on
+
+        [INPUT]
+          Name          tail
+          Alias         audit
+          Path          /var/log/audit/kube/*.log
+          Parser        audit
+          Tag           audit.*
+
+        [INPUT]
+          Name          tcp
+          Listen        0.0.0.0
+          Port          12345
+          Format        json
+          Tag           talos.*
 
       filters: |-
         [FILTER]
@@ -73,6 +92,12 @@ spec:
           time_key time
           time_format %Y-%m-%dT%H:%M:%S.%L%z
 
+        [PARSER]
+          Name          audit
+          Format        json
+          Time_Key      requestReceivedTimestamp
+          Time_Format   %Y-%m-%dT%H:%M:%S.%L%z
+
       outputs: |-
         [OUTPUT]
           name http
@@ -89,3 +114,13 @@ spec:
     serviceMonitor:
       enabled: true
     logLevel: warn
+    daemonSetVolumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
+    daemonSetVolumeMounts:
+      - name: varlog
+        mountPath: /var/log
+    tolerations:
+      - operator: Exists
+        effect: NoSchedule

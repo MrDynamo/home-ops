@@ -141,9 +141,19 @@ nodes:
 patches:
   - "@./patches/global/machine-files.yaml"
   - "@./patches/global/machine-kubelet.yaml"
+  - "@./patches/global/machine-logging.yaml"
   - "@./patches/global/machine-network.yaml"
+  # - "@./patches/global/machine-schematic.yaml"
   - "@./patches/global/machine-sysctls.yaml"
   - "@./patches/global/machine-time.yaml"
+  # - |-
+  #   machine:
+  #     logging:
+  #       destinations:
+  #         - endpoint: "udp://127.0.0.1:12345/"
+  #           format: "json_lines"
+  #           extraTags:
+  #             server: '{{ .Node.Hostname }}'
 
 # Controller patches
 controlPlane:
