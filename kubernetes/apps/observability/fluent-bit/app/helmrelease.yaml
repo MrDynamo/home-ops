@@ -109,6 +109,17 @@ spec:
           json_date_format iso8601
           compress gzip
           log_response_payload false
+
+        [OUTPUT]
+          name http
+          match talos.*
+          host victoria-logs-server.observability.svc.cluster.local
+          port 9428
+          uri /insert/jsonline?_stream_fields=stream,k_namespace_name,k_pod_name,app&_msg_field=log&_time_field=date
+          format json_lines
+          json_date_format iso8601
+          compress gzip
+          log_response_payload false
     dashboards:
       enabled: true
     serviceMonitor:
