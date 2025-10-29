@@ -90,6 +90,8 @@ spec:
     persistence:
       config:
         existingClaim: "{{ .Release.Name }}"
+        globalMounts:
+          - path: /var/syncthing
       syncthing:
         type: nfs
         server: 192.168.20.21
