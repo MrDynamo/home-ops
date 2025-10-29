@@ -11,7 +11,7 @@
   ],
   dependencyDashboard: true,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
-  timezone: ["America/Chicago],
+  timezone: ["America/Chicago"],
   schedule: ["* * * * *", "every weekend"],
   ignorePaths: ["**/*.sops.*"],
   flux: {
