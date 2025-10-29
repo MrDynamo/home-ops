@@ -54,9 +54,11 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
     service:
       app:
+        controller: syncthing
         ports:
           http:
             port: *port
+            primary: true
       listen:
         controller: syncthing
         type: LoadBalancer
