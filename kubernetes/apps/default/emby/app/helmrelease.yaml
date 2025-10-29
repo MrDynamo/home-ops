@@ -100,6 +100,9 @@ spec:
         type: nfs
         server: 192.168.20.21
         path: /mnt/tank/media/plex
+        globalMounts:
+          - path: /media
+            readOnly: true
       tmp:
         type: emptyDir
       transcode:
