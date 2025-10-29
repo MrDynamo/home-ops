@@ -59,8 +59,8 @@
         description: Internal Windows KMS Server
         icon: microsoft-windows.svg
     - Syncthing:
-        href: https://syncthing.local.${SECRET_DOMAIN}/
-        description: Syncthing k3s Server
+        href: https://syncthing.${SECRET_DOMAIN}/
+        description: Syncthing Server on k8s
         icon: syncthing.svg
 
 - Network:
