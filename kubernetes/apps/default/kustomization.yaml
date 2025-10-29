@@ -21,5 +21,6 @@ resources:
   - ./sabnzbd/ks.yaml
   - ./seerr/ks.yaml
   - ./sonarr/ks.yaml
+  - ./syncthing/ks.yaml
   - ./tautulli/ks.yaml
   - ./wizarr/ks.yaml
