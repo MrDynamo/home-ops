@@ -12,7 +12,7 @@
   dependencyDashboard: true,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
   timezone: "America/Chicago",
-  schedule: ["*/5 * * * *",],
+  schedule: ["0,5,10,15,20,25,30,35,40,45,50,55 * * * *",],
   ignorePaths: ["**/*.sops.*"],
   flux: {
     managerFilePatterns: ["/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/"],
