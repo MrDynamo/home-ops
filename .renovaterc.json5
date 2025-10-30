@@ -11,8 +11,8 @@
   ],
   dependencyDashboard: true,
   dependencyDashboardTitle: "Renovate Dashboard 🤖",
-  timezone: ["America/Chicago"],
-  schedule: ["* * * * *", "every weekend"],
+  timezone: "America/Chicago",
+  schedule: ["*/5 * * * *", "every weekend"],
   ignorePaths: ["**/*.sops.*"],
   flux: {
     managerFilePatterns: ["/(^|/)kubernetes/.+\\.ya?ml(?:\\.j2)?$/"],
