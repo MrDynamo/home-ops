@@ -142,7 +142,7 @@
     {
       matchDatasources: ["docker"],
       matchPackageNames: ["dispatcharr/dispatcharr"],
-      versioning: "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<date>\\d+)$",
+      versioning: "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<build>\\d+)$",
     },
   ],
   customManagers: [
