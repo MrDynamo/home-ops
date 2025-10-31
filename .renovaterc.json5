@@ -162,31 +162,23 @@
       ],
       datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
     },
+    /* 2️⃣  New custom manager – parses only ghcr.io/dispatcharr/dispatcharr
+     * with tags of the form “x.y.z‑<date>” (e.g. 0.11.1‑20251028200309) */
     {
-      description: "Handle Docker tags that contain a semver followed by an arbitrary date suffix",
+      description: "Parse ghcr.io/dispatcharr/dispatcharr tags that include a date suffix",
       customType: "regex",
-      matchDatasources: ["docker"],
-      /* We only want this to trigger when the image name ends with a date‑suffix */
-      matchStrings: [
-        // Example string that will be matched in a Dockerfile, values.yaml, etc.:
-        //   image: ghcr.io/example/project:0.11.1-20251028200309@sha256
-        // The regex captures the image name (depName) and the whole tag
-        // (currentVersion).  The trailing @sha256 is required because that’s
-        // how you’re currently tagging the images.
-        "(?<depName>[^:]+):(?<currentVersion>[^@]+)@sha256",
-        // If you ever want to explicitly set the newVersion (for example
-        // when you have a pattern in the repository that generates a new
-        // tag), add another string here that captures it in a similar way.
+      managerFilePatterns: [
+        "/(^|/).+\\.ya?ml(?:\\.j2)?$/",
+        "/(^|/).+\\.sh(?:\\.j2)?$/",
+        "/(^|/).+\\.env(?:\\.j2)?$/",
       ],
-      /* Tell Renovate that the part before the dash is a semver and that
-        everything after the dash is part of the same version string.
-        Using `extractVersion` makes the entire matched string (including
-        the date) the “current version”.  Renovate will then compare
-        it against the newest semver that matches the same pattern. */
-      extractVersion: "(?<currentVersion>[^@]+)",
-      /* Optional: if you want to force Renovate to treat the whole tag
-        (semver+date) as a single version, you can set:
-        `"versioning": "regex"` */
+      /* Regex explanation:
+        - `ghcr\\.io/dispatcharr/dispatcharr:`  – exact repo
+        - `(?<currentVersion>[^@]+)`            – capture everything up to an optional @ (digest)
+        - `@sha256` is optional – keep it if your images include a digest */
+      matchStrings: [
+        "ghcr\\.io/dispatcharr/dispatcharr:(?<currentVersion>[^@]+)(?:@sha256)?"
+      ],
     },
   ],
 }
