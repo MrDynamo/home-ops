@@ -138,8 +138,9 @@
       matchDatasources: ["github-releases"],
       addLabels: ["renovate/github-release"],
     },
-    // Handle Dispatcharr tags
     {
+      // Handle Dispatcharr tags
+      // https://docs.renovatebot.com/modules/versioning/regex/
       matchDatasources: ["docker"],
       matchPackageNames: ["ghcr.io/dispatcharr/dispatcharr"],
       versioning: "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<build>\\d+)$",
