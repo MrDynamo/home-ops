@@ -138,6 +138,12 @@
       matchDatasources: ["github-releases"],
       addLabels: ["renovate/github-release"],
     },
+    // Handle Dispatcharr tags
+    {
+      matchDatasources: ["docker"],
+      matchPackageNames: ["/dispatcharr\\/dispatcharr/"],
+      versioning: "loose",
+    },
   ],
   customManagers: [
     {
@@ -161,24 +167,6 @@
         "datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)\\n.+/(?<currentValue>(v|\\d)[^/]+)",
       ],
       datasourceTemplate: "{{#if datasource}}{{{datasource}}}{{else}}github-releases{{/if}}",
-    },
-    /* 2️⃣  New custom manager – parses only ghcr.io/dispatcharr/dispatcharr
-     * with tags of the form “x.y.z‑<date>” (e.g. 0.11.1‑20251028200309) */
-    {
-      description: "Parse ghcr.io/dispatcharr/dispatcharr tags that include a date suffix",
-      customType: "regex",
-      managerFilePatterns: [
-        "/(^|/).+\\.ya?ml(?:\\.j2)?$/",
-        "/(^|/).+\\.sh(?:\\.j2)?$/",
-        "/(^|/).+\\.env(?:\\.j2)?$/",
-      ],
-      /* Regex explanation:
-        - `ghcr\\.io/dispatcharr/dispatcharr:`  – exact repo
-        - `(?<currentVersion>[^@]+)`            – capture everything up to an optional @ (digest)
-        - `@sha256` is optional – keep it if your images include a digest */
-      matchStrings: [
-        "ghcr\\.io/dispatcharr/dispatcharr:(?<currentVersion>[^@]+)(?:@sha256)?"
-      ],
     },
   ],
 }
