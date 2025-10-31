@@ -18,7 +18,7 @@ spec:
           app:
             image:
               repository: ghcr.io/dispatcharr/dispatcharr
-              tag: 0.11.1-20251028200309@sha256:1305a377bd52d8d57a2d7f5a6b963e08c0bcdbc509a502d63f0bf104631adcc4
+              tag: 0.11.1-20251030215339@sha256:7a0fca955d4b7cdff1f291a8c62e9a2cf52c406a7d2eed1b9579dd32d3f05bc9
             env:
               TZ: America/Chicago
               DISPATCHARR_ENV: aio
