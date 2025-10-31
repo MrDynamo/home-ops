@@ -141,7 +141,7 @@
     // Handle Dispatcharr tags
     {
       matchDatasources: ["docker"],
-      matchPackageNames: ["dispatcharr/dispatcharr"],
+      matchPackageNames: ["ghcr.io/dispatcharr/dispatcharr"],
       versioning: "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<build>\\d+)$",
     },
   ],
