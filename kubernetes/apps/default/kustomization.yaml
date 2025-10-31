@@ -6,6 +6,7 @@ namespace: default
 components:
   - ../../components/common
 resources:
+  - ./atuin/ks.yaml
   - ./bazarr/ks.yaml
   - ./dispatcharr/ks.yaml
   - ./echo/ks.yaml
