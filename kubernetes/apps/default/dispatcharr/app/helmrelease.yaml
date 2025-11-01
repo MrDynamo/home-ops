@@ -18,7 +18,7 @@ spec:
           app:
             image:
               repository: ghcr.io/dispatcharr/dispatcharr
-              tag: 0.11.1-20251031190830@sha256:77fff23529a87c125153235e64a7879411b433a889b14f8c300b48b685af2cf2
+              tag: 0.11.1-20251101190851@sha256:78bb8ef3a70fee54a2ea6620efd37e0481e9fc086f458176c1eeb6619eb1fce0
             env:
               TZ: America/Chicago
               # DISPATCHARR_LOG_LEVEL: DEBUG
