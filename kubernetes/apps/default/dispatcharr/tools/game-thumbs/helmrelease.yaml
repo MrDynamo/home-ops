@@ -47,7 +47,8 @@ spec:
           - name: internal
             namespace: kube-system
             sectionName: https
-    # persistence:
-    #   config:
-    #     enabled: true
-    #     type: emptyDir
+    persistence:
+      cache:
+        type: emptyDir
+        globalMounts:
+          - path: /app/.cache
