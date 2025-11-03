@@ -51,4 +51,4 @@ spec:
       cache:
         type: emptyDir
         globalMounts:
-          - path: /app/.cache
+          - path: "/app/.cache"
