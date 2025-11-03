@@ -4,6 +4,7 @@
 
 | Workload    | Size | Volsync Replication Schedule | Crontab (UTC)   | Crontab (CST -5)   | Crontab (CDT -6)   |
 |-------------|------|------------------------------|-----------------|--------------------|--------------------|
+| atuin       | 1Gi  | Tuesday @ 09:00              | `0 9 * * 2`     | `0 14 * * 2`       | `0 15 * * 2`       |
 | bazarr      | 1Gi  | Wednesday @ 10:00            | `0 10 * * 3`    | `0 15 * * 3`       | `0 16 * * 3`       |
 | emby        | 2Gi  | Monday @ 10:00               | `0 10 * * 1`    | `0 15 * * 1`       | `0 16 * * 1`       |
 | dispatcharr | 1Gi  | Friday @ 10:00               | `0 10 * * 5`    | `0 15 * * 5`       | `0 16 * * 5`       |
