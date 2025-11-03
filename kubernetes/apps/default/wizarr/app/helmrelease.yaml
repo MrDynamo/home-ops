@@ -18,7 +18,7 @@ spec:
           app:
             image:
               repository: ghcr.io/wizarrrr/wizarr
-              tag: v2025.11.0@sha256:ff8e542d52011f0e2e11a20b9f939f124ab3ba17d05e148611b2292894869833
+              tag: v2025.11.0@sha256:1e8b35372cd3d5f8b6426caeee849b115c1eb82920528a0121b43069b15250a7
             env:
               TZ: America/Chicago
               PUID: &id 1000
