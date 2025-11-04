@@ -1,0 +1,146 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: your-spotify
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: your-spotify
+  values:
+    controllers:
+      your-spotify:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          client:
+            image:
+              repository: yooooomi/your_spotify_client
+              tag: 1.14.0@sha256:a39557a0772a825e6d0f00de31ce813771a2f158be718b40ec58eb3aa8bd76c3
+            env:
+              TIMEZONE: America/Chicago
+              API_ENDPOINT: http://127.0.0.1:8080
+            probes:
+              liveness: &probes
+                enabled: false
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthz
+                    port: &client-port 3000
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+          server:
+            image:
+              repository: yooooomi/your_spotify_server
+              tag: 1.14.0@sha256:73a67b06ad9566ee7df6138dce56358cdea499d8c7fa4aedc8f1d1bc8a9baada
+            env:
+              TZ: America/Chicago
+              API_ENDPOINT: http://127.0.0.1:8080
+              CLIENT_ENDPOINT: http://127.0.0.1:3000
+              MONGO_ENDPOINT: mongodb://mongo.default.svc:27017/your_spotify
+            envFrom:
+              - secretRef:
+                  name: your-spotify-secret
+            probes:
+              liveness: &probes
+                enabled: false
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthz
+                    port: &server-port 8080
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+          mongo:
+            image:
+              repository: ghcr.io/mongo/mongo
+              tag: 8.2.1@sha256:86835e8da0f94efd61334decb320fa43e8a60027688cbd856bf29d065b470338
+            env:
+              TZ: America/Chicago
+            probes:
+              liveness: &probes
+                enabled: false
+                custom: true
+                spec:
+                  httpGet:
+                    path: /healthz
+                    port: &mongo-port 27017
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: { drop: ["ALL"] }
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+    service:
+      client:
+        ports:
+          http:
+            port: *client-port
+      server:
+        ports:
+          http:
+            port: *server-port
+      mongo:
+        ports:
+          custom:
+            port: *mongo-port
+    route:
+      client:
+        hostnames:
+          - "your-spotify.${INTERNAL_SECRET_DOMAIN}"
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
+    persistence:
+      database:
+        existingClaim: "{{ .Release.Name }}"
+        advancedMounts:
+          mongo:
+            path:
+              - /data/db
