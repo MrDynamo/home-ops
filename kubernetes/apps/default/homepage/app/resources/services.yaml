@@ -125,6 +125,10 @@
         href: https://plex.${SECRET_DOMAIN}/
         description: Primary Plex server
         icon: plex.svg
+    - Emby:
+        href: https://emby.${INTERNAL_SECRET_DOMAIN}/
+        description: Secondary Emby server
+        icon: emby.svg
     - Tautulli:
         href: https://tautulli.${INTERNAL_SECRET_DOMAIN}/
         description: Plex server streaming statistics
@@ -160,7 +164,7 @@
     - Wizarr:
         href: https://joinplex.${SECRET_DOMAIN}/
         description: Plex user management
-        icon: https://joinplex.${SECRET_DOMAIN}/ # TODO: Submit for Wizaar icon on walkxcode/dashboard-icons
+        icon: wizarr.svg # TODO: Submit for Wizaar icon on walkxcode/dashboard-icons
         namespace: default
         app: wizarr
     - SABnzbd:
@@ -215,33 +219,44 @@
           type: bazarr
           url: http://bazarr.default.svc.cluster.local:80
           key: {{HOMEPAGE_VAR_BAZARR_API_KEY}}
-    - Readarr:
-        href: https://readarr.local.${SECRET_DOMAIN}/
-        description: E-Book management
-        icon: readarr.svg
-        namespace: default
-        app: readarr
-        widget:
-          type: readarr
-          url: http://readarr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_READARR_API_KEY}}
-    - Calibre Web:
-        href: https://calibre-web.${SECRET_DOMAIN}/
-        description: E-Book library web interface
-        icon: calibre-web.svg
-        namespace: default
-        app: calibre-web
-        widget:
-          type: calibreweb
-          url: https://calibre-web.${SECRET_DOMAIN}/
-          username: MrDynamo
-          password: {{HOMEPAGE_VAR_CALIBREWEB_PASSWORD}}
-    - Calibre GUI:
-        href: https://calibre.local.${SECRET_DOMAIN}/
-        description: Calibre server VNC interface
-        icon: calibre.svg
-        namespace: default
-        app: calibre
+    # - Readarr:
+    #     href: https://readarr.local.${SECRET_DOMAIN}/
+    #     description: E-Book management
+    #     icon: readarr.svg
+    #     namespace: default
+    #     app: readarr
+    #     widget:
+    #       type: readarr
+    #       url: http://readarr.default.svc.cluster.local:80
+    #       key: {{HOMEPAGE_VAR_READARR_API_KEY}}
+    # - Calibre Web:
+    #     href: https://calibre-web.${SECRET_DOMAIN}/
+    #     description: E-Book library web interface
+    #     icon: calibre-web.svg
+    #     namespace: default
+    #     app: calibre-web
+    #     widget:
+    #       type: calibreweb
+    #       url: https://calibre-web.${SECRET_DOMAIN}/
+    #       username: MrDynamo
+    #       password: {{HOMEPAGE_VAR_CALIBREWEB_PASSWORD}}
+    # - Calibre GUI:
+    #     href: https://calibre.local.${SECRET_DOMAIN}/
+    #     description: Calibre server VNC interface
+    #     icon: calibre.svg
+    #     namespace: default
+    #     app: calibre
+    - Your Spotify:
+        href: https://spotty.${SECRET_DOMAIN}/
+        description: Spotify stats
+        icon: yourspotify.svg
+        # namespace: default
+        # app: your-spotify
+        # widget:
+        #   type: yourspotify
+        #   url: http://yourspotify.default.svc.cluster.local:80
+        #   key: {{HOMEPAGE_VAR_YOURSPOTIFY_API_KEY}}
+
 
 - Observability:
     - Gatus:
@@ -288,6 +303,7 @@
         icon: victoriametrics.svg
         namespace: observability
         app: victoria-logs
+
 - Database:
     - PGAdmin:
         href: https://pgadmin.local.${SECRET_DOMAIN}/
