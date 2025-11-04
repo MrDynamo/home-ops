@@ -82,7 +82,7 @@ spec:
                 memory: 512Mi
           mongo:
             image:
-              repository: docker.io/mongo/mongo
+              repository: ghcr.io/docker-library/mongo
               tag: 8.2.1@sha256:86835e8da0f94efd61334decb320fa43e8a60027688cbd856bf29d065b470338
             env:
               TZ: America/Chicago
