@@ -23,7 +23,7 @@ spec:
               TIMEZONE: America/Chicago
               API_ENDPOINT: http://127.0.0.1:8080
             probes:
-              liveness: &probes
+              liveness: &client-probes
                 enabled: false
                 custom: true
                 spec:
@@ -34,7 +34,7 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
-              readiness: *probes
+              readiness: *client-probes
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -58,7 +58,7 @@ spec:
               - secretRef:
                   name: your-spotify-secret
             probes:
-              liveness: &probes
+              liveness: &server-probes
                 enabled: false
                 custom: true
                 spec:
@@ -69,7 +69,7 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
-              readiness: *probes
+              readiness: *server-probes
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -87,7 +87,7 @@ spec:
             env:
               TZ: America/Chicago
             probes:
-              liveness: &probes
+              liveness: &mongo-probes
                 enabled: false
                 custom: true
                 spec:
@@ -98,7 +98,7 @@ spec:
                   periodSeconds: 10
                   timeoutSeconds: 1
                   failureThreshold: 3
-              readiness: *probes
+              readiness: *mongo-probes
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
