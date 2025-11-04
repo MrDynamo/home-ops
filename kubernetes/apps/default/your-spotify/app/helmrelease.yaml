@@ -135,6 +135,6 @@ spec:
       database:
         existingClaim: "{{ .Release.Name }}"
         advancedMounts:
-          your-spotify:
-            mongo:
+          mongodb:
+            app:
               - path: /data/db
