@@ -17,7 +17,7 @@ spec:
         containers:
           client:
             image:
-              repository: yooooomi/your_spotify_client
+              repository: ghcr.io/yooooomi/your_spotify_client
               tag: 1.14.0@sha256:a39557a0772a825e6d0f00de31ce813771a2f158be718b40ec58eb3aa8bd76c3
             env:
               TIMEZONE: America/Chicago
@@ -47,7 +47,7 @@ spec:
                 memory: 512Mi
           server:
             image:
-              repository: yooooomi/your_spotify_server
+              repository: ghcr.io/yooooomi/your_spotify_server
               tag: 1.14.0@sha256:73a67b06ad9566ee7df6138dce56358cdea499d8c7fa4aedc8f1d1bc8a9baada
             env:
               TIMEZONE: America/Chicago
@@ -82,7 +82,7 @@ spec:
                 memory: 512Mi
           mongo:
             image:
-              repository: ghcr.io/mongo/mongo
+              repository: docker.io/mongo/mongo
               tag: 8.2.1@sha256:86835e8da0f94efd61334decb320fa43e8a60027688cbd856bf29d065b470338
             env:
               TZ: America/Chicago
