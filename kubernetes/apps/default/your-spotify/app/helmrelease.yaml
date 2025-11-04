@@ -21,13 +21,13 @@ spec:
               tag: 1.14.0@sha256:73a67b06ad9566ee7df6138dce56358cdea499d8c7fa4aedc8f1d1bc8a9baada
             env:
               TIMEZONE: America/Chicago
-              API_ENDPOINT: &api_endpoint "https://spotty.${INTERNAL_SECRET_DOMAIN}/api"
-              CLIENT_ENDPOINT: "https://spotty.${INTERNAL_SECRET_DOMAIN}"
+              API_ENDPOINT: &api_endpoint "https://spotty.${SECRET_DOMAIN}/api"
+              CLIENT_ENDPOINT: "https://spotty.${SECRET_DOMAIN}"
               MONGO_ENDPOINT: "mongodb://{{ .Release.Name }}-mongodb:27017/your_spotify"
               PORT: &port 80
             envFrom:
               - secretRef:
-                  name: your-spotify-secret
+                  name: "{{ .Release.Name }}-secret"
             probes: &probes
               liveness:
                 enabled: true
@@ -105,9 +105,9 @@ spec:
     route:
       app:
         hostnames:
-          - "spotty.${INTERNAL_SECRET_DOMAIN}"
+          - "spotty.${SECRET_DOMAIN}"
         parentRefs:
-          - name: internal
+          - name: external
             namespace: kube-system
             sectionName: https
         rules:
