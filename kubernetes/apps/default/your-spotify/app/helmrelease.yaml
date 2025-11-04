@@ -11,68 +11,33 @@ spec:
     name: your-spotify
   values:
     controllers:
-      your-spotify:
+      server:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
-          client:
-            image:
-              repository: ghcr.io/yooooomi/your_spotify_client
-              tag: 1.14.0@sha256:a39557a0772a825e6d0f00de31ce813771a2f158be718b40ec58eb3aa8bd76c3
-            env:
-              TIMEZONE: America/Chicago
-              API_ENDPOINT: http://your-spotify-server.default.svc:8080
-            probes:
-              liveness: &client-probes
-                enabled: false
-                custom: true
-                spec:
-                  httpGet:
-                    path: /healthz
-                    port: &client-port 3000
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
-              readiness: *client-probes
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
-            resources:
-              requests:
-                cpu: 10m
-                memory: 128Mi
-              limits:
-                memory: 512Mi
-          server:
+          app:
             image:
               repository: ghcr.io/yooooomi/your_spotify_server
               tag: 1.14.0@sha256:73a67b06ad9566ee7df6138dce56358cdea499d8c7fa4aedc8f1d1bc8a9baada
             env:
               TIMEZONE: America/Chicago
-              API_ENDPOINT: http://your-spotify-server.default.svc:8080
-              CLIENT_ENDPOINT: http://your-spotify-client.default.svc:3000
-              MONGO_ENDPOINT: mongodb://your-spotify-mongo.default.svc:27017/your_spotify
+              API_ENDPOINT: &api_endpoint "https://spotty.${INTERNAL_SECRET_DOMAIN}/api"
+              CLIENT_ENDPOINT: "https://spotty.${INTERNAL_SECRET_DOMAIN}"
+              MONGO_ENDPOINT: "mongodb://{{ .Release.Name }}-mongodb:27017/your_spotify"
+              PORT: &port 80
             envFrom:
               - secretRef:
                   name: your-spotify-secret
-            probes:
-              liveness: &server-probes
-                enabled: false
-                custom: true
-                spec:
-                  httpGet:
-                    path: /healthz
-                    port: &server-port 8080
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
-              readiness: *server-probes
-            securityContext:
+            probes: &probes
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+            securityContext: &securityContext
               allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
+              readOnlyRootFilesystem: false
               capabilities: { drop: ["ALL"] }
             resources:
               requests:
@@ -80,29 +45,33 @@ spec:
                 memory: 128Mi
               limits:
                 memory: 512Mi
-          mongo:
+      web:
+        containers:
+          app:
             image:
-              repository: ghcr.io/docker-library/mongo
-              tag: 8.2.1@sha256:86835e8da0f94efd61334decb320fa43e8a60027688cbd856bf29d065b470338
+              repository: ghcr.io/yooooomi/your_spotify_client
+              tag: 1.14.0@sha256:a39557a0772a825e6d0f00de31ce813771a2f158be718b40ec58eb3aa8bd76c3
             env:
-              TZ: America/Chicago
-            probes:
-              liveness: &mongo-probes
-                enabled: false
-                custom: true
-                spec:
-                  httpGet:
-                    path: /healthz
-                    port: &mongo-port 27017
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
-              readiness: *mongo-probes
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              TIMEZONE: America/Chicago
+              API_ENDPOINT: *api_endpoint
+            probes: *probes
+            securityContext: *securityContext
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+              limits:
+                memory: 512Mi
+      mongodb:
+        type: statefulset
+        statefulset:
+          podManagementPolicy: OrderedReady
+        containers:
+          app:
+            image:
+              repository: docker.io/library/mongo
+              tag: 8.2.1@sha256:86835e8da0f94efd61334decb320fa43e8a60027688cbd856bf29d065b470338
+            probes: *probes
             resources:
               requests:
                 cpu: 10m
@@ -117,30 +86,51 @@ spec:
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
     service:
-      client:
-        ports:
-          http:
-            port: *client-port
       server:
+        controller: server
+        primary: true
         ports:
           http:
-            port: *server-port
-      mongo:
+            port: *port
+      web:
+        controller: web
         ports:
-          custom:
-            port: *mongo-port
+          http:
+            port: &webport 3000
+      mongodb:
+        controller: mongodb
+        ports:
+          http:
+            port: 27017
     route:
-      client:
+      app:
         hostnames:
-          - "your-spotify.${INTERNAL_SECRET_DOMAIN}"
+          - "spotty.${INTERNAL_SECRET_DOMAIN}"
         parentRefs:
           - name: internal
             namespace: kube-system
             sectionName: https
         rules:
-          - backendRefs:
-              - identifier: client
-                port: *client-port
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: "/api"
+            filters:
+              - type: URLRewrite
+                urlRewrite:
+                  path:
+                    type: ReplacePrefixMatch
+                    replacePrefixMatch: "/"
+            backendRefs:
+              - identifier: server
+                port: *port
+          - matches:
+              - path:
+                  type: PathPrefix
+                  value: "/"
+            backendRefs:
+              - identifier: web
+                port: *webport
     persistence:
       database:
         existingClaim: "{{ .Release.Name }}"
