@@ -137,6 +137,10 @@ spec:
           - name: internal
             namespace: kube-system
             sectionName: https
+        rules:
+          - backendRefs:
+              - identifier: client
+                port: *client-port
     persistence:
       database:
         existingClaim: "{{ .Release.Name }}"
