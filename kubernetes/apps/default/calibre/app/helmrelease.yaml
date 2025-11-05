@@ -57,12 +57,12 @@ spec:
                   - key: nvidia.com/gpu.count
                     operator: Gt
                     values: ["0"]
-    #   securityContext:
-    #     runAsNonRoot: true
-    #     runAsUser: 1000
-    #     runAsGroup: 1000
-    #     fsGroup: 1000
-    #     fsGroupChangePolicy: OnRootMismatch
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
       tolerations:
         - key: nvidia.com/gpu
           operator: Exists
