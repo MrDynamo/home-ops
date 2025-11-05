@@ -36,12 +36,12 @@ spec:
                   timeoutSeconds: 1
                   failureThreshold: 3
               readiness: *probes
-            securityContext:
-              allowPrivilegeEscalation: true
-              readOnlyRootFilesystem: false
-              capabilities:
-                drop: ["ALL"]
-                add: ["seccomp:unconfined"]
+            # securityContext:
+            #   allowPrivilegeEscalation: true
+            #   readOnlyRootFilesystem: false
+            #   capabilities:
+            #     drop: ["ALL"]
+            #     add: ["seccomp:unconfined"]
             resources:
               requests:
                 cpu: 10m
@@ -59,13 +59,13 @@ spec:
                   - key: nvidia.com/gpu.count
                     operator: Gt
                     values: ["0"]
-      securityContext:
-        runAsNonRoot: false
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
-        fsGroupChangePolicy: OnRootMismatch
-        seccompProfile: { type: RuntimeDefault }
+      # securityContext:
+      #   runAsNonRoot: false
+      #   runAsUser: 1000
+      #   runAsGroup: 1000
+      #   fsGroup: 1000
+      #   fsGroupChangePolicy: OnRootMismatch
+      #   seccompProfile: { type: RuntimeDefault }
       tolerations:
         - key: nvidia.com/gpu
           operator: Exists
