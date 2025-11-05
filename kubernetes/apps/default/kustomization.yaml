@@ -8,6 +8,7 @@ components:
 resources:
   - ./atuin/ks.yaml
   - ./bazarr/ks.yaml
+  - ./calibre/ks.yaml
   - ./dispatcharr/ks.yaml
   # - ./echo/ks.yaml
   # - ./echo-internal/ks.yaml
