@@ -240,12 +240,12 @@
     #       url: https://calibre-web.${SECRET_DOMAIN}/
     #       username: MrDynamo
     #       password: {{HOMEPAGE_VAR_CALIBREWEB_PASSWORD}}
-    # - Calibre GUI:
-    #     href: https://calibre.local.${SECRET_DOMAIN}/
-    #     description: Calibre server VNC interface
-    #     icon: calibre.svg
-    #     namespace: default
-    #     app: calibre
+    - Calibre GUI:
+        href: https://calibre.${INTERNAL_SECRET_DOMAIN}/
+        description: Calibre server webui
+        icon: calibre.svg
+        namespace: default
+        app: calibre
     - Your Spotify:
         href: https://spotty.${SECRET_DOMAIN}/
         description: Spotify stats
