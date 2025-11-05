@@ -29,7 +29,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /healtz
+                    path: /healthz
                     port: &port 8080
                   initialDelaySeconds: 0
                   periodSeconds: 10
@@ -38,7 +38,7 @@ spec:
               readiness: *probes
             securityContext:
               allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
+              readOnlyRootFilesystem: false
               capabilities:
                 drop: ["ALL"]
                 add: ["seccomp:unconfined"]
