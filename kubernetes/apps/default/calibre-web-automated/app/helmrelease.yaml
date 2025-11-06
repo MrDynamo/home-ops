@@ -96,7 +96,7 @@ spec:
       calibre-plugins:
         existingClaim: "calibre"
         globalMounts:
-          - path: /calibre-config/.config/calibre/plugins
+          - path: /config/.config/calibre/plugins
             subPath: .config/calibre/plugins
       media:
         type: nfs
