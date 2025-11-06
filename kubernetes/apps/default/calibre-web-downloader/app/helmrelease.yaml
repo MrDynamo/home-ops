@@ -116,6 +116,3 @@ spec:
         type: nfs
         server: 192.168.20.21
         path: /mnt/tank/media/books/ingest
-        globalMounts:
-          - path: /cwa-book-ingest
-            subPath: ingest
