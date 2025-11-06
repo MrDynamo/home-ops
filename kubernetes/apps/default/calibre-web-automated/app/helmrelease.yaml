@@ -96,14 +96,14 @@ spec:
       calibre-config:
         existingClaim: "calibre"
         globalMounts:
-          - path: /config/.cache/calibre/plugins
-            subPath: /.cache/calibre/plugins
+          - path: /calibre-config/.cache/calibre/plugins
+            subPath: /config/.cache/calibre/plugins
       media:
         type: nfs
         server: 192.168.20.21
         path: /mnt/tank/media/books
         globalMounts:
           - path: /cwa-book-ingest
-            subPath: /mnt/tank/media/books/ingest
+            subPath: ingest
           - path: /calibre-library
-            subPath: "/mnt/tank/media/books/Calibre Library"
+            subPath: "Calibre Library"
