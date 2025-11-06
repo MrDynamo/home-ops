@@ -93,11 +93,11 @@ spec:
     persistence:
       config:
         existingClaim: "{{ .Release.Name }}"
-      calibre-config:
+      calibre-plugins:
         existingClaim: "calibre"
         globalMounts:
           - path: /calibre-config/.cache/calibre/plugins
-            subPath: /config/.cache/calibre/plugins
+            subPath: .cache/calibre/plugins
       media:
         type: nfs
         server: 192.168.20.21
