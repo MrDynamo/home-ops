@@ -80,7 +80,7 @@ spec:
                     matchExpressions:
                       - key: app.kubernetes.io/name
                         operator: In
-                        values: ["calibre"]
+                        values: ["calibre-web-automated"]
                   topologyKey: kubernetes.io/hostname
     defaultPodOptions:
       securityContext:
