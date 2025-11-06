@@ -26,7 +26,7 @@ spec:
               NETWORK_SHARE_MODE: true
             probes:
               liveness: &probes
-                enabled: true
+                enabled: false
                 custom: true
                 spec:
                   httpGet:
