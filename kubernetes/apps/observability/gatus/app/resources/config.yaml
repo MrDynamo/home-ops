@@ -32,6 +32,8 @@ storage:
   type: sqlite
   caching: true
   path: ${GATUS_CONFIG_PATH}/gatus.db
+  maximum-number-of-events: 500
+  maximum-number-of-results: 1000
 
 ui:
   title: Status | Gatus
