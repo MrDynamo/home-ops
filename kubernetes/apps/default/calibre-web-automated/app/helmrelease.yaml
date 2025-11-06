@@ -60,7 +60,6 @@ spec:
               limits:
                 memory: 256Mi
         pod:
-          restartPolicy: Never
           affinity:
             podAffinity:
               requiredDuringSchedulingIgnoredDuringExecution:
@@ -105,6 +104,6 @@ spec:
         path: /mnt/tank/media/books
         globalMounts:
           - path: /cwa-book-ingest
-            subPath: ingest
+            subPath: /mnt/tank/media/books/ingest
           - path: /calibre-library
-            subPath: "Calibre Library"
+            subPath: "/mnt/tank/media/books/Calibre Library"
