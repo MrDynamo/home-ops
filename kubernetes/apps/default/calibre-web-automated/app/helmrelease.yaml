@@ -85,7 +85,7 @@ spec:
     route:
       app:
         hostnames:
-          - "books.${SECRET_DOMAIN}"
+          - "ebooks.${SECRET_DOMAIN}"
         parentRefs:
           - name: external
             namespace: kube-system
