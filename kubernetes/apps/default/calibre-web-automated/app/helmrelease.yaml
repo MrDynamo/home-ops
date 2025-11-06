@@ -38,7 +38,7 @@ spec:
                   failureThreshold: 3
               readiness: *probes
               startup:
-                enabled: true
+                enabled: false
                 spec:
                   failureThreshold: 30
                   periodSeconds: 10
