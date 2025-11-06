@@ -1,0 +1,121 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s-labs/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: calibre-web-downloader
+spec:
+  interval: 1h
+  chartRef:
+    kind: OCIRepository
+    name: calibre-web-downloader
+  values:
+    controllers:
+      calibre-web-downloader:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          app:
+            image:
+              repository: ghcr.io/calibrain/calibre-web-automated-book-downloader
+              tag: v0.2.4@sha256:b1296c5edc89eee8742d86392ce40707233671044a454e002821e5c76cd58deb
+            env:
+              TZ: America/Chicago
+              PUID: 1000
+              PGID: 1000
+              CWA_DB_PATH: /auth/app.db
+              USE_CF_BYPASS: "true"
+              CLOUDFLARE_PROXY_URL: http://localhost:8000
+              SUPPORTED_FORMATS: epub
+              # AA_DONATOR_KEY: ""
+            probes:
+              liveness: &probes
+                enabled: false
+                custom: true
+                spec:
+                  httpGet:
+                    path: /
+                    port: &port 8084
+                  initialDelaySeconds: 0
+                  periodSeconds: 10
+                  timeoutSeconds: 1
+                  failureThreshold: 3
+              readiness: *probes
+              startup:
+                enabled: false
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 10
+            securityContext:
+              allowPrivilegeEscalation: true
+              readOnlyRootFilesystem: false
+              capabilities:
+                drop: ["ALL"]
+                add:
+                  # S6
+                  - CHOWN
+                  - SETUID
+                  - SETGID
+                  - FOWNER
+                  - DAC_OVERRIDE
+            resources:
+              requests:
+                cpu: 10m
+              limits:
+                memory: 512Mi
+          bypass:
+            image:
+              repository: ghcr.io/sarperavci/cloudflarebypassforscraping
+              tag: latest@sha256:9ac4cd4d6d5dfc270a92502b92761d9039297abfb123f4a2a3abca5209d9eec5
+              pullPolicy: IfNotPresent
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+        pod:
+          affinity:
+            podAffinity:
+              requiredDuringSchedulingIgnoredDuringExecution:
+                - labelSelector:
+                    matchExpressions:
+                      - key: app.kubernetes.io/name
+                        operator: In
+                        values: ["calibre"]
+                  topologyKey: kubernetes.io/hostname
+    defaultPodOptions:
+      securityContext:
+        runAsNonRoot: false
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile: { type: RuntimeDefault }
+    service:
+      app:
+        ports:
+          http:
+            port: *port
+    route:
+      app:
+        hostnames:
+          - "calibre-downloader.${INTERNAL_SECRET_DOMAIN}"
+        parentRefs:
+          - name: internal
+            namespace: kube-system
+            sectionName: https
+    persistence:
+      config:
+        existingClaim: "{{ .Release.Name }}"
+      calibre-web-db:
+        existingClaim: "calibre-web-automated"
+        globalMounts:
+          - path: /auth/app.db
+            subPath: app.db
+            readOnly: true
+      cwa-book-ingest:
+        type: nfs
+        server: 192.168.20.21
+        path: /mnt/tank/media/books/ingest
+        globalMounts:
+          - path: /cwa-book-ingest
+            subPath: ingest
