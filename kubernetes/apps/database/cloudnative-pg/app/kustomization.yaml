@@ -5,7 +5,7 @@ kind: Kustomization
 resources:
   # - ./externalsecret.yaml
   - ./helmrelease.yaml
-  # - ./ocirepository.yaml
+  - ./helmrepository.yaml
   # - ./prometheusrule.yaml
 generatorOptions:
   disableNameSuffixHash: true
