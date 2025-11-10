@@ -93,12 +93,5 @@ spec:
             subPath: media
           - path: "/usr/src/paperless/consume-new"
             subPath: consume
-          # - path: "/usr/src/paperless/export"
-          #   subPath: export
-      import:
-        type: nfs
-        server: 192.168.20.21
-        path: /mnt/tank/services/paperless
-        globalMounts:
           - path: "/usr/src/paperless/export"
             subPath: export
