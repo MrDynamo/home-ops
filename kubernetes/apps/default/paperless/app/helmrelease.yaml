@@ -50,10 +50,11 @@ spec:
                 spec:
                   failureThreshold: 30
                   periodSeconds: 5
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: {drop: ["ALL"]}
+            ## I HATE S6 USERS
+            # securityContext:
+            #   allowPrivilegeEscalation: false
+            #   readOnlyRootFilesystem: true
+            #   capabilities: {drop: ["ALL"]}
             resources:
               requests:
                 cpu: 100m
