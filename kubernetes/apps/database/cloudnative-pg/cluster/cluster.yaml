@@ -1,91 +1,73 @@
 ---
-# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/postgresql.cnpg.io/cluster_v1.json
+# yaml-language-server: $schema=https://k8s-schemas.m00nlit.dev/postgresql.cnpg.io/cluster_v1.json
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: postgres
+  name: &name postgres
+  annotations:
+    cnpg.io/skipEmptyWalArchiveCheck: enabled
 spec:
-  # using only 1 replica: very difficult to drain the node where postgres is running
-  # using more than 1 replica: write amplification issues when leveraging replicated storage (e.g. ceph)
-  instances: 2
-  imageName: ghcr.io/cloudnative-pg/postgresql:17.4
-  primaryUpdateStrategy: unsupervised
+  instances: 1
+
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.0-standard-trixie@sha256:ffd3687c9c71b74d8a19f24c4c56366f42ee96f7c516ad2bf31fbeec5b0f9747
+
+  certificates:
+    serverTLSSecret: postgres-server-cert
+    serverCASecret: postgres-server-cert
+    clientCASecret: postgres-client-cert
+    replicationTLSSecret: postgres-client-cert
+
   storage:
-    size: 4Gi
-    storageClass: longhorn-fast
-  enableSuperuserAccess: true
-  superuserSecret:
-    name: cloudnative-pg-secret
-  postgresql:
-    parameters:
-      max_connections: "300"
-      shared_buffers: 128MB
-      pg_stat_statements.max: "10000"
-      pg_stat_statements.track: all
+    size: 2Gi
+
+  bootstrap:
+    recovery:
+      source: &src source
+
+  # plugins:
+  #   - name: &plugin barman-cloud.cloudnative-pg.io
+  #     isWALArchiver: true
+  #     parameters:
+  #       barmanObjectName: &store garage-store
+
+  # externalClusters:
+  #   - name: *src
+  #     plugin:
+  #       name: *plugin
+  #       parameters:
+  #         barmanObjectName: *store
+  #         serverName: postgres
+
   monitoring:
     enablePodMonitor: true
-  # https://github.com/cloudnative-pg/cloudnative-pg/issues/2570
-  enablePDB: false
-  resources:
-    requests:
-      memory: "128Mi"
-      cpu: "50m"
-    limits:
-      memory: "1Gi"
-  ## Define managed roles until CRD is available for this
-  ## Then add to components
+
+  postgresql:
+    pg_hba:
+      - hostnossl all all 10.42.0.0/16      scram-sha-256
+      - hostnossl all all 2001:cafe:42::/56 scram-sha-256
+      - hostssl   all all all               cert clientcert=verify-full
+    shared_preload_libraries:
+      - "vchord.so"
+
+    extensions:
+      - name: postgis
+        ld_library_path:
+          - system
+        image:
+          reference: ghcr.io/cloudnative-pg/postgis-extension-testing:3.6.0-18-trixie@sha256:ec21540f5799561a9b05ca188fd28ce32852a826f48d80329260940855f5f558
+      - name: vchord
+        image:
+          reference: ghcr.io/tensorchord/vchord-scratch:pg18-v0.5.3@sha256:c310ede47f7f82bd257c3e53806d60680d5899c318ca946fb313efad9a90a78e
+        dynamic_library_path:
+          - /usr/lib/postgresql/18/lib
+        extension_control_path:
+          - /usr/share/postgresql/18/
+
   managed:
     roles:
+
       - name: paperless
         ensure: present
         login: true
         superuser: false
         disablePassword: true
-
-  # backup:
-  #   retentionPolicy: 30d
-  #   barmanObjectStore:
-  #     wal:
-  #       compression: bzip2
-  #       maxParallel: 8
-  #     destinationPath: s3://postgresql/
-  #     endpointURL: http://nas.home:3900
-  #     serverName: postgres-v17
-  #     s3Credentials:
-  #       region:
-  #         name: cloudnative-pg-secret
-  #         key: REGION
-  #       accessKeyId:
-  #         name: cloudnative-pg-secret
-  #         key: aws-access-key-id
-  #       secretAccessKey:
-  #         name: cloudnative-pg-secret
-  #         key: aws-secret-access-key
-
-  # bootstrap:
-  # use this to recover a net-new cluster from a backup
-  #   recovery:
-  #     source: postgres-backup # TODO: fix this to the real name of the backup when on the new cluster
-
-    # # use this to 'migrate' from an existing cnpg cluster (e.g. "postgres-v15") to the new cluster
-    # initdb:
-    #   import:
-    #     type: monolith
-    #     databases:
-    #       - "*"
-    #     roles:
-    #       - "*"
-    #     source:
-    #       externalCluster: postgres-v15
-
-  # externalClusters:
-  #   # this represents an existing cnpg cluster to migrate from (e.g. upgrading from postgres v14 to postgres v15)
-  #   - name: postgres-v15
-  #     connectionParameters:
-  #       host: postgres-v15-rw.default.svc.cluster.local
-  #       user: postgres
-  #       dbname: postgres
-  #       sslmode: require
-  #     password:
-  #       name: cloudnative-pg-secret
-  #       key: password
