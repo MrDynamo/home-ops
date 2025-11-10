@@ -3,15 +3,15 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: paperless-ngx
+  name: &app paperless
 spec:
   interval: 1h
   chartRef:
     kind: OCIRepository
-    name: paperless-ngx
+    name: *app
   values:
     controllers:
-      prowlarr:
+      *app :
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
@@ -22,13 +22,16 @@ spec:
             env:
               PAPERLESS_TIME_ZONE: America/Chicago
               PAPERLESS_APP_TITLE: "Document Archive"
-              PAPERLESS_URL: "https://paperless.${INTERNAL_SECRET_DOMAIN}"
-              PAPERLESS_REDIS:
+              PAPERLESS_URL: "https://{{ .Release.Name }}.${INTERNAL_SECRET_DOMAIN}"
+              PAPERLESS_REDIS: "redis://dragonfly.database.svc:6379/13"
               PAPERLESS_DBENGINE: postgresql
-              PAPERLESS_DBHOST: postgres-postgresql-ha-pgpool.database.svc.cluster.local
+              PAPERLESS_DBHOST: postgres-rw.database.svc
               PAPERLESS_DBNAME: paperless
               PAPERLESS_DBUSER: paperless
-              PAPERLESS_DBSSLMODE: disable
+              PAPERLESS_DBSSLMODE: verify-full
+              PAPERLESS_DBSSLROOTCERT: /var/run/secrets/postgresql/ca.crt
+              PAPERLESS_DBSSLCERT: /var/run/secrets/postgresql/tls.crt
+              PAPERLESS_DBSSLKEY: /var/run/secrets/postgresql/tls.key
               PAPERLESS_DB_POOLSIZE: 1
               PAPERLESS_CONSUMER_POLLING: 60
             envFrom:
@@ -38,16 +41,14 @@ spec:
             probes:
               liveness: &probes
                 enabled: true
-                custom: true
-                spec:
-                  httpGet:
-                    path: /api/status
-                    port: &port 8000
-                  initialDelaySeconds: 0
-                  periodSeconds: 10
-                  timeoutSeconds: 1
-                  failureThreshold: 3
+                type: HTTP
               readiness: *probes
+              startup:
+                enabled: true
+                type: HTTP
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -73,7 +74,7 @@ spec:
     route:
       app:
         hostnames:
-          - "paperless.${INTERNAL_SECRET_DOMAIN}"
+          - "{{ .Release.Name }}.${INTERNAL_SECRET_DOMAIN}"
         parentRefs:
           - name: internal
             namespace: kube-system

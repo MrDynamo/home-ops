@@ -32,9 +32,11 @@ spec:
       cpu: "50m"
     limits:
       memory: "1Gi"
+  ## Define managed roles until CRD is available for this
+  ## Then add to components
   managed:
     roles:
-      - name: paperless-ngx
+      - name: paperless
         ensure: present
         login: true
         superuser: false
