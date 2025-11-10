@@ -5,7 +5,7 @@ metadata:
   name: pooler-rw
 spec:
   cluster:
-    name: private-psql-v17
+    name: postgres
 
   instances: 1
   type: rw

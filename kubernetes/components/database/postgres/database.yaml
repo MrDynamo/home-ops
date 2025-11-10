@@ -8,5 +8,5 @@ spec:
   name: ${APP}
   owner: ${OWNER}
   cluster:
-    name: private-psql-v17
+    name: postgres
   extensions: ${EXTENSIONS:=${emptyArray}}
