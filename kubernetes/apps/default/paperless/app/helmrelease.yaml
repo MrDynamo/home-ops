@@ -41,11 +41,11 @@ spec:
             #       name: "{{ .Release.Name }}-secret"
             probes:
               liveness: &probes
-                enabled: true
+                enabled: false
                 type: HTTP
               readiness: *probes
               startup:
-                enabled: true
+                enabled: false
                 type: HTTP
                 spec:
                   failureThreshold: 30
@@ -62,16 +62,17 @@ spec:
                 memory: 2Gi
     defaultPodOptions:
       securityContext:
-        runAsNonRoot: true
-        runAsUser: 1000
-        runAsGroup: 1000
+        # runAsNonRoot: true
+        # runAsUser: 1000
+        # runAsGroup: 1000
         fsGroup: 1000
         fsGroupChangePolicy: OnRootMismatch
     service:
       app:
         ports:
           http:
-            port: "8000"
+            port: 80
+            targetPort: 8000
     route:
       app:
         hostnames:
