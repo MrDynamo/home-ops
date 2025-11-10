@@ -25,7 +25,7 @@ spec:
       APP: *app
       NAMESPACE: *namespace
       VOLSYNC_CAPACITY: 1Gi
-      # VOLSYNC_SCHEDULE: 0 12 * * 4  # Cron in UTC (CST: -6, CST: -5)
+      VOLSYNC_SCHEDULE: 0 11 * * 5  # Cron in UTC (CST: -6, CST: -5)
     substituteFrom:
       - name: cluster-secrets
         kind: Secret
