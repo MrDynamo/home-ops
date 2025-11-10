@@ -16,6 +16,8 @@ spec:
   dependsOn:
     - name: longhorn
       namespace: storage
+    - name: cloudnative-pg
+      namespace: database
   interval: 1h
   path: ./kubernetes/apps/default/paperless/app
   postBuild:

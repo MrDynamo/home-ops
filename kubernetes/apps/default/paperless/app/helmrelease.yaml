@@ -12,7 +12,7 @@ spec:
     name: *app
   values:
     controllers:
-      *app :
+      paperless:
         annotations:
           reloader.stakater.com/auto: "true"
         containers:
