@@ -23,6 +23,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
+      NAMESPACE: *namespace
       VOLSYNC_CAPACITY: 1Gi
       # VOLSYNC_SCHEDULE: 0 12 * * 4  # Cron in UTC (CST: -6, CST: -5)
     substituteFrom:
@@ -35,5 +36,5 @@ spec:
     name: flux-system
     namespace: flux-system
   targetNamespace: *namespace
-  timeout: 10m
+  timeout: 5m
   wait: false
