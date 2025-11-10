@@ -8,7 +8,6 @@ resources:
   - ./pooler.yaml
   - ./prometheusrule.yaml
   # - ./scheduledbackup.yaml
-  - ./private-v17.yaml
 generatorOptions:
   disableNameSuffixHash: true
   annotations:
