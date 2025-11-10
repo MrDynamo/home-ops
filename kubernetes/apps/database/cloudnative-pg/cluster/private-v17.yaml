@@ -34,7 +34,7 @@ spec:
       memory: "1Gi"
   managed:
     roles:
-      - name: paperless
+      - name: paperless-ngx
         ensure: present
         login: true
         superuser: false
