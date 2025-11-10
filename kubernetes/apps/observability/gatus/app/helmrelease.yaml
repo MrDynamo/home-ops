@@ -36,9 +36,12 @@ spec:
               repository: ghcr.io/twin/gatus
               tag: v5.31.0@sha256:3a432fcc2826b8eb2b38caceb83e7777fda139b8058b1d022c73a82be7342682
             env:
+              TZ: America/Chicago
               GATUS_CONFIG_PATH: /config
               GATUS_WEB_PORT: &port 80
-              TZ: America/Chicago
+              ## Sleep Gatus for 2 minutes on start to see if it resolves keys being
+              ## nuked out of DB when endpoints are not populated when app starts.
+              GATUS_DELAY_START_SEECONDS: 120
             # envFrom:
             #   - secretRef:
             #       name: "{{ .Release.Name }}-secret"
