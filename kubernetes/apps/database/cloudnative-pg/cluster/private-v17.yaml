@@ -19,7 +19,7 @@ spec:
   postgresql:
     parameters:
       max_connections: "300"
-      shared_buffers: 256MB
+      shared_buffers: 128MB
       pg_stat_statements.max: "10000"
       pg_stat_statements.track: all
   monitoring:
@@ -31,7 +31,7 @@ spec:
       memory: "128Mi"
       cpu: "50m"
     limits:
-      memory: "512Gi"
+      memory: "1Gi"
   # backup:
   #   retentionPolicy: 30d
   #   barmanObjectStore:
