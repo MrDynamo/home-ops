@@ -16,6 +16,8 @@ spec:
     #   namespace: *namespace
     - name: longhorn
       namespace: storage
+  components:
+    - ../../../../components/volsync
   interval: 1h
   path: ./kubernetes/apps/database/pgadmin/app
   postBuild:
