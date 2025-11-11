@@ -1,69 +1,74 @@
 - Infrastructure:
-    - vSphere:
-        href: https://vsphere.local.${SECRET_DOMAIN}/
-        description: vCenter Server
-        icon: vmware.svg
-    - ESXi-01:
-        href: https://esxi-01.local.${SECRET_DOMAIN}/
-        description: r730xd ESXi Host
-        icon: vmware-esxi.svg
-    - ESXi-02:
-        href: https://esxi-02.local.${SECRET_DOMAIN}/
-        description: r710 ESXi Host
-        icon: vmware-esxi.svg
-    - Portainer-01:
-        href: https://portainer-01.local.${SECRET_DOMAIN}/
-        description: Primary Portainer instance
-        icon: portainer.svg
-        widget:
-            type: portainer
-            url: {{HOMEPAGE_VAR_PORTAINER01_URL}}
-            env: 2
-            key: {{HOMEPAGE_VAR_PORTAINER01_API_KEY}}
-    - iDRAC-01:
-        href: {{HOMEPAGE_VAR_IDRAC01_URL}}
-        description: r730xd iDRAC
-        icon: idrac.svg
-    - iDRAC-02:
-        href: {{HOMEPAGE_VAR_IDRAC02_URL}}
-        description: r710 iDRAC
-        icon: idrac.svg
-    - TrueNAS:
-        href: https://nas-01.ad.${SECRET_DOMAIN}/
-        description: TrueNAS instance
-        icon: truenas.svg
-        widget:
-            type: truenas
-            url: {{HOMEPAGE_VAR_TRUENAS_URL}}
-            key: {{HOMEPAGE_VAR_TRUENAS_API_KEY}}
-            enablePools: true # optional, defaults to false
-            nasType: core # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
-    - Rancher:
-        href: https://rancher.local.${SECRET_DOMAIN}/
-        description: k3s web cluster management
-        icon: rancher.svg
-    - Longhorn:
-        href: https://longhorn.${INTERNAL_SECRET_DOMAIN}
-        description: Distributed k3s block storage
-        icon: longhorn.svg
-    - Home Assistant:
-        href: https://homeassistant.local.${SECRET_DOMAIN}/
-        description: Home Assistant
-        icon: home-assistant.svg
-    - PowerPanel Business:
-        href: https://ppb-01.local.${SECRET_DOMAIN}/
-        description: UPS management
-        icon: powerpanel.png
-    - Windows KMS Server:
-        href: https://win-kms.local.${SECRET_DOMAIN}/
-        description: Internal Windows KMS Server
-        icon: microsoft-windows.svg
-    - Syncthing:
-        href: https://syncthing.${INTERNAL_SECRET_DOMAIN}/
-        description: Syncthing Server on k8s
-        icon: syncthing.svg
+
+    - Hardware:
+        - iDRAC-01:
+            href: {{HOMEPAGE_VAR_IDRAC01_URL}}
+            description: r730xd iDRAC
+            icon: idrac.svg
+        - iDRAC-02:
+            href: {{HOMEPAGE_VAR_IDRAC02_URL}}
+            description: r710 iDRAC
+            icon: idrac.svg
+        - PowerPanel UPS:
+            href: https://ppb-01.local.${SECRET_DOMAIN}/
+            description: UPS management
+            icon: powerpanel.png
+
+    - Virtualization:
+        - vSphere:
+            href: https://vsphere.local.${SECRET_DOMAIN}/
+            description: vCenter Server
+            icon: vmware.svg
+        - ESXi-01:
+            href: https://esxi-01.local.${SECRET_DOMAIN}/
+            description: r730xd ESXi Host
+            icon: vmware-esxi.svg
+        - ESXi-02:
+            href: https://esxi-02.local.${SECRET_DOMAIN}/
+            description: r710 ESXi Host
+            icon: vmware-esxi.svg
+        - Portainer-01:
+            href: https://portainer-01.local.${SECRET_DOMAIN}/
+            description: Primary Portainer instance
+            icon: portainer.svg
+            widget:
+                type: portainer
+                url: {{HOMEPAGE_VAR_PORTAINER01_URL}}
+                env: 2
+                key: {{HOMEPAGE_VAR_PORTAINER01_API_KEY}}
+
+    - Storage:
+        - TrueNAS:
+            href: https://nas-01.ad.${SECRET_DOMAIN}/
+            description: TrueNAS instance
+            icon: truenas.svg
+            widget:
+                type: truenas
+                url: {{HOMEPAGE_VAR_TRUENAS_URL}}
+                key: {{HOMEPAGE_VAR_TRUENAS_API_KEY}}
+                enablePools: true # optional, defaults to false
+                nasType: core # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
+        - Longhorn:
+            href: https://longhorn.${INTERNAL_SECRET_DOMAIN}
+            description: Distributed k3s block storage
+            icon: longhorn.svg
+
+    - Services:
+        - Home Assistant:
+            href: https://homeassistant.local.${SECRET_DOMAIN}/
+            description: Home Assistant
+            icon: home-assistant.svg
+        - Windows KMS Server:
+            href: https://win-kms.local.${SECRET_DOMAIN}/
+            description: Internal Windows KMS Server
+            icon: microsoft-windows.svg
+        - Syncthing:
+            href: https://syncthing.${INTERNAL_SECRET_DOMAIN}/
+            description: Syncthing Server on k8s
+            icon: syncthing.svg
 
 - Network:
+
     - Unifi Cloud Gateway:
         href: https://unifi.local.${SECRET_DOMAIN}/
         description: Unifi Controller instance
@@ -95,18 +100,10 @@
             url: {{HOMEPAGE_VAR_PIHOLE02_URL}}
             # version: 6 # required if running v6 or higher, defaults to 5
             key: {{HOMEPAGE_VAR_PIHOLE02_API_KEY}}
-    - Traefik:
-        href: https://traefik.local.${SECRET_DOMAIN}/
-        description: Treafik k3s instance
-        icon: traefik-proxy.svg
     - Nginx Proxy Manager:
         href: https://proxy.local.${SECRET_DOMAIN}/
         description: Reverse proxy instance
         icon: nginx-proxy-manager.svg
-    - Wireguard:
-        href: https://wireguard.local.${SECRET_DOMAIN}/
-        description: Wireguard interface
-        icon: wireguard.svg
     - Cloudflare:
         href: {{HOMEPAGE_VAR_CLOUDFLARE_URL}}
         description: Cloudflare Console
@@ -191,7 +188,7 @@
         - Your Spotify:
             href: https://spotty.${SECRET_DOMAIN}/
             description: Spotify stats
-            icon: yourspotify.svg
+            icon: spotify.svg
             # namespace: default
             # app: your-spotify
             # widget:
