@@ -31,7 +31,7 @@ spec:
                 spec:
                   httpGet:
                     path: /health
-                    port: *port
+                    port: &port 80
                   initialDelaySeconds: 15
                   periodSeconds: 10
                   timeoutSeconds: 5
@@ -58,7 +58,7 @@ spec:
       app:
         ports:
           http:
-            port: &port 80
+            port: *port
     route:
       app:
         hostnames:
