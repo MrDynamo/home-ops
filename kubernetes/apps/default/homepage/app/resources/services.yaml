@@ -16,10 +16,10 @@
         description: Primary Portainer instance
         icon: portainer.svg
         widget:
-          type: portainer
-          url: {{HOMEPAGE_VAR_PORTAINER01_URL}}
-          env: 2
-          key: {{HOMEPAGE_VAR_PORTAINER01_API_KEY}}
+            type: portainer
+            url: {{HOMEPAGE_VAR_PORTAINER01_URL}}
+            env: 2
+            key: {{HOMEPAGE_VAR_PORTAINER01_API_KEY}}
     - iDRAC-01:
         href: {{HOMEPAGE_VAR_IDRAC01_URL}}
         description: r730xd iDRAC
@@ -33,11 +33,11 @@
         description: TrueNAS instance
         icon: truenas.svg
         widget:
-          type: truenas
-          url: {{HOMEPAGE_VAR_TRUENAS_URL}}
-          key: {{HOMEPAGE_VAR_TRUENAS_API_KEY}}
-          enablePools: true # optional, defaults to false
-          nasType: core # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
+            type: truenas
+            url: {{HOMEPAGE_VAR_TRUENAS_URL}}
+            key: {{HOMEPAGE_VAR_TRUENAS_API_KEY}}
+            enablePools: true # optional, defaults to false
+            nasType: core # defaults to scale, must be set to 'core' if using enablePools with TrueNAS Core
     - Rancher:
         href: https://rancher.local.${SECRET_DOMAIN}/
         description: k3s web cluster management
@@ -69,10 +69,10 @@
         description: Unifi Controller instance
         icon: unifi.svg
         widget:
-          type: unifi
-          url: {{HOMEPAGE_VAR_UNIFI_CONSOLE_URL}}
-          username: {{HOMEPAGE_VAR_UNIFI_CONSOLE_USERNAME}}
-          password: {{HOMEPAGE_VAR_UNIFI_CONSOLE_PASSWORD}}
+            type: unifi
+            url: {{HOMEPAGE_VAR_UNIFI_CONSOLE_URL}}
+            username: {{HOMEPAGE_VAR_UNIFI_CONSOLE_USERNAME}}
+            password: {{HOMEPAGE_VAR_UNIFI_CONSOLE_PASSWORD}}
     - Router (Remote-01):
         href: https://router.remote-01.${SECRET_DOMAIN}/
         description: EdgeRouter X (Remote)
@@ -82,19 +82,19 @@
         description: Primary PiHole (VM)
         icon: pi-hole.svg
         widget:
-          type: pihole
-          url: {{HOMEPAGE_VAR_PIHOLE01_URL}}
-          # version: 6 # required if running v6 or higher, defaults to 5
-          key: {{HOMEPAGE_VAR_PIHOLE01_API_KEY}}
+            type: pihole
+            url: {{HOMEPAGE_VAR_PIHOLE01_URL}}
+            # version: 6 # required if running v6 or higher, defaults to 5
+            key: {{HOMEPAGE_VAR_PIHOLE01_API_KEY}}
     - PiHole-02:
         href: https://pi-02.local.${SECRET_DOMAIN}/admin
         description: Secondary PiHole (PI)
         icon: pi-hole.svg
         widget:
-          type: pihole
-          url: {{HOMEPAGE_VAR_PIHOLE02_URL}}
-          # version: 6 # required if running v6 or higher, defaults to 5
-          key: {{HOMEPAGE_VAR_PIHOLE02_API_KEY}}
+            type: pihole
+            url: {{HOMEPAGE_VAR_PIHOLE02_URL}}
+            # version: 6 # required if running v6 or higher, defaults to 5
+            key: {{HOMEPAGE_VAR_PIHOLE02_API_KEY}}
     - Traefik:
         href: https://traefik.local.${SECRET_DOMAIN}/
         description: Treafik k3s instance
@@ -120,139 +120,144 @@
         description: Backblaze B2 cloud storage
         icon: backblaze.svg
 
-- Media-Management:
-    - Plex:
-        href: https://plex.${SECRET_DOMAIN}/
-        description: Primary Plex server
-        icon: plex.svg
-    - Emby:
-        href: https://emby.${INTERNAL_SECRET_DOMAIN}/
-        description: Secondary Emby server
-        icon: emby.svg
-    - Tautulli:
-        href: https://tautulli.${INTERNAL_SECRET_DOMAIN}/
-        description: Plex server streaming statistics
-        icon: tautulli.svg
-        namespace: default
-        app: tautulli
-        widget:
-          type: tautulli
-          url: http://tautulli.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_TAUTULLI_API_KEY}}
-    - Seerr:
-        href: https://plexrequests.${SECRET_DOMAIN}
-        description: Media request management
-        icon: jellyseerr.svg
-        namespace: default
-        app: seerr
-        widget:
-          type: jellyseerr
-          url: http://seerr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_SEERR_API_KEY}}
-    - Dispatcharr:
-        href: https://dispatcharr.${INTERNAL_SECRET_DOMAIN}/
-        description: Live TV management
-        icon: dispatcharr.svg
-        namespace: default
-        app: dispatcharr
-    - Maintainerr:
-        href: https://maintainerr.${INTERNAL_SECRET_DOMAIN}/
-        description: Media deletion management
-        icon: maintainerr.svg
-        namespace: default
-        app: maintainerr
-    - Wizarr:
-        href: https://joinplex.${SECRET_DOMAIN}/
-        description: Plex user management
-        icon: wizarr.svg # TODO: Submit for Wizaar icon on walkxcode/dashboard-icons
-        namespace: default
-        app: wizarr
-    - SABnzbd:
-        href: https://sabnzbd.${INTERNAL_SECRET_DOMAIN}/
-        description: NZB download client
-        icon: sabnzbd.svg
-        namespace: default
-        app: sabnzbd
-        widget:
-          type: sabnzbd
-          url: http://sabnzbd.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_SABNZBD_API_KEY}}
-    - Prowlarr:
-        href: https://prowlarr.${INTERNAL_SECRET_DOMAIN}/
-        description: Indexer management
-        icon: prowlarr.svg
-        namespace: default
-        app: prowlarr
-        widget:
-          type: prowlarr
-          url: http://prowlarr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_PROWLARR_API_KEY}}
-    - Sonarr:
-        href: https://sonarr.${INTERNAL_SECRET_DOMAIN}/
-        description: TV Show management
-        icon: sonarr.svg
-        namespace: default
-        app: sonarr
-        widget:
-          type: sonarr
-          url: http://sonarr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
-          enableQueue: true
-    - Radarr:
-        href: https://radarr.${INTERNAL_SECRET_DOMAIN}/
-        description: Movie management
-        icon: radarr.svg
-        namespace: default
-        app: radarr
-        widget:
-          type: radarr
-          url: http://radarr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
-          enableQueue: true
-    - Bazarr:
-        href: https://bazarr.${INTERNAL_SECRET_DOMAIN}/
-        description: Subtitle management
-        icon: bazarr.svg
-        namespace: default
-        app: bazarr
-        widget:
-          type: bazarr
-          url: http://bazarr.default.svc.cluster.local:80
-          key: {{HOMEPAGE_VAR_BAZARR_API_KEY}}
-    - Calibre GUI:
-        href: https://calibre.${INTERNAL_SECRET_DOMAIN}/
-        description: Calibre server webui
-        icon: calibre.svg
-        namespace: default
-        app: calibre
-    - Calibre Web:
-        href: https://ebooks.${SECRET_DOMAIN}/
-        description: E-Book library web interface
-        icon: calibre-web.svg
-        namespace: default
-        app: calibre-web-automated
-        # widget:
-        #   type: calibreweb
-        #   url: https://calibre-web.${SECRET_DOMAIN}/
-        #   username: MrDynamo
-        #   password: {{HOMEPAGE_VAR_CALIBREWEB_PASSWORD}}
-    - Calibre Downloader:
-        href: https://calibre-downloader.${INTERNAL_SECRET_DOMAIN}/
-        description: E-Book downloader web interface
-        icon: calibre-web.svg
-        namespace: default
-        app: calibre-web-automated
-    - Your Spotify:
-        href: https://spotty.${SECRET_DOMAIN}/
-        description: Spotify stats
-        icon: yourspotify.svg
-        # namespace: default
-        # app: your-spotify
-        # widget:
-        #   type: yourspotify
-        #   url: http://yourspotify.default.svc.cluster.local:80
-        #   key: {{HOMEPAGE_VAR_YOURSPOTIFY_API_KEY}}
+- Media:
 
+    - Servers:
+        - Plex:
+            href: https://plex.${SECRET_DOMAIN}/
+            description: Primary Plex server
+            icon: plex.svg
+        - Emby:
+            href: https://emby.${INTERNAL_SECRET_DOMAIN}/
+            description: Secondary Emby server
+            icon: emby.svg
+        - Dispatcharr:
+            href: https://dispatcharr.${INTERNAL_SECRET_DOMAIN}/
+            description: Live TV management
+            icon: dispatcharr.svg
+            namespace: default
+            app: dispatcharr
+        - Calibre Web:
+            href: https://ebooks.${SECRET_DOMAIN}/
+            description: E-Book library web interface
+            icon: calibre-web.svg
+            namespace: default
+            app: calibre-web-automated
+            # widget:
+            #   type: calibreweb
+            #   url: https://calibre-web.${SECRET_DOMAIN}/
+            #   username: MrDynamo
+            #   password: {{HOMEPAGE_VAR_CALIBREWEB_PASSWORD}}
+        - Calibre GUI:
+            href: https://calibre.${INTERNAL_SECRET_DOMAIN}/
+            description: Calibre server webui
+            icon: calibre.svg
+            namespace: default
+            app: calibre
+
+    - Management:
+        - Tautulli:
+            href: https://tautulli.${INTERNAL_SECRET_DOMAIN}/
+            description: Plex server streaming statistics
+            icon: tautulli.svg
+            namespace: default
+            app: tautulli
+            widget:
+                type: tautulli
+                url: http://tautulli.default.svc.cluster.local:80
+                key: {{HOMEPAGE_VAR_TAUTULLI_API_KEY}}
+        - Seerr:
+            href: https://plexrequests.${SECRET_DOMAIN}
+            description: Media request management
+            icon: jellyseerr.svg
+            namespace: default
+            app: seerr
+            widget:
+                type: jellyseerr
+                url: http://seerr.default.svc.cluster.local:80
+                key: {{HOMEPAGE_VAR_SEERR_API_KEY}}
+        - Wizarr:
+            href: https://joinplex.${SECRET_DOMAIN}/
+            description: Plex user management
+            icon: wizarr.svg # TODO: Submit for Wizaar icon on walkxcode/dashboard-icons
+            namespace: default
+            app: wizarr
+        - Maintainerr:
+            href: https://maintainerr.${INTERNAL_SECRET_DOMAIN}/
+            description: Media deletion management
+            icon: maintainerr.svg
+            namespace: default
+            app: maintainerr
+        - Your Spotify:
+            href: https://spotty.${SECRET_DOMAIN}/
+            description: Spotify stats
+            icon: yourspotify.svg
+            # namespace: default
+            # app: your-spotify
+            # widget:
+            #   type: yourspotify
+            #   url: http://yourspotify.default.svc.cluster.local:80
+            #   key: {{HOMEPAGE_VAR_YOURSPOTIFY_API_KEY}}
+
+    - Downloads:
+        - SABnzbd:
+            href: https://sabnzbd.${INTERNAL_SECRET_DOMAIN}/
+            description: NZB download client
+            icon: sabnzbd.svg
+            namespace: default
+            app: sabnzbd
+            widget:
+                type: sabnzbd
+                url: http://sabnzbd.default.svc.cluster.local:80
+                key: {{HOMEPAGE_VAR_SABNZBD_API_KEY}}
+        - Prowlarr:
+            href: https://prowlarr.${INTERNAL_SECRET_DOMAIN}/
+            description: Indexer management
+            icon: prowlarr.svg
+            namespace: default
+            app: prowlarr
+            widget:
+                type: prowlarr
+                url: http://prowlarr.default.svc.cluster.local:80
+                key: {{HOMEPAGE_VAR_PROWLARR_API_KEY}}
+        - Sonarr:
+            href: https://sonarr.${INTERNAL_SECRET_DOMAIN}/
+            description: TV Show management
+            icon: sonarr.svg
+            namespace: default
+            app: sonarr
+            widget:
+                type: sonarr
+                url: http://sonarr.default.svc.cluster.local:80
+                key: {{HOMEPAGE_VAR_SONARR_API_KEY}}
+                enableQueue: true
+        - Radarr:
+            href: https://radarr.${INTERNAL_SECRET_DOMAIN}/
+            description: Movie management
+            icon: radarr.svg
+            namespace: default
+            app: radarr
+            widget:
+                type: radarr
+                url: http://radarr.default.svc.cluster.local:80
+                key: {{HOMEPAGE_VAR_RADARR_API_KEY}}
+                enableQueue: true
+        - Bazarr:
+            href: https://bazarr.${INTERNAL_SECRET_DOMAIN}/
+            description: Subtitle management
+            icon: bazarr.svg
+            namespace: default
+            app: bazarr
+            widget:
+                type: bazarr
+                url: http://bazarr.default.svc.cluster.local:80
+                key: {{HOMEPAGE_VAR_BAZARR_API_KEY}}
+        - Calibre Downloader:
+            href: https://calibre-downloader.${INTERNAL_SECRET_DOMAIN}/
+            description: E-Book downloader web interface
+            icon: calibre-web.svg
+            namespace: default
+            app: calibre-web-automated
 
 - Observability:
     - Gatus:
@@ -262,8 +267,8 @@
         namespace: observability
         app: gatus
         widget:
-          type: gatus
-          url: http://gatus.observability.svc.cluster.local:80
+            type: gatus
+            url: http://gatus.observability.svc.cluster.local:80
     - Grafana:
         href: https://grafana.${INTERNAL_SECRET_DOMAIN}/
         description: Grafana metrics dashboard
@@ -282,8 +287,8 @@
         namespace: observability
         app: prometheus
         widget:
-          type: prometheus
-          url: http://prometheus-operated.observability.svc.cluster.local:9090
+            type: prometheus
+            url: http://prometheus-operated.observability.svc.cluster.local:9090
     - Alert Manager:
         href: https://alertmanager.${INTERNAL_SECRET_DOMAIN}/
         description: Alert Manager interface
@@ -332,10 +337,10 @@
     - Secret Alliance:
         icon: minecraft.svg
         widget:
-          type: minecraft
-          url: {{HOMEPAGE_VAR_MINECRAFT_SA_URL}}
+            type: minecraft
+            url: {{HOMEPAGE_VAR_MINECRAFT_SA_URL}}
     - GT New Horizons:
         icon: minecraft.svg
         widget:
-          type: minecraft
-          url: {{HOMEPAGE_VAR_UNIFI_CONSOLE_URL}}
+            type: minecraft
+            url: {{HOMEPAGE_VAR_UNIFI_CONSOLE_URL}}
