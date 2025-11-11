@@ -12,8 +12,8 @@ spec:
   dependsOn:
     - name: cloudnative-pg
       namespace: *namespace
-    - name: cloudnative-pg-cluster
-      namespace: *namespace
+    # - name: cloudnative-pg-cluster
+    #   namespace: *namespace
     - name: longhorn
       namespace: storage
   interval: 1h
