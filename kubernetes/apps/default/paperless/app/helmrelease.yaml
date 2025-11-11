@@ -35,6 +35,7 @@ spec:
               PAPERLESS_DBSSLKEY: /var/run/secrets/postgresql/tls.key
               PAPERLESS_DB_POOLSIZE: 1
               PAPERLESS_CONSUMER_POLLING: 60
+              PAPERLESS_DATE_PARSER_LANGUAGES: en
             # envFrom:
             #   - secretRef:
             #       ## PAPERLESS_DBPASS
