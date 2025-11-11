@@ -37,10 +37,10 @@ spec:
                   timeoutSeconds: 5
                   failureThreshold: 3
               readiness: *probes
-            securityContext:
-              allowPrivilegeEscalation: false
-              readOnlyRootFilesystem: true
-              capabilities: {drop: ["ALL"]}
+            # securityContext:
+            #   allowPrivilegeEscalation: false
+            #   readOnlyRootFilesystem: true
+            #   capabilities: {drop: ["ALL"]}
             resources:
               requests:
                 cpu: 10m
@@ -49,7 +49,7 @@ spec:
                 memory: 256Mi
     defaultPodOptions:
       securityContext:
-        runAsNonRoot: true
+        # runAsNonRoot: true
         runAsUser: 5050
         runAsGroup: 5050
         fsGroup: 5050
