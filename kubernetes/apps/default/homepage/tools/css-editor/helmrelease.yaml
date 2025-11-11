@@ -17,6 +17,8 @@ spec:
             image:
               repository: ghcr.io/10mfox/gethomepage-custom-css
               tag: latest@sha256:a3699772c475b2cfe8680d7f51455ca07b7426698e075db69d4b24d4df48aa9a
+            env:
+              PORT: &port 5556
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
@@ -38,7 +40,7 @@ spec:
       app:
         ports:
           http:
-            port: 5173
+            port: *port
     route:
       app:
         hostnames:
