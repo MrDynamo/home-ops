@@ -38,7 +38,7 @@ spec:
       app:
         ports:
           http:
-            port: 5556
+            port: 5173
     route:
       app:
         hostnames:
