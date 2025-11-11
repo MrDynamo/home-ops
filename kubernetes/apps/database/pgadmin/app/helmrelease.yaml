@@ -76,7 +76,7 @@ spec:
         type: configMap
         name: pgadmin
         advancedMounts:
-          kometa:
+          pgadmin:
             app:
               - path: /pgadmin4/servers.json
                 subPath: servers.json
