@@ -1,7 +1,7 @@
 {
   "Servers": {
     "1": {
-      "Name": "postgres-v17",
+      "Name": "postgres",
       "Group": "Servers",
       "Host": "postgres-rw.database.svc",
       "Port": 5432,

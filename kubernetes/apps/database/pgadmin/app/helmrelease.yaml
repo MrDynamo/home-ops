@@ -21,6 +21,7 @@ spec:
               tag: 9.9.0@sha256:5d9624a93634d1c5e595619cc57b1d330758120d1baf445fa97300c0c1fc3c0a
             env:
               TZ: America/Chicago
+              PGADMIN_REPLACE_SERVERS_ON_STARTUP: true
             envFrom:
               - secretRef:
                   name: "{{ .Release.Name }}-secret"
