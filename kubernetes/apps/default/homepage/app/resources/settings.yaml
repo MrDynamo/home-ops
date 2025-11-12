@@ -9,11 +9,7 @@ providers:
   longhorn:
     url: http://longhorn-frontend.storage.svc:80
 layout:
-  style: row
-  columns: 8
   Infrastructure:
-    syle: row
-    columns: 8
     Hardware:
       syle: row
       # columns: 8
@@ -27,8 +23,6 @@ layout:
     Network:
       style: row
   Media:
-    syle: row
-    columns: 8
     Servers:
       syle: row
       # columns: 8
