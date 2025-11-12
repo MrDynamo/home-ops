@@ -8,7 +8,7 @@
       "MaintenanceDB": "postgres",
       "Username": "ePifAHUKvDmPGQWCvF6h",
       "ConnectionParameters": {
-        "sslmode": "prefer",
+        "sslmode": "verify-full",
         "connect_timeout": 10,
         "sslrootcert": "/var/run/secrets/postgresql/ca.crt",
         "sslcert": "/var/run/secrets/postgresql/tls.crt",
