@@ -75,8 +75,6 @@ spec:
       configmap:
         type: configMap
         name: pgadmin
-        advancedMounts:
-          pgadmin:
-            app:
-              - path: /pgadmin4/servers.json
-                subPath: servers.json
+        globalMounts:
+          - path: /pgadmin4/servers.json
+            subPath: servers.json
