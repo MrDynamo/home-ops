@@ -19,8 +19,8 @@ layout:
       syle: row
       columns: 8
   Media:
-    syle: row
-    c# olumns: 4
+    # syle: row
+    # columns: 4
     Servers:
       syle: row
       columns: 8
