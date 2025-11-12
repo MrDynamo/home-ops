@@ -11,7 +11,7 @@ providers:
 layout:
   Infrastructure:
     style: row
-    columns: 5
+    columns: 4
     # Hardware:
     #   syle: row
     # Virtualization:
@@ -20,17 +20,17 @@ layout:
     #   style: row
     # Internal Services:
     #   style: row
-    # Network:
-    #   style: row
+    Network:
+      style: row
   Media:
     style: row
     columns: 3
-    # Servers:
-    #   syle: row
-    # Management:
-    #   style: row
-    # Downloads:
-    #   style: row
+    Servers:
+      syle: row
+    Management:
+      style: row
+    Downloads:
+      style: row
   Observability:
     style: row
   Database:
