@@ -68,6 +68,12 @@
             icon: paperless-ngx.svg
             namespace: default # The kubernetes namespace the app resides in
             app: paperless # The name of the deployed app
+        - Paperless AI:
+            href: https://paperless-ai.${INTERNAL_SECRET_DOMAIN}/
+            description: AI interface for paperless
+            icon: paperless-ngx.svg
+            namespace: default # The kubernetes namespace the app resides in
+            app: paperless-ai # The name of the deployed app
         - Syncthing:
             href: https://syncthing.${INTERNAL_SECRET_DOMAIN}/
             description: Syncthing Server on k8s
