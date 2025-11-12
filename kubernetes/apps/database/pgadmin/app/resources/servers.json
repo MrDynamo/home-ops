@@ -10,6 +10,7 @@
       "ConnectionParameters": {
         "sslmode": "prefer",
         "connect_timeout": 10,
+        "sslrootcert": "/var/run/secrets/postgresql/ca.crt",
         "sslcert": "/var/run/secrets/postgresql/tls.crt",
         "sslkey": "/var/run/secrets/postgresql/tls.key"
       },
