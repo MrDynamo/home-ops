@@ -15,6 +15,6 @@
       "UseSSHTunnel": 0,
       "TunnelPort": "22",
       "TunnelAuthentication": 0
-    },
+    }
   }
 }
