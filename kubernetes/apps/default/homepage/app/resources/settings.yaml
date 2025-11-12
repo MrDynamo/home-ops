@@ -12,6 +12,12 @@ layout:
   Infrastructure:
     syle: row
     columns: 4
+    Virtualization:
+      syle: row
+      columns: 4
   Media:
     syle: row
     columns: 4
+    Servers:
+      syle: row
+      columns: 4
