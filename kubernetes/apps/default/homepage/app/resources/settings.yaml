@@ -11,13 +11,13 @@ providers:
 layout:
   Infrastructure:
     syle: row
-    columns: 4
+    # columns: 4
     Virtualization:
       syle: row
-      columns: 4
+      columns: 8
   Media:
     syle: row
-    columns: 4
+    c# olumns: 4
     Servers:
       syle: row
-      columns: 4
+      columns: 8
