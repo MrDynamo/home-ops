@@ -1,0 +1,25 @@
+---
+# yaml-language-server: $schema=https://k8s-schemas.m00nlit.dev/barmancloud.cnpg.io/objectstore_v1.json
+apiVersion: barmancloud.cnpg.io/v1
+kind: ObjectStore
+metadata:
+  name: cloudflare-r2-store
+spec:
+  configuration:
+    destinationPath: s3://dynamiclab-k8s-cnpg-postgres/
+    endpointURL: https://06475005d552d5caba5c76c954567275.r2.cloudflarestorage.com
+    s3Credentials:
+      accessKeyId:
+        name: cloudnative-pg-postgres-s3-secret
+        key: ACCESS_KEY_ID
+      secretAccessKey:
+        name: cloudnative-pg-postgres-s3-secret
+        key: ACCESS_SECRET_KEY
+      region:
+        name: cloudnative-pg-postgres-s3-secret
+        key: REGION
+    wal:
+      compression: zstd
+    data:
+      compression: gzip
+  retentionPolicy: "30d"

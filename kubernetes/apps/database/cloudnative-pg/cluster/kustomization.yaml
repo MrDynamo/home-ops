@@ -5,6 +5,8 @@ kind: Kustomization
 resources:
   - ./ca.yaml
   - ./cluster.yaml
+  - ./externalsecret.yaml
+  - ./objectstore.yaml
   ## https://github.com/cloudnative-pg/cloudnative-pg/issues/2841
   # - ./pooler.yaml
   - ./prometheusrule.yaml

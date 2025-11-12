@@ -25,11 +25,11 @@ spec:
   #   recovery:
   #     source: &src source
 
-  # plugins:
-  #   - name: &plugin barman-cloud.cloudnative-pg.io
-  #     isWALArchiver: true
-  #     parameters:
-  #       barmanObjectName: &store garage-store
+  plugins:
+    - name: &plugin barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
+      parameters:
+        barmanObjectName: &store cloudflare-r2-store
 
   # externalClusters:
   #   - name: *src
