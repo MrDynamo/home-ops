@@ -11,7 +11,7 @@ providers:
 layout:
   Infrastructure:
     style: row
-    columns: 4
+    columns: 5
     # Hardware:
     #   syle: row
     # Virtualization:
@@ -20,24 +20,24 @@ layout:
     #   style: row
     # Internal Services:
     #   style: row
-    Network:
-      style: row
-      columns: 6
+    # Network:
+    #   style: row
+    #   columns: 6
   Media:
     style: row
     columns: 3
-    Servers:
-      syle: row
-      columns: 5
-    Management:
-      style: row
-      columns: 5
-    Downloads:
-      style: row
-      columns: 6
-  Observability:
-    style: row
-  Database:
-    style: row
-  Minecraft:
-    style: row
+    # Servers:
+    #   syle: row
+    #   columns: 5
+    # Management:
+    #   style: row
+    #   columns: 5
+    # Downloads:
+    #   style: row
+    #   columns: 6
+  # Observability:
+  #   style: row
+  # Database:
+  #   style: row
+  # Minecraft:
+  #   style: row
