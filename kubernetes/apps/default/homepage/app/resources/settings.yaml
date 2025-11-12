@@ -10,17 +10,33 @@ providers:
     url: http://longhorn-frontend.storage.svc:80
 layout:
   Infrastructure:
-    # syle: row
+    syle: row
     # columns: 4
     Hardware:
       syle: row
-      columns: 8
+      # columns: 8
     Virtualization:
       syle: row
-      columns: 8
+      # columns: 8
+    Storage:
+      style: row
+    Internal Services:
+      style: row
+    Network:
+      style: row
   Media:
-    # syle: row
+    syle: row
     # columns: 4
     Servers:
       syle: row
-      columns: 8
+      # columns: 8
+    Management:
+      style: row
+    Downloads:
+      style: row
+  Observability:
+    style: row
+  Database:
+    style: row
+  Minecraft:
+    style: row
