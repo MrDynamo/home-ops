@@ -7,11 +7,12 @@
       "Port": 5432,
       "MaintenanceDB": "postgres",
       "Username": "ePifAHUKvDmPGQWCvF6h",
-      "SSLMode": "prefer",
-      "SSLCert": "/var/run/secrets/postgresql/tls.crt",
-      "SSLKey": "/var/run/secrets/postgresql/tls.key",
-      "SSLCompression": 0,
-      "Timeout": 10,
+      "ConnectionParameters": {
+        "sslmode": "prefer",
+        "connect_timeout": 10,
+        "sslcert": "/var/run/secrets/postgresql/tls.crt",
+        "sslkey": "/var/run/secrets/postgresql/tls.key"
+      },
       "UseSSHTunnel": 0,
       "TunnelPort": "22",
       "TunnelAuthentication": 0
