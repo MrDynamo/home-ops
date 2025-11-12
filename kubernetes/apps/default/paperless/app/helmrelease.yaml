@@ -94,8 +94,8 @@ spec:
         path: /mnt/tank/services/paperless
         globalMounts:
           - path: "/usr/src/paperless/media"
-            subPath: media-new
+            subPath: media
           - path: "/usr/src/paperless/consume"
-            subPath: consume-new
+            subPath: consume
           - path: "/usr/src/paperless/export"
             subPath: export
