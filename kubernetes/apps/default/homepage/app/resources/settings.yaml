@@ -31,8 +31,10 @@ layout:
       columns: 5
     Management:
       style: row
+      columns: 5
     Downloads:
       style: row
+      columns: 6
   Observability:
     style: row
   Database:
