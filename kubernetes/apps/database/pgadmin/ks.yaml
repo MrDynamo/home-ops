@@ -18,6 +18,7 @@ spec:
       namespace: storage
   components:
     - ../../../../components/volsync
+    - ../../../../components/database
   interval: 1h
   path: ./kubernetes/apps/database/pgadmin/app
   postBuild:
