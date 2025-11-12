@@ -43,7 +43,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app paperless-tools
+  name: &app paperless-ai
   namespace: &namespace default
 spec:
   commonMetadata:
@@ -55,7 +55,7 @@ spec:
     - name: paperless
       namespace: default
   interval: 1h
-  path: ./kubernetes/apps/default/paperless/tools
+  path: ./kubernetes/apps/default/paperless/tools/paperless-ai
   postBuild:
     substitute:
       APP: *app
