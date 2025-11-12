@@ -15,8 +15,8 @@ spec:
         containers:
           app:
             image:
-              repository: ghcr.io/clusterzx/paperless-ai
-              tag: v3.0.9
+              repository: docker.io/clusterzx/paperless-ai
+              tag: 3.0.9
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
