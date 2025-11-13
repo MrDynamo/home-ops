@@ -21,9 +21,9 @@ spec:
     size: 2Gi
     storageClass: longhorn-fast
 
-  bootstrap:
-    recovery:
-      source: &src source
+  # bootstrap:
+  #   recovery:
+  #     source: &src source
 
   plugins:
     - name: &plugin barman-cloud.cloudnative-pg.io
