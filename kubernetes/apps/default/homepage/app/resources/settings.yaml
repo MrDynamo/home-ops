@@ -8,7 +8,8 @@ quicklaunch:
 providers:
   longhorn:
     url: http://longhorn-frontend.storage.svc:80
-# layout:
+layout:
+  style: row
 #   Infrastructure:
 #     style: row
 #     columns: 5
