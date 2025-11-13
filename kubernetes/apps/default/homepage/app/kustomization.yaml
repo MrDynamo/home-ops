@@ -6,6 +6,7 @@ resources:
   - ./externalsecret.yaml
   - ./helmrelease.yaml
   - ./ocirepository.yaml
+  - ./secret.yaml
 configMapGenerator:
   - name: homepage
     files:
