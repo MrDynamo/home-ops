@@ -10,7 +10,7 @@ resources:
   ## https://github.com/cloudnative-pg/cloudnative-pg/issues/2841
   # - ./pooler.yaml
   - ./prometheusrule.yaml
-  # - ./scheduledbackup.yaml
+  - ./scheduledbackup.yaml
   - ./secretstore.yaml
 generatorOptions:
   disableNameSuffixHash: true
