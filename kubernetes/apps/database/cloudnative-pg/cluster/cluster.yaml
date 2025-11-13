@@ -21,9 +21,9 @@ spec:
     size: 2Gi
     storageClass: longhorn-fast
 
-  # bootstrap:
-  #   recovery:
-  #     source: &src source
+  bootstrap:
+    recovery:
+      source: &src source
 
   plugins:
     - name: &plugin barman-cloud.cloudnative-pg.io
@@ -31,13 +31,13 @@ spec:
       parameters:
         barmanObjectName: &store cloudflare-r2-store
 
-  # externalClusters:
-  #   - name: *src
-  #     plugin:
-  #       name: *plugin
-  #       parameters:
-  #         barmanObjectName: *store
-  #         serverName: *name
+  externalClusters:
+    - name: *src
+      plugin:
+        name: *plugin
+        parameters:
+          barmanObjectName: *store
+          serverName: *name
 
   monitoring:
     enablePodMonitor: true
