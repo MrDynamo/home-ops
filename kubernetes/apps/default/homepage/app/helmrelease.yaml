@@ -3,19 +3,19 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: homepage
+  name: &app homepage
 spec:
   interval: 1h
   chartRef:
     kind: OCIRepository
-    name: homepage
+    name: *app
   values:
     controllers:
       homepage:
         annotations:
           reloader.stakater.com/auto: "true"
         serviceAccount:
-          name: homepage
+          name: *app
         containers:
           app:
             image:
@@ -79,7 +79,7 @@ spec:
         type: emptyDir
       configmap:
         type: configMap
-        name: homepage
+        name: *app
         advancedMounts:
           homepage:
             app:
@@ -155,8 +155,8 @@ spec:
           roleRef:
             apiGroup: rbac.authorization.k8s.io
             kind: ClusterRole
-            name: homepage
+            name: *app
           subjects:
             - kind: ServiceAccount
-              name: homepage
+              name: *app
               namespace: default
