@@ -6,7 +6,7 @@ metadata:
   name: cloudflare-r2-store
 spec:
   configuration:
-    destinationPath: s3://dynamiclab-k8s-cnpg-postgres/
+    destinationPath: s3://dynamiclab-k8s-cnpg/
     endpointURL: https://06475005d552d5caba5c76c954567275.r2.cloudflarestorage.com
     s3Credentials:
       accessKeyId:
