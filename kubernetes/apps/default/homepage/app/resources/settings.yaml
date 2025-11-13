@@ -10,6 +10,7 @@ providers:
     url: http://longhorn-frontend.storage.svc:80
 layout:
   style: row
+  columns: 5
 #   Infrastructure:
 #     style: row
 #     columns: 5
