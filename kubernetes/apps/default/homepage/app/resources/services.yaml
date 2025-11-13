@@ -130,6 +130,53 @@
         description: Google Cloud DNS Console
         icon: google-cloud-platform.svg
 
+- Observability:
+    - Gatus:
+        href: https://status.${SECRET_DOMAIN}/
+        description: Uptime monitoring dashboard
+        icon: gatus.svg
+        namespace: observability
+        app: gatus
+        widget:
+            type: gatus
+            url: http://gatus.observability.svc.cluster.local:80
+    - Grafana:
+        href: https://grafana.${INTERNAL_SECRET_DOMAIN}/
+        description: Grafana metrics dashboard
+        icon: grafana.svg
+        namespace: observability
+        app: grafana
+        # widget:
+        #   type: grafana
+        #   version: 2
+        #   alerts: alertmanager
+        #   url: http://grafana-alerting.observability.svc.cluster.local:9094
+    - Prometheus:
+        href: https://prometheus.${INTERNAL_SECRET_DOMAIN}/
+        description: Metrics aggregator
+        icon: prometheus.svg
+        namespace: observability
+        app: prometheus
+        widget:
+            type: prometheus
+            url: http://prometheus-operated.observability.svc.cluster.local:9090
+    - Alert Manager:
+        href: https://alertmanager.${INTERNAL_SECRET_DOMAIN}/
+        description: Alert Manager interface
+        icon: alertmanager.svg
+        namespace: observability
+        app: prometheus
+        # widget:
+        #   type: prometheus
+        #   url: http://prometheushost:port
+    - Victoria Logs:
+        href: https://victoria-logs.${INTERNAL_SECRET_DOMAIN}/
+        description: Log aggregation and viewing
+        icon: victoriametrics.svg
+        namespace: observability
+        app: victoria-logs
+
+
 - Media:
 
     - Servers:
@@ -268,52 +315,6 @@
             icon: calibre-web.svg
             namespace: default
             app: calibre-web-automated
-
-- Observability:
-    - Gatus:
-        href: https://status.${SECRET_DOMAIN}/
-        description: Uptime monitoring dashboard
-        icon: gatus.svg
-        namespace: observability
-        app: gatus
-        widget:
-            type: gatus
-            url: http://gatus.observability.svc.cluster.local:80
-    - Grafana:
-        href: https://grafana.${INTERNAL_SECRET_DOMAIN}/
-        description: Grafana metrics dashboard
-        icon: grafana.svg
-        namespace: observability
-        app: grafana
-        # widget:
-        #   type: grafana
-        #   version: 2
-        #   alerts: alertmanager
-        #   url: http://grafana-alerting.observability.svc.cluster.local:9094
-    - Prometheus:
-        href: https://prometheus.${INTERNAL_SECRET_DOMAIN}/
-        description: Metrics aggregator
-        icon: prometheus.svg
-        namespace: observability
-        app: prometheus
-        widget:
-            type: prometheus
-            url: http://prometheus-operated.observability.svc.cluster.local:9090
-    - Alert Manager:
-        href: https://alertmanager.${INTERNAL_SECRET_DOMAIN}/
-        description: Alert Manager interface
-        icon: alertmanager.svg
-        namespace: observability
-        app: prometheus
-        # widget:
-        #   type: prometheus
-        #   url: http://prometheushost:port
-    - Victoria Logs:
-        href: https://victoria-logs.${INTERNAL_SECRET_DOMAIN}/
-        description: Log aggregation and viewing
-        icon: victoriametrics.svg
-        namespace: observability
-        app: victoria-logs
 
 - Database:
     - PGAdmin:
