@@ -31,13 +31,13 @@ spec:
       parameters:
         barmanObjectName: &store cloudflare-r2-store
 
-  externalClusters:
-    - name: *src
-      plugin:
-        name: *plugin
-        parameters:
-          barmanObjectName: *store
-          serverName: *name
+  # externalClusters:
+  #   - name: *src
+  #     plugin:
+  #       name: *plugin
+  #       parameters:
+  #         barmanObjectName: *store
+  #         serverName: *name
 
   monitoring:
     enablePodMonitor: true
