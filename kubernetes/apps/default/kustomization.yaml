@@ -16,6 +16,7 @@ resources:
   # - ./echo-internal/ks.yaml
   - ./emby/ks.yaml
   - ./homepage/ks.yaml
+  - ./invoiceninja/ks.yaml
   - ./kometa/ks.yaml
   - ./maintainerr/ks.yaml
   - ./mealie/ks.yaml
