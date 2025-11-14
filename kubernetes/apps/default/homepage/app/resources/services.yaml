@@ -88,6 +88,10 @@
         href: https://win-kms.local.${SECRET_DOMAIN}/
         description: Internal Windows KMS Server
         icon: microsoft-windows.svg
+    - Lube Logger:
+        href: https://lubelogger.${INTERNAL_SECRET_DOMAIN}/
+        description: Vehicle maintenance tracker
+        icon: lubelogger.svg
 
 - Network:
     - Unifi Cloud Gateway:
