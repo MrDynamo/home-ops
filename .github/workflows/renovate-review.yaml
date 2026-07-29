@@ -203,4 +203,7 @@ jobs:
             - When stuck (private repo, ambiguous package, no changelog anywhere), report what you
               found and what you could not find rather than fabricating information
             - Submit exactly one `gh pr review` at the end of your analysis
-            - Any time you reference a PR #, you must link to the corresponding GitHub PR using the full URL so it doesn't auto-link incorrectly.
+            - Any time you reference a PR #, you must link to the corresponding GitHub PR using the full
+              URL so it doesn't auto-link incorrectly. This should be a togithub.com instead of github.com
+              link to avoid noisy notifications to project maintainers. For example, use
+              `https://togithub.com/org/repo/pull/123` instead of 'htts://github.com/org/repo/pull/123'.
