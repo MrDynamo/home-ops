@@ -204,7 +204,7 @@ jobs:
               found and what you could not find rather than fabricating information
             - Submit exactly one `gh pr review` at the end of your analysis
             - IMPORTANT: Any time you reference a PR #, you must link to the corresponding GitHub PR using the full
-              URL so it doesn't auto-link incorrectly. This should be a togithub.com link instead of github.com
+              URL so it doesn't auto-link incorrectly. This MUST be a togithub.com link instead of github.com
               link to avoid noisy notifications to project maintainers. For example, use
               `https://togithub.com/org/repo/pull/123` instead of 'https://github.com/org/repo/pull/123'.
             - NEVER link directly to a PR in the review body. Always use a togithub.com link instead of github.com
