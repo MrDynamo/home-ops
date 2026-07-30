@@ -187,6 +187,21 @@ jobs:
             - [URLs]
             ```
 
+            ### Mandatory URL sanitization before submission
+
+            Before running `gh pr review`, you MUST sanitize all GitHub web links in your review body:
+
+            - Replace every `https://github.com/` prefix with `https://togithub.com/`
+            - This applies to both bare URLs and markdown links
+            - If any GitHub web URL remains after rewriting, do not submit yet; fix links first
+
+            Use this exact rewrite pattern in your shell flow before submit:
+
+            ```bash
+            REVIEW_BODY_SANITIZED="${REVIEW_BODY//https:\/\/github.com\//https://togithub.com/}"
+            gh pr review "$PR_NUMBER" --repo "$REPO" --approve|--request-changes --body "$REVIEW_BODY_SANITIZED"
+            ```
+
             ## Constraints
 
             - NEVER modify repository files; you are read-only
@@ -211,3 +226,5 @@ jobs:
             - **IMPORTANT: For renovatebot/renovate update PRs, ALWAYS USE A TOGITHUB.COM LINK**. This is a strict
               requirement to avoid sending notifications to upstream maintainers. Always use the `togithub.com` link
               format or any PRs you reference in your review.
+            - **IMPORTANT: Do not use `github.com` for upstream PR links anywhere in the review body. Rewrite those URLs
+              to `togithub.com` immediately before submission.**
