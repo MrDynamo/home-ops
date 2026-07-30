@@ -208,3 +208,6 @@ jobs:
               link to avoid noisy notifications to project maintainers. For example, use
               `https://togithub.com/org/repo/pull/123` instead of 'https://github.com/org/repo/pull/123'. DO
               NOT IGNORE THIS CONSTRAINT**
+            - **IMPORTANT: For renovatebot/renovate update PRs, ALWAYS USE A TOGITHUB.COM LINK**. This is a strict
+              requirement to avoid sending notifications to upstream maintainers. Always use the `togithub.com` link
+              format or any PRs you reference in your review.
