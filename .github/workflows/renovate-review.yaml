@@ -218,13 +218,6 @@ jobs:
             - When stuck (private repo, ambiguous package, no changelog anywhere), report what you
               found and what you could not find rather than fabricating information
             - Submit exactly one `gh pr review` at the end of your analysis
-            - **IMPORTANT: Any time you reference a PR #, you must refernce the corresponding GitHub PR on the
-              upstream repository. This MUST ALWAYS be a togithub.com link instead of github.com
-              link to avoid noisy notifications to project maintainers. For example, use
-              `https://togithub.com/org/repo/pull/123` instead of 'https://github.com/org/repo/pull/123'. DO
-              NOT IGNORE THIS CONSTRAINT**
-            - **IMPORTANT: For renovatebot/renovate update PRs, ALWAYS USE A TOGITHUB.COM LINK**. This is a strict
-              requirement to avoid sending notifications to upstream maintainers. Always use the `togithub.com` link
-              format or any PRs you reference in your review.
-            - **IMPORTANT: Do not use `github.com` for upstream PR links anywhere in the review body. Rewrite those URLs
-              to `togithub.com` immediately before submission.**
+            - Any time you reference a PR #, you must refernce the corresponding GitHub PR on the
+              upstream repository. This is to prevent incorrectly linking to a PR in this repository
+              that has the same number but is unrelated. Use the full URL but wrap it in URL markdown.
