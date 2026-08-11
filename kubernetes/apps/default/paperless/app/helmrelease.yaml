@@ -74,7 +74,7 @@ spec:
               # AI/LLM Settings
               PAPERLESS_AI_ENABLED: true
               PAPERLESS_AI_LLM_ENDPOINT: http://litellm.ai.svc.cluster.local:4000
-              PAPERLESS_AI_LLM_BACKEND:  &backend openai-like
+              PAPERLESS_AI_LLM_BACKEND: &backend openai-like
               PAPERLESS_AI_LLM_EMBEDDING_BACKEND: *backend
               PAPERLESS_AI_LLM_MODEL: qwen2.5:7b
               PAPERLESS_AI_LLM_EMBEDDING_MODEL: nomic-embed-text:v1.5
@@ -98,10 +98,10 @@ spec:
             #   capabilities: {drop: ["ALL"]}
             resources:
               requests:
-                cpu: 17m
-                memory: 1418Mi
+                cpu: 278m
+                memory: 1631Mi
               limits:
-                memory: 1418Mi
+                memory: 1631Mi
       gotenberg:
         containers:
           app:
