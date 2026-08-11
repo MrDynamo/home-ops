@@ -81,6 +81,7 @@ model_list:
       num_ctx: *64k
     model_info:
       <<: *ollama_model_info
+      max_input_tokens: *64k
 
   - model_name: qwen3.6:27b
     litellm_params:
@@ -229,6 +230,7 @@ model_list:
       drop_params: true
     model_info:
       <<: *ollama_model_info
+      max_input_tokens: *2k
 
   #########################
   # Minimax API Models    #
