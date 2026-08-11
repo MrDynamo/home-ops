@@ -71,6 +71,13 @@ spec:
               PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
               # PAPERLESS_REDIRECT_LOGIN_TO_SSO: true
               # PAPERLESS_LOGOUT_REDIRECT_URL: 'https://auth.${SECRET_DOMAIN}/application/o/{{ .Release.Name }}/end-session/'
+              # AI/LLM Settings
+              PAPERLESS_AI_ENABLED: true
+              PAPERLESS_AI_LLM_ENDPOINT: http://litellm.ai.svc.cluster.local:4000
+              PAPERLESS_AI_LLM_BACKEND:  &backend openai-like
+              PAPERLESS_AI_LLM_EMBEDDING_BACKEND: *backend
+              PAPERLESS_AI_MODEL: llama3.2:3b
+              PAPERLESS_AI_LLM_EMBEDDING_MODEL: nomic-embed-text:v1.5
             envFrom:
               - secretRef:
                   name: "{{ .Release.Name }}-secret"
