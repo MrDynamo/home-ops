@@ -89,6 +89,7 @@ model_list:
     model_info:
       <<: *ollama_model_info
       max_input_tokens: *256k
+      supports_function_calling: true
       supports_tool_choice: true
 
   - model_name: llama3.2-vision:11b
@@ -334,7 +335,7 @@ litellm_settings:
     type: redis
     host: os.environ/REDIS_HOST
     port: os.environ/REDIS_PORT
-  drop_params: true
+  drop_params: false
   set_verbose: false
 
 environment_variables: []
