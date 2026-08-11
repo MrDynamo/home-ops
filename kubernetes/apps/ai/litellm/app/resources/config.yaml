@@ -226,6 +226,7 @@ model_list:
       <<: *ollama_litellm_params
       model: ollama/nomic-embed-text:v1.5
       num_ctx: *2k
+      drop_params: true
     model_info:
       <<: *ollama_model_info
 
