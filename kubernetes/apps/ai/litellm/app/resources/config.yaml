@@ -89,6 +89,7 @@ model_list:
     model_info:
       <<: *ollama_model_info
       max_input_tokens: *256k
+      supports_tool_choice: true
 
   - model_name: llama3.2-vision:11b
     litellm_params:
