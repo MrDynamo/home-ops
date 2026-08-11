@@ -79,6 +79,7 @@ model_list:
       <<: *ollama_litellm_params
       model: ollama/qwen2.5:7b
       num_ctx: *64k
+      drop_params: true
     model_info:
       <<: *ollama_model_info
       max_input_tokens: *64k
