@@ -74,7 +74,7 @@ model_list:
     model_info:
       <<: *ollama_model_info
 
-  - model_namee: qwen2.5:7b
+  - model_name: qwen2.5:7b
     litellm_params:
       <<: *ollama_litellm_params
       model: ollama/qwen2.5:7b
