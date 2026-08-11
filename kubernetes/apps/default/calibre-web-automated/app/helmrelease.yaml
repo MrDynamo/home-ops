@@ -34,7 +34,7 @@ spec:
                 custom: true
                 spec:
                   httpGet:
-                    path: /login
+                    path: /login?local=1
                     port: &port 8083
                   initialDelaySeconds: 15
                   periodSeconds: 10
