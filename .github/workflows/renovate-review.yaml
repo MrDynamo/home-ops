@@ -221,3 +221,7 @@ jobs:
             - Any time you reference a PR #, you must reference the corresponding GitHub PR on the
               upstream repository. This is to prevent incorrectly linking to a PR in this repository
               that has the same number but is unrelated. Use the full URL but wrap it in URL markdown.
+            - Do NOT create test reviews, placeholders, or submit partial reviews. Only submit a review
+              when you have completed your research and are confident in your findings.
+            - Ensure your review is properly formatted in markdown based on the structure above. Use
+              headings, bullet points, and bold text as specified.
