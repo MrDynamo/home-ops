@@ -195,7 +195,7 @@ spec:
         externalTrafficPolicy: Cluster
         ports:
           http:
-            appProtocol: kubernetes.io/ws
+            appProtocol: http
             port: *port
           metrics:
             appProtocol: http
