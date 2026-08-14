@@ -22,7 +22,7 @@ spec:
   postBuild:
     substitute:
       APP: *app
-      VOLSYNC_CAPACITY: 1Gi
+      VOLSYNC_CAPACITY: 2Gi
       VOLSYNC_SCHEDULE: 0 15 * * 5	  # Cron in UTC (CST: -6, CST: -5)
       REDIS_INDEX: "5"
     substituteFrom:
