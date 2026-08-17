@@ -22,7 +22,7 @@ spec:
                 cpu: 10m
                 memory: 121Mi
               limits:
-                memory: 500Mi
+                memory: 1024Mi
             env:
               DATABASE_PATH: /database/channelidentifiarr.db
               DISPATCHARR_URL: http://dispatcharr.default.svc:9191
