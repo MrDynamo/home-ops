@@ -80,10 +80,10 @@ spec:
               capabilities: {add: ["SYS_NICE"]}
             resources:
               requests:
-                cpu: 508m
-                memory: 4096Mi
+                cpu: 519m
+                memory: 4145Mi
               limits:
-                memory: 10240Mi
+                memory: 4145Mi
                 gpu.intel.com/i915: 1 # Request portion of shared iGPU
                 # nvidia.com/gpu.shared: 1 # Request portion of shared GPU
               # claims:
@@ -98,10 +98,10 @@ spec:
             securityContext: *sc
             resources:
               requests:
-                cpu: 129m
-                memory: 1024Mi
+                cpu: 299m
+                memory: 1551Mi
               limits:
-                memory: 2048Mi
+                memory: 1551Mi
       backup:
         type: cronjob
         cronjob:
