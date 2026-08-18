@@ -405,6 +405,10 @@
             icon: maintainerr.svg
             namespace: default
             app: maintainerr
+            widget:
+              type: maintainerr
+              url: http://maintainerr.default.svc.cluster.local:80
+              key: {{HOMEPAGE_VAR_MAINTAINERR_API_KEY}}
         - Nexroll:
             href: https://nexroll.${INTERNAL_SECRET_DOMAIN}/
             description: Plex pre-roll configuration
