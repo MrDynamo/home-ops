@@ -12,7 +12,9 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
+    # tuppr's Kustomization lives in system-upgrade, not this Kustomization's own namespace
     - name: tuppr
+      namespace: system-upgrade
   interval: 1h
   path: ./kubernetes/apps/storage/tuppr-rbac/resources
   prune: true
