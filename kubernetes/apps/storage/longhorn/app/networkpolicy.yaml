@@ -1,0 +1,28 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kubernetes/v1.30.0-standalone-strict/networkpolicy.json
+# The longhorn chart (since 1.12.1) ships its own restrictive NetworkPolicy for
+# longhorn-manager pods that only allows ingress from other Longhorn
+# components, blocking Prometheus scrapes of the manager metrics port and
+# firing target-down alerts. NetworkPolicies selecting the same pods are
+# additive, so this supplements (not replaces) the Helm-managed one.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: longhorn-manager-allow-prometheus
+spec:
+  podSelector:
+    matchLabels:
+      app: longhorn-manager
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: observability
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/name: prometheus
+      ports:
+        - protocol: TCP
+          port: 9500
