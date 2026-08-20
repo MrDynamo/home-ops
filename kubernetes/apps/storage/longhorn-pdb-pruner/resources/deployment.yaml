@@ -41,8 +41,11 @@ spec:
                   -o jsonpath='{.status.currentNode}{" "}{range .status.currentNodes[*]}{@}{" "}{end}' \
                   2>/dev/null || true)
                 for n in $nodes; do
-                  kubectl delete pdb -n storage --ignore-not-found \
-                    -l "longhorn.io/component=instance-manager,longhorn.io/node=${n}"
+                  # PDBs carry no labels of their own; the node is only on spec.selector.matchLabels
+                  kubectl get pdb -n storage -o json \
+                    | jq -r --arg node "$n" \
+                      '.items[] | select(.spec.selector.matchLabels["longhorn.io/component"] == "instance-manager" and .spec.selector.matchLabels["longhorn.io/node"] == $node) | .metadata.name' \
+                    | xargs -r -n1 kubectl delete pdb -n storage --ignore-not-found
                 done
                 sleep 5
               done
