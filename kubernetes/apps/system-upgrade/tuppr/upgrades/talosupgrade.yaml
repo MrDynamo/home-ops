@@ -34,8 +34,8 @@ spec:
       # returns. The hook filters by name prefix so unrelated PDBs
       # (csi-attacher, csi-provisioner) are untouched.
       - name: longhorn-remove-instance-manager-pdbs
-        # renovate: datasource=docker depName=docker.io/rancher/kubectl
-        image: docker.io/rancher/kubectl:v1.36.2
+        # renovate: datasource=docker depName=docker.io/alpine/k8s
+        image: docker.io/alpine/k8s:1.36.2
         serviceAccountName: tuppr-pdb-cleaner
         command: ["sh", "-c"]
         args:

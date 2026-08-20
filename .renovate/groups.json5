@@ -73,7 +73,8 @@
         "/kube-proxy/",
         "/kube-scheduler/",
         "/kubelet/",
-        "/kubectl/"
+        "/kubectl/",
+        "/alpine/k8s/"
       ],
       group: {
         commitMessageTopic: "{{{groupName}}} group",
