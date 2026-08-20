@@ -1,0 +1,59 @@
+---
+# Longhorn's instance-manager PDB (minAvailable: 1, exactly one pod per node)
+# blocks tuppr's eviction-based drain on any node running Longhorn, because
+# tuppr only taints the node (PreferNoSchedule) rather than setting
+# spec.unschedulable - the field Longhorn's PDB-removal controller watches.
+# Rather than force-deleting every pod during drain (bypasses all PDBs,
+# not just Longhorn's), this continuously deletes only the instance-manager
+# PDB for whichever node tuppr's TalosUpgrade currently reports as being
+# drained; longhorn-manager recreates it once that node is no longer current.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &app longhorn-pdb-pruner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: *app
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: *app
+    spec:
+      serviceAccountName: *app
+      automountServiceAccountToken: true
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65534
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: pruner
+          # renovate: datasource=docker depName=docker.io/alpine/k8s
+          image: docker.io/alpine/k8s:1.36.2
+          command: ["sh", "-c"]
+          args:
+            - |
+              set -eu
+              while true; do
+                nodes=$(kubectl get talosupgrade talos \
+                  -o jsonpath='{.status.currentNode}{" "}{range .status.currentNodes[*]}{@}{" "}{end}' \
+                  2>/dev/null || true)
+                for n in $nodes; do
+                  kubectl delete pdb -n storage --ignore-not-found \
+                    -l "longhorn.io/component=instance-manager,longhorn.io/node=${n}"
+                done
+                sleep 5
+              done
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+            readOnlyRootFilesystem: true
+          resources:
+            requests:
+              cpu: 5m
+              memory: 32Mi
+            limits:
+              memory: 64Mi

@@ -3,7 +3,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app tuppr-rbac
+  name: &app longhorn-pdb-pruner
   namespace: &namespace storage
   labels:
     app.kubernetes.io/name: *app
@@ -12,11 +12,9 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   dependsOn:
-    # tuppr's Kustomization lives in system-upgrade, not this Kustomization's own namespace
-    - name: tuppr
-      namespace: system-upgrade
+    - name: longhorn
   interval: 1h
-  path: ./kubernetes/apps/storage/tuppr-rbac/resources
+  path: ./kubernetes/apps/storage/longhorn-pdb-pruner/resources
   prune: true
   sourceRef:
     kind: GitRepository

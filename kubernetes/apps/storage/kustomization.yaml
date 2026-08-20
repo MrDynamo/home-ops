@@ -10,7 +10,7 @@ resources:
   - ./graphite-exporter/ks.yaml
   - ./kopia/ks.yaml
   - ./longhorn/ks.yaml
+  - ./longhorn-pdb-pruner/ks.yaml
   - ./openebs/ks.yaml
   - ./snapshot-controller/ks.yaml
-  - ./tuppr-rbac/ks.yaml
   - ./volsync/ks.yaml
