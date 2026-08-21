@@ -40,6 +40,9 @@ spec:
       deploymentStrategy:
         type: RollingUpdate
       env:
+        # Application seteetings
+        - name: AUTHENTIK_WEB__BASE_URL
+          value: "https://auth.${SECRET_DOMAIN}"
         # Postgres settings
         - name: AUTHENTIK_POSTGRESQL__NAME
           value: *app
