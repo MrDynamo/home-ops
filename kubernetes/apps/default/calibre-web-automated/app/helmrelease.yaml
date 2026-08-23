@@ -18,7 +18,7 @@ spec:
           app:
             image:
               repository: ghcr.io/new-usemame/calibre-web-nextgen
-              tag: v4.1.39@sha256:4826c217a5167655ea5efa32c13a6e40c2f36d5563e7155ef5631ca55ee094b8
+              tag: v4.1.40@sha256:9ac36a23138e2c84fa48bd9f9e13c8ce1128f53764408ac57e15226628545f87
             env:
               TZ: America/Chicago
               PUID: 1000
