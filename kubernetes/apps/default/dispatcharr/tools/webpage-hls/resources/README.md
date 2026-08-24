@@ -59,6 +59,7 @@ http%3A%2F%2Fgrafana-service.observability.svc.cluster.local%3A3000%2Fd%2F
 3. Copy URL beginning with `/d/`.
 4. Add `&kiosk` to the end.
 5. Encode into URL format.
-6. Add to base channel URL after `url=`.
-7. Create new stream in Dispatcharr with built URL.
-8. Create channel from stream and set profile to `Proxy`.
+6. Add to the end of the encoded cluster URL above.
+7. Add encoded URL to the end of one of the base URLs above after `url=`.
+8. Create new stream in Dispatcharr with built URL.
+9. Create channel from stream and set profile to `Proxy`.
