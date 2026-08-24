@@ -46,7 +46,7 @@ spec:
                 cpu: 251m
                 memory: 843Mi
               limits:
-                memory: 843Mi
+                memory: 2048Mi
           mcp:
             image:
               repository: ghcr.io/motwakorb/enhancedchannelmanager-mcp
