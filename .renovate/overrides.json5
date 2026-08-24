@@ -40,7 +40,7 @@
         "docker"
       ],
       matchPackageNames: [
-        "mirror.gcr.io/prompp/prompp"
+        "ghcr.io/deckhouse/prompp"
       ],
       allowedVersions: "<3.0.0",
     },
