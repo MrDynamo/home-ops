@@ -48,7 +48,7 @@ spec:
                 cpu: 10m
                 memory: 316Mi
               limits:
-                cpu: 2000m
+                cpu: 2500m
                 memory: 316Mi
                 # nvidia.com/gpu.shared: 1 # Request portion of shared GPU
     defaultPodOptions:
