@@ -23,7 +23,7 @@ spec:
               WS4KP_EXTERNAL_PORT: &webport 8080
               DEFAULT_FPS: 15
               SCREENSHOT_FORMAT: jpeg
-              SCREENSHOT_QUALITY: 85
+              SCREENSHOT_QUALITY: 75
               XDG_CONFIG_HOME: /tmp
               XDG_CACHE_HOME: /tmp
               # DEBUG_MODE: true
