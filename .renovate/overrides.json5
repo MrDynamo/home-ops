@@ -34,6 +34,16 @@
       ],
       allowedVersions: "<7.0.0",
     },
+    {
+      description: "Ignore Prompp images >= 3.0.0",
+      matchDatasources: [
+        "docker"
+      ],
+      matchPackageNames: [
+        "mirror.gcr.io/prompp/prompp"
+      ],
+      allowedVersions: "<3.0.0",
+    },
     // {
     //   // Handle Dispatcharr tags
     //   // https://docs.renovatebot.com/modules/versioning/regex/
