@@ -98,10 +98,10 @@ spec:
             #   capabilities: {drop: ["ALL"]}
             resources:
               requests:
-                cpu: 278m
-                memory: 1631Mi
+                cpu: 24m
+                memory: 1876Mi
               limits:
-                memory: 1631Mi
+                memory: 1876Mi
       gotenberg:
         containers:
           app:
