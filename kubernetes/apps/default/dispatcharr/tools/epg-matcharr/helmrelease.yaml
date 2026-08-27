@@ -20,9 +20,9 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 512Mi
+                memory: 1415Mi
               limits:
-                memory: 8192Mi
+                memory: 1415Mi
             env:
               DISPATCHARR_URL: http://dispatcharr.default.svc:9191
               EMBY_URL: http://emby.default.svc:8096
@@ -45,7 +45,7 @@ spec:
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
-              capabilities: { drop: ["ALL"] }
+              capabilities: {drop: ["ALL"]}
     defaultPodOptions:
       securityContext:
         runAsNonRoot: true
