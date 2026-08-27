@@ -18,7 +18,7 @@ spec:
           app:
             image:
               repository: docker.io/invoiceninja/invoiceninja-debian
-              tag: 5.13.35@sha256:82276f90a380654d0f33b25f25982ddd0ae75e6deb2cbf7240dee0e3c8588343
+              tag: 5.13.36@sha256:28a47ab9760f0d316f603f71b77e8d6b8c5142948baa60349c276370cde4214b
             env:
               TZ: America/Chicago
               APP_URL: "https://invoice.${INTERNAL_SECRET_DOMAIN}/"
