@@ -39,7 +39,7 @@ spec:
             "password": "$(DOCKERHUB_TOKEN)"
           }
         ]
-  image: ghcr.io/renovatebot/renovate:44.48.3@sha256:f7d104f9130bd96d22ea5d5310a752d0752c2a431bfeae4a01257d0a4efc3c20
+  image: ghcr.io/renovatebot/renovate:44.49.0@sha256:1c437137b16a478ea8f5aa5a0d730ee0f701bf18ba7714bdc9fc1ea91168a02a
   parallelism: 5
   resources:
     requests:
