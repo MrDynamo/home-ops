@@ -99,9 +99,9 @@ spec:
             resources:
               requests:
                 cpu: 24m
-                memory: 2158Mi
+                memory: 2482Mi
               limits:
-                memory: 2158Mi
+                memory: 2482Mi
       gotenberg:
         containers:
           app:

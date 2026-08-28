@@ -20,9 +20,9 @@ spec:
             resources:
               requests:
                 cpu: 10m
-                memory: 1415Mi
+                memory: 1152Mi
               limits:
-                memory: 1415Mi
+                memory: 1152Mi
             env:
               DISPATCHARR_URL: http://dispatcharr.default.svc:9191
               EMBY_URL: http://emby.default.svc:8096
