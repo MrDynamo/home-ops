@@ -38,9 +38,13 @@
         "/kubernetes/apps/database/cloudnative-pg/cluster/cluster\\.yaml$/",
       ],
       matchStrings: [
-        "reference:\\s*(?<depName>[^:@\\s]+):(?<currentValue>[^@\\s]+)@(?<currentDigest>sha256:[a-f0-9]{64})",
+        "reference:\\s*ghcr\\.io/(?<depName>[^:@\\s]+):(?<currentValue>[^@\\s]+)@(?<currentDigest>sha256:[a-f0-9]{64})",
       ],
       datasourceTemplate: "docker",
+      registryUrls: [
+        "https://ghcr.io",
+      ],
+      pinDigests: true,
     },
     {
       customType: "regex",
