@@ -10,6 +10,7 @@
 | calibre-web-automated    | 1 Gi  | Tuesday @ 09:00              | `0 9 * * 2`     | `0 14 * * 2`       | `0 15 * * 2`       |
 | channel-identifiarr      | 1 Gi  | Tuesday @ 10:00              | `0 10 * * 2`    | `0 15 * * 2`       | `0 16 * * 2`       |
 | chaptarr                 | 1 Gi  | Wednesday @ 10:00            | `0 10 * * 3`    | `0 15 * * 3`       | `0 16 * * 3`       |
+| classic4kast             | 1 Gi  | Tuesday @ 10:00              | `0 10 * * 2`    | `0 15 * * 2`       | `0 16 * * 2`       |
 | dispatcharr              | 1 Gi  | Friday @ 10:00               | `0 10 * * 5`    | `0 15 * * 5`       | `0 16 * * 5`       |
 | emby                     | 12 Gi | Monday @ 10:00               | `0 10 * * 1`    | `0 15 * * 1`       | `0 16 * * 1`       |
 | enhanced-channel-manager | 12 Gi | Tuesday @ 10:00              | `0 10 * * 2`    | `0 15 * * 2`       | `0 16 * * 2`       |
