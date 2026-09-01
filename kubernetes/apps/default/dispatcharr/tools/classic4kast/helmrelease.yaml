@@ -19,6 +19,8 @@ spec:
               tag: 0.1.00@sha256:03b533abdf08dfd2ac6c3b555e76dae3bfeaf9913c9d6dc16959f741db12c13f
             env:
               TZ: America/Chicago
+              XDG_CONFIG_HOME: /tmp
+              XDG_CACHE_HOME: /tmp
             probes:
               liveness: &probes
                 enabled: false
