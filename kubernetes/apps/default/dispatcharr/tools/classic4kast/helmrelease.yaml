@@ -16,7 +16,7 @@ spec:
           app:
             image:
               repository: ghcr.io/jstevenscl/classic4kast-video
-              tag: v0.1.00@sha256:03b533abdf08dfd2ac6c3b555e76dae3bfeaf9913c9d6dc16959f741db12c13f
+              tag: v0.1.01@sha256:b16c78e061c9fa6703985b20baa8856f6e6c442041f106ab30c0a6ff7fc01c3e
             env:
               TZ: America/Chicago
               XDG_CONFIG_HOME: /tmp
