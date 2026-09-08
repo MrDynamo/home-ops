@@ -36,15 +36,11 @@ canonical_base_name() {
     local session_key="$1"
     local base="$session_key"
 
-    # Normalize Emby timestamp/date patterns to Plex-friendly "sYYYYeMMDD" style.
+    # Normalize Emby timestamp patterns to Plex-friendly date episode style.
     # Examples:
-    #   "Show 2026_06_05_15_00_00" -> "Show - s2026e0605 - Episode 0605"
+    #   "Show 2026_06_05_15_00_00" -> "Show - 2026-06-05"
     #   "MLB Baseball 2026_06_05_13_20_00 - Team A at Team B"
-    #      -> "MLB Baseball - s2026e0605 - Team A at Team B"
-    #   "FloRacing - 2026-08-31 - Wild Thing Kart Series at Stafford"
-    #      -> "FloRacing - s2026e0831 - Wild Thing Kart Series at Stafford"
-    #   "5 Eyewitness News Nightcast - 2026-08-24"
-    #      -> "5 Eyewitness News Nightcast - s2026e0824 - Episode 0824"
+    #      -> "MLB Baseball - 2026-06-05 - Team A at Team B"
     if [[ "$session_key" =~ ^(.*)[[:space:]]([0-9]{4})[_-]([0-9]{2})[_-]([0-9]{2})[_-]([0-9]{2})[_-]([0-9]{2})[_-]([0-9]{2})[[:space:]]*-[[:space:]]*(.+)$ ]]; then
         local show_name="${BASH_REMATCH[1]}"
         local y="${BASH_REMATCH[2]}"
@@ -53,30 +49,14 @@ canonical_base_name() {
         local episode_name="${BASH_REMATCH[8]}"
         show_name=$(echo "$show_name" | sed -E 's/[[:space:]_-]+$//')
         episode_name=$(echo "$episode_name" | sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//')
-        base="${show_name} - s${y}e${m}${d} - ${episode_name}"
+        base="${show_name} - ${y}-${m}-${d} - ${episode_name}"
     elif [[ "$session_key" =~ ^(.*)[[:space:]]([0-9]{4})[_-]([0-9]{2})[_-]([0-9]{2})[_-]([0-9]{2})[_-]([0-9]{2})[_-]([0-9]{2})$ ]]; then
         local show_name="${BASH_REMATCH[1]}"
         local y="${BASH_REMATCH[2]}"
         local m="${BASH_REMATCH[3]}"
         local d="${BASH_REMATCH[4]}"
         show_name=$(echo "$show_name" | sed -E 's/[[:space:]_-]+$//')
-        base="${show_name} - s${y}e${m}${d} - Episode ${m}${d}"
-    elif [[ "$session_key" =~ ^(.*)[[:space:]]-[[:space:]]([0-9]{4})-([0-9]{2})-([0-9]{2})[[:space:]]-[[:space:]](.+)$ ]]; then
-        local show_name="${BASH_REMATCH[1]}"
-        local y="${BASH_REMATCH[2]}"
-        local m="${BASH_REMATCH[3]}"
-        local d="${BASH_REMATCH[4]}"
-        local episode_name="${BASH_REMATCH[5]}"
-        show_name=$(echo "$show_name" | sed -E 's/[[:space:]_-]+$//')
-        episode_name=$(echo "$episode_name" | sed -E 's/^[[:space:]]+//; s/[[:space:]]+$//')
-        base="${show_name} - s${y}e${m}${d} - ${episode_name}"
-    elif [[ "$session_key" =~ ^(.*)[[:space:]]-[[:space:]]([0-9]{4})-([0-9]{2})-([0-9]{2})$ ]]; then
-        local show_name="${BASH_REMATCH[1]}"
-        local y="${BASH_REMATCH[2]}"
-        local m="${BASH_REMATCH[3]}"
-        local d="${BASH_REMATCH[4]}"
-        show_name=$(echo "$show_name" | sed -E 's/[[:space:]_-]+$//')
-        base="${show_name} - s${y}e${m}${d} - Episode ${m}${d}"
+        base="${show_name} - ${y}-${m}-${d}"
     fi
 
     base=$(echo "$base" | sed -E 's/[[:space:]]+/ /g; s/^[[:space:]]+//; s/[[:space:]]+$//; s/[[:space:]_-]+$//')
@@ -111,7 +91,7 @@ is_thumb() {
 
 is_episodic_name() {
     local name="$1"
-    [[ "$name" =~ [Ss][0-9]{1,4}[Ee][0-9]{1,4} ]] || [[ "$name" =~ [0-9]{1,2}x[0-9]{1,3} ]]
+    [[ "$name" =~ [Ss][0-9]{1,2}[Ee][0-9]{1,3} ]] || [[ "$name" =~ [0-9]{1,2}x[0-9]{1,3} ]]
 }
 
 extract_recording_date() {
